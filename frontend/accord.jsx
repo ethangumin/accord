@@ -1,8 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import * as SessionApiUtil from "../frontend/util/session_api_util"
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  console.log("hello");
+
+  window.signup = SessionApiUtil.signup
+  window.login = SessionApiUtil.login;
+  window.logout = SessionApiUtil.logout;
+
   ReactDOM.render(<h1>Welcome to Accord</h1>, root);
 });
