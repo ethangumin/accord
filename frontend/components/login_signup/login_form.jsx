@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class LoginForm extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class LoginForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
-    this.props.signup(this.state);
+    this.props.login(this.state);
   }
 
   setFieldHandler(field) {
