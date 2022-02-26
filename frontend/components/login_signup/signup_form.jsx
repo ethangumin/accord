@@ -14,9 +14,10 @@ export default class SignupForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
-    const loggedIn = this.props.signup(this.state);
-    if (loggedIn) {
-      return <Redirect to="/servers" />;
+    this.props.signup(this.state);
+    // figure out a way to only redirect to /servers if correct login info
+    if (this.props.errors.length === 0) {
+      this.props.history.push("/servers");
     }
   }
 
@@ -38,6 +39,7 @@ export default class SignupForm extends Component {
     return (
       <div>
         <form onSubmit={(e) => this.submitHandler(e)}>
+          {this.renderErrors()}
           <label>
             Email
             <input

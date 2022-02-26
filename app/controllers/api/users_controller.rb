@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             login!(@user)
-            # render json: ["created #{@user.username}"]
+            # debugger
             render :show
         else
             render json: ["Invalid Email/Username/Password"], status: 404

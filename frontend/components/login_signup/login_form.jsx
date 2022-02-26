@@ -13,9 +13,12 @@ export default class LoginForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
-    const loggedIn = this.props.login(this.state);
-    if (loggedIn) {
-      return <Redirect to="/servers" />;
+    const user = Object.assign({}, this.state);
+    this.props.login(user);
+    debugger;
+    // figure out a way to only redirect to /servers if correct login info
+    if (this.props.errors.length === 0) {
+      this.props.history.push("/servers");
     }
   }
 
@@ -37,6 +40,7 @@ export default class LoginForm extends Component {
     return (
       <div className="login__modal">
         <form onSubmit={(e) => this.submitHandler(e)}>
+          {this.renderErrors()}
           <label>
             Email
             <input
