@@ -11,15 +11,15 @@ export default class LoginForm extends Component {
     this.submitHandler = this.submitHandler.bind(this);
   }
 
-  submitHandler(e) {
-    e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.login(user);
-    debugger;
-    // figure out a way to only redirect to /servers if correct login info
-    if (this.props.errors.length === 0) {
+  componentDidUpdate() {
+    if (this.props.activeUser) {
       this.props.history.push("/servers");
     }
+  }
+
+  submitHandler(e) {
+    e.preventDefault();
+    this.props.signup(this.state);
   }
 
   setFieldHandler(field) {

@@ -5,6 +5,7 @@ import { login } from "../../actions/session_actions";
 const mSTP = (state) => {
   return {
     errors: state.errors.session,
+    activeUser: state.session.id,
   };
 };
 
