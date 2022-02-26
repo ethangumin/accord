@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 
-export default class LoginForm extends Component {
+export default class SignupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
+      username: "",
       password: "",
     };
     this.submitHandler = this.submitHandler.bind(this);
@@ -13,7 +14,7 @@ export default class LoginForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
-    const loggedIn = this.props.login(this.state);
+    const loggedIn = this.props.signup(this.state);
     if (loggedIn) {
       return <Redirect to="/servers" />;
     }
@@ -35,7 +36,7 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <div className="login__modal">
+      <div>
         <form onSubmit={(e) => this.submitHandler(e)}>
           <label>
             Email
@@ -46,6 +47,14 @@ export default class LoginForm extends Component {
             />
           </label>
           <label>
+            Username
+            <input
+              type="text"
+              value={this.state.username}
+              onChange={this.setFieldHandler("username")}
+            />
+          </label>
+          <label>
             Password
             <input
               type="password"
@@ -53,11 +62,9 @@ export default class LoginForm extends Component {
               onChange={this.setFieldHandler("password")}
             />
           </label>
-          <input type="submit" value="Login" />
+          <input type="submit" value="Continue" />
         </form>
-        <p>
-          Need an account? <Link to={"/signup"}>Register</Link>
-        </p>
+        <Link to={"/login"}>Already have an account?</Link>
       </div>
     );
   }

@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
 
     def create
         @user = User.find_by_credentials(
-            params[:user][:username],
+            params[:user][:email],
             params[:user][:password]
         )
 
@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
             # render json: ["Logged In"]
             render "api/users/show.json.jbuilder"
         else
-            render json: ["Invalid Username/Password"], status: 401
+            render json: ["Invalid Email/Password"], status: 401
         end
     end
 
