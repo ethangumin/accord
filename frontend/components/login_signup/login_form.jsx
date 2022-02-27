@@ -9,12 +9,18 @@ export default class LoginForm extends Component {
       password: "",
     };
     this.submitHandler = this.submitHandler.bind(this);
+    this.loginGuestHandler = this.loginGuestHandler.bind(this);
   }
 
   componentDidUpdate() {
     if (this.props.activeUser) {
       this.props.history.push("/servers");
     }
+  }
+
+  loginGuestHandler(e) {
+    e.preventDefault();
+    this.props.login({ email: "guest@gmail.com", password: "password" });
   }
 
   submitHandler(e) {
@@ -64,6 +70,11 @@ export default class LoginForm extends Component {
         <p>
           Need an account? <Link to={"/signup"}>Register</Link>
         </p>
+        <input
+          type="button"
+          value="Sign in as guest"
+          onClick={(e) => this.loginGuestHandler(e)}
+        />
       </div>
     );
   }
