@@ -16,6 +16,7 @@ class ServerIndex extends React.Component {
     return (
       <div>
         <h1>Servers Index</h1>
+        <h2>Hello {this.props.currentUser.username}</h2>
         <input
           type="button"
           value="Logout"

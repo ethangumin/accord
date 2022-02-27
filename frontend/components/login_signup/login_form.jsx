@@ -9,12 +9,18 @@ export default class LoginForm extends Component {
       password: "",
     };
     this.submitHandler = this.submitHandler.bind(this);
+    this.loginGuestHandler = this.loginGuestHandler.bind(this);
   }
 
   componentDidUpdate() {
     if (this.props.activeUser) {
       this.props.history.push("/servers");
     }
+  }
+
+  loginGuestHandler(e) {
+    e.preventDefault();
+    this.props.login({ email: "guest@gmail.com", password: "password" });
   }
 
   submitHandler(e) {
@@ -26,44 +32,57 @@ export default class LoginForm extends Component {
     return (e) => this.setState({ [field]: e.target.value });
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, index) => (
-          <li key={index}>{error}</li>
-        ))}
-      </ul>
-    );
+  errors() {
+    return this.props.errors.length > 0;
   }
 
   render() {
     return (
-      <div className="login__modal">
-        <h1>Welcome back!</h1>
-        <h3>We're so excited to see you again!</h3>
-        <form onSubmit={(e) => this.submitHandler(e)}>
-          {this.renderErrors()}
-          <label>
-            Email
+      <div className="login__modal-bg">
+        <div className="login__modal">
+          <div className="login__modal-content">
+            <h1>Welcome back!</h1>
+            <h3>We're so excited to see you again!</h3>
+            <form onSubmit={(e) => this.submitHandler(e)}>
+              <label
+                className={this.errors() ? "login-signup-invalid__label" : ""}
+              >
+                EMAIL {this.errors() ? "- Email or password is invalid." : ""}
+              </label>
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.setFieldHandler("email")}
+                className={
+                  this.errors()
+                    ? "login-signup-invalid__input login__input"
+                    : "login__input"
+                }
+              />
+              <label
+                className={this.errors() ? "login-signup-invalid__label" : ""}
+              >
+                PASSWORD{" "}
+                {this.errors() ? "- Email or password is invalid." : ""}
+              </label>
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.setFieldHandler("password")}
+                className={this.errors() ? "login-signup-invalid__input login__input" : "login__input"}
+              />
+              <input type="submit" value="Login" />
+            </form>
+            <p>
+              Need an account? <Link to={"/signup"}>Register</Link>
+            </p>
             <input
-              type="text"
-              value={this.state.email}
-              onChange={this.setFieldHandler("email")}
+              type="button"
+              value="Sign in as guest"
+              onClick={(e) => this.loginGuestHandler(e)}
             />
-          </label>
-          <label>
-            Password
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.setFieldHandler("password")}
-            />
-          </label>
-          <input type="submit" value="Login" />
-        </form>
-        <p>
-          Need an account? <Link to={"/signup"}>Register</Link>
-        </p>
+          </div>
+        </div>
       </div>
     );
   }

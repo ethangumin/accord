@@ -3,7 +3,7 @@ var path = require("path");
 module.exports = {
   entry: "./frontend/accord.jsx",
   output: {
-    path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
+    path: path.resolve(__dirname, "app", "assets", "javascripts"),
     filename: "./bundle.js",
   },
   module: {
@@ -17,6 +17,18 @@ module.exports = {
             presets: ["@babel/env", "@babel/react"],
           },
         },
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+        type: "javascript/auto",
       },
     ],
   },
