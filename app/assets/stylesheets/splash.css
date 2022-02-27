@@ -1,6 +1,9 @@
 .splash__bg {
   background-color: #3031e8;
   color: white;
+  background-image: url(./images/discord_background.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .splash__header {
@@ -10,25 +13,78 @@
   align-items: baseline;
 }
 
+.splash__header h1 {
+  font-size: 1.5rem;
+  font-family: "Whitney";
+  cursor: pointer;
+}
+
 .splash__nav {
   display: flex;
   list-style-type: none;
 }
 
 .splash__nav li {
-  padding: 0 0.3em;
+  margin: 0 1.4em;
+}
+
+.splash__nav li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.splash__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 7em auto 0;
+  padding-bottom: 7em;
+  text-align: center;
+  width: 600px;
+}
+
+.splash__content h1 {
+  font-family: "Arkit Bold";
+  font-size: 3.75rem;
+}
+
+.splash__content p {
+  padding: 1em 0;
+  font-size: 1.1rem;
+  font-family: "Whitney Book";
+  line-height: 1.5;
+}
+
+.splash__btns {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 0.9em;
 }
 
 .splash__enter-btn,
 .splash__download-btn,
 .splash__open-browser-btn {
-  color: #3031e8;
+  color: #1a1d1f;
   text-decoration: none;
   border: 1px solid white;
   padding: 0.5em 1em;
   border-radius: 5em;
   background-color: white;
   cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.splash__enter-btn:hover,
+.splash__download-btn:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  color: #3031e8;
+}
+
+.splash__download-btn,
+.splash__open-browser-btn {
+  font-size: 1.125rem;
 }
 
 .splash__open-browser-btn {
@@ -37,23 +93,7 @@
   border-color: #1a1d1f;
 }
 
-.splash__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 6em auto 0;
-  padding-bottom: 3em;
-  text-align: center;
-  width: 600px;
-}
-
-.splash__content p {
-  padding: 1em 0;
-}
-
-.splash__btns {
-  display: flex;
-  justify-content: space-around;
-  width: 300px;
-  margin: 0 auto;
+.splash__open-browser-btn:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  background-color: #292b30;
 }

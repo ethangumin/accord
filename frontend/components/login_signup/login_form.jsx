@@ -39,6 +39,8 @@ export default class LoginForm extends Component {
   render() {
     return (
       <div className="login__modal">
+        <h1>Welcome back!</h1>
+        <h3>We're so excited to see you again!</h3>
         <form onSubmit={(e) => this.submitHandler(e)}>
           {this.renderErrors()}
           <label>
