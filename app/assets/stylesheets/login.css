@@ -1,0 +1,103 @@
+.login__modal-bg {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  background-color: #5f73d2;
+  /* background-image: url(./images/discord_background_night.png);
+  background-repeat: no-repeat;
+  background-size: 100%; */
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__modal {
+  display: flex;
+  justify-content: center;
+  background-color: #2e2f35;
+  height: fit-content;
+  width: 35%;
+  padding: 2em;
+  border-radius: 5px;
+}
+
+.login__modal-content {
+  color: #abadb1;
+  width: -webkit-fill-available;
+}
+
+.login__modal-content h1 {
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+
+.login__modal-content h3 {
+  font-size: 1rem;
+  padding-top: 0.5em;
+  font-family: "Whitney-Light";
+}
+
+.login__modal-content h1,
+.login__modal-content h3 {
+  text-align: center;
+}
+
+.login__modal-content label {
+  font-size: 0.8rem;
+  padding: 1.35em 0 0.4em;
+}
+
+.login__modal-content input {
+  padding: 0.55em;
+  border-radius: 3px;
+}
+
+.login__modal-content input[type="text"],
+.login__modal-content input[type="password"] {
+  border: 1px solid #1a1b1d;
+  color: #abadb1;
+  background-color: #25262b;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.login__modal-content input[type="text"]:hover,
+.login__modal-content input[type="password"]:hover {
+  border-color: black;
+}
+
+.login__modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__modal-content input[type="submit"],
+.login__modal-content input[type="button"] {
+  margin-top: 1.8em;
+  background-color: #5f73d2;
+  border: 1px solid #5f73d2;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.login__modal-content input[type="submit"]:hover,
+.login__modal-content input[type="button"]:hover {
+  background-color: #373ab7;
+  border-color: #373ab7;
+}
+
+.login__modal-content p {
+  color: #5d6167;
+  padding: 0.9em 0;
+  font-size: 0.9rem;
+}
+
+.login__modal-content a {
+  text-decoration: none;
+  color: #139df1;
+}
+
+.login__modal-content a:hover {
+  text-decoration: underline;
+}

@@ -39,36 +39,35 @@ export default class SignupForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={(e) => this.submitHandler(e)}>
-          {this.renderErrors()}
-          <label>
-            Email
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.setFieldHandler("email")}
-            />
-          </label>
-          <label>
-            Username
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.setFieldHandler("username")}
-            />
-          </label>
-          <label>
-            Password
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.setFieldHandler("password")}
-            />
-          </label>
-          <input type="submit" value="Continue" />
-        </form>
-        <Link to={"/login"}>Already have an account?</Link>
+      <div className="signup__modal-bg">
+        <div className="signup__modal">
+          <div className="signup__modal-content">
+            <h1>Create an account</h1>
+            <form onSubmit={(e) => this.submitHandler(e)}>
+              {this.renderErrors()}
+              <label>Email</label>
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.setFieldHandler("email")}
+              />
+              <label>Username</label>
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={this.setFieldHandler("username")}
+              />
+              <label>Password</label>
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.setFieldHandler("password")}
+              />
+              <input type="submit" value="Continue" />
+            </form>
+            <Link to={"/login"}>Already have an account?</Link>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,7 +1,6 @@
 .splash__bg {
-  /* background-color: #3031e8; */
   color: white;
-  background-image: url(./images/discord_background.png);
+  background-image: url(./images/discord_background_dawn.png);
   background-repeat: no-repeat;
   background-size: 100%;
 }

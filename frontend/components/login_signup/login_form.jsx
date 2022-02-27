@@ -44,37 +44,37 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <div className="login__modal">
-        <h1>Welcome back!</h1>
-        <h3>We're so excited to see you again!</h3>
-        <form onSubmit={(e) => this.submitHandler(e)}>
-          {this.renderErrors()}
-          <label>
-            Email
+      <div className="login__modal-bg">
+        <div className="login__modal">
+          <div className="login__modal-content">
+            <h1>Welcome back!</h1>
+            <h3>We're so excited to see you again!</h3>
+            <form onSubmit={(e) => this.submitHandler(e)}>
+              {this.renderErrors()}
+              <label>EMAIL</label>
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.setFieldHandler("email")}
+              />
+              <label>PASSWORD</label>
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.setFieldHandler("password")}
+              />
+              <input type="submit" value="Login" />
+            </form>
+            <p>
+              Need an account? <Link to={"/signup"}>Register</Link>
+            </p>
             <input
-              type="text"
-              value={this.state.email}
-              onChange={this.setFieldHandler("email")}
+              type="button"
+              value="Sign in as guest"
+              onClick={(e) => this.loginGuestHandler(e)}
             />
-          </label>
-          <label>
-            Password
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.setFieldHandler("password")}
-            />
-          </label>
-          <input type="submit" value="Login" />
-        </form>
-        <p>
-          Need an account? <Link to={"/signup"}>Register</Link>
-        </p>
-        <input
-          type="button"
-          value="Sign in as guest"
-          onClick={(e) => this.loginGuestHandler(e)}
-        />
+          </div>
+        </div>
       </div>
     );
   }
