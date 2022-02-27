@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import discordIcon from "../../../app/assets/images/discord-brands.svg";
 
 const Splash = ({ currentUser, logout }) => {
   const enterButton = currentUser ? "Open Discord" : "Login";
@@ -8,7 +9,10 @@ const Splash = ({ currentUser, logout }) => {
     <div className="splash__bg">
       <div className="splash container">
         <div className="splash__header">
-          <h1>Accord</h1>
+          <div className="splash__logo">
+            <img src={discordIcon} alt="accord-logo" />
+            <h1>Accord</h1>
+          </div>
           <ul className="splash__nav">
             <li>Download</li>
             <li>Nitro</li>
