@@ -32,14 +32,8 @@ export default class LoginForm extends Component {
     return (e) => this.setState({ [field]: e.target.value });
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, index) => (
-          <li key={index}>{error}</li>
-        ))}
-      </ul>
-    );
+  errors() {
+    return this.props.errors.length > 0;
   }
 
   render() {
@@ -50,18 +44,32 @@ export default class LoginForm extends Component {
             <h1>Welcome back!</h1>
             <h3>We're so excited to see you again!</h3>
             <form onSubmit={(e) => this.submitHandler(e)}>
-              {this.renderErrors()}
-              <label>EMAIL</label>
+              <label
+                className={this.errors() ? "login-signup-invalid__label" : ""}
+              >
+                EMAIL {this.errors() ? "- Email or password is invalid." : ""}
+              </label>
               <input
                 type="text"
                 value={this.state.email}
                 onChange={this.setFieldHandler("email")}
+                className={
+                  this.errors()
+                    ? "login-signup-invalid__input login__input"
+                    : "login__input"
+                }
               />
-              <label>PASSWORD</label>
+              <label
+                className={this.errors() ? "login-signup-invalid__label" : ""}
+              >
+                PASSWORD{" "}
+                {this.errors() ? "- Email or password is invalid." : ""}
+              </label>
               <input
                 type="password"
                 value={this.state.password}
                 onChange={this.setFieldHandler("password")}
+                className={this.errors() ? "login-signup-invalid__input login__input" : "login__input"}
               />
               <input type="submit" value="Login" />
             </form>

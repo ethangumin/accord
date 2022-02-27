@@ -43,16 +43,14 @@
   border-radius: 3px;
 }
 
-.signup__modal-content input[type="text"],
-.signup__modal-content input[type="password"] {
+.signup__input {
   border: 1px solid #1a1b1d;
   color: #abadb1;
   background-color: #25262b;
   transition: border-color 0.2s ease-in-out;
 }
 
-.signup__modal-content input[type="text"]:hover,
-.signup__modal-content input[type="password"]:hover {
+.signup__input:hover {
   border-color: black;
 }
 
@@ -94,4 +92,16 @@
 
 .signup__modal-content a:hover {
   text-decoration: underline;
+}
+
+.login-signup-invalid__label {
+  color: #ca2933;
+}
+
+.login-signup-invalid__input {
+  border-color: #ca2933;
+}
+
+.login-signup-invalid__input:hover {
+  border-color: #ca2933;
 }

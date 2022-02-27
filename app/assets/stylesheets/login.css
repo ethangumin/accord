@@ -53,16 +53,14 @@
   border-radius: 3px;
 }
 
-.login__modal-content input[type="text"],
-.login__modal-content input[type="password"] {
+.login__input {
   border: 1px solid #1a1b1d;
   color: #abadb1;
   background-color: #25262b;
   transition: border-color 0.2s ease-in-out;
 }
 
-.login__modal-content input[type="text"]:hover,
-.login__modal-content input[type="password"]:hover {
+.login__input:hover {
   border-color: black;
 }
 
@@ -101,3 +99,4 @@
 .login__modal-content a:hover {
   text-decoration: underline;
 }
+

@@ -27,14 +27,8 @@ export default class SignupForm extends Component {
     return (e) => this.setState({ [field]: e.target.value });
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, index) => (
-          <li key={index}>{error}</li>
-        ))}
-      </ul>
-    );
+  errors() {
+    return this.props.errors.length > 0;
   }
 
   render() {
@@ -44,24 +38,53 @@ export default class SignupForm extends Component {
           <div className="signup__modal-content">
             <h1>Create an account</h1>
             <form onSubmit={(e) => this.submitHandler(e)}>
-              {this.renderErrors()}
-              <label>Email</label>
+              <label
+                className={this.errors() ? "login-signup-invalid__label" : ""}
+              >
+                Email{" "}
+                {this.errors() ? "- Email/Username/Password is invalid." : ""}
+              </label>
               <input
                 type="text"
                 value={this.state.email}
                 onChange={this.setFieldHandler("email")}
+                className={
+                  this.errors()
+                    ? "login-signup-invalid__input signup__input"
+                    : "signup__input"
+                }
               />
-              <label>Username</label>
+              <label
+                className={this.errors() ? "login-signup-invalid__label" : ""}
+              >
+                Username{" "}
+                {this.errors() ? "- Email/Username/Password is invalid." : ""}
+              </label>
               <input
                 type="text"
                 value={this.state.username}
                 onChange={this.setFieldHandler("username")}
+                className={
+                  this.errors()
+                    ? "login-signup-invalid__input signup__input"
+                    : "signup__input"
+                }
               />
-              <label>Password</label>
+              <label
+                className={this.errors() ? "login-signup-invalid__label" : ""}
+              >
+                Password{" "}
+                {this.errors() ? "- Email/Username/Password is invalid." : ""}
+              </label>
               <input
                 type="password"
                 value={this.state.password}
                 onChange={this.setFieldHandler("password")}
+                className={
+                  this.errors()
+                    ? "login-signup-invalid__input signup__input"
+                    : "signup__input"
+                }
               />
               <input type="submit" value="Continue" />
             </form>
