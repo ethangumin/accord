@@ -25,7 +25,7 @@ const Splash = ({ currentUser, logout }) => {
           </Link>
         </div>
         <div className="splash__content">
-          <h1>Imagine A Place...</h1>
+          <h1>IMAGINE A PLACE...</h1>
           <p>
             ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut,
             magnam eum numquam exercitationem neque nemo inventore quisquam
