@@ -14,17 +14,16 @@
  *= require_self
  */
 
-@import url("./splash.css");
-@import url("./login.css");
-@import url("./signup.css");
+/* CSS Reset */
 
-* {
-  padding: 0;
-  margin: 0;
-  font-family: "Whitney Semibold";
-}
+/* Base */
+@import url("./base/util.css");
 
-.container {
-  width: 900px;
-  margin: 0 auto;
-}
+/* Components */
+@import url("./components/splash.css");
+@import url("./components/login.css");
+@import url("./components/signup.css");
+
+
+
+

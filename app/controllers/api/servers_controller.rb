@@ -4,7 +4,6 @@ class Api::ServersController < ApplicationController
         @server.creator_id = current_user.id
         if @server.save
             render :show
-            # render json: ["Create Server Success"]
         else
             render json: ["Invalid Server Params"], status: 404
         end
