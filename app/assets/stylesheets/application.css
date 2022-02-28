@@ -15,6 +15,7 @@
  */
 
 /* CSS Reset */
+@import url("./base//reset.css");
 
 /* Base */
 @import url("./base/util.css");

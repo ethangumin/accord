@@ -23,7 +23,7 @@
 
 .splash__header h1 {
   font-size: 1.4rem;
-  font-family: "Whitney";
+  font-family: "Whitney-Bold";
   cursor: pointer;
   padding-left: 0.25em;
 }
@@ -31,6 +31,7 @@
 .splash__nav {
   display: flex;
   list-style-type: none;
+  font-family: "Whitney-Semibold";
 }
 
 .splash__nav li {
@@ -72,9 +73,14 @@
   padding-top: 0.9em;
 }
 
+.splash__enter-btn {
+  font-family: "Whitney-Semibold";
+}
+
 .splash__enter-btn,
 .splash__download-btn,
 .splash__open-browser-btn {
+  font-family: "Whitney-Book";
   color: #1a1d1f;
   text-decoration: none;
   border: 1px solid white;

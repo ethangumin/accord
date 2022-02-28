@@ -4,9 +4,6 @@
   display: flex;
   position: fixed;
   background-color: #5f73d2;
-  /* background-image: url(./images/discord_background_night.png);
-  background-repeat: no-repeat;
-  background-size: 100%; */
   margin: 0 auto;
   justify-content: center;
   align-items: center;
@@ -28,6 +25,7 @@
 }
 
 .login__modal-content h1 {
+  font-family: "Whitney-Semibold";
   color: #ffffff;
   font-size: 1.4rem;
 }
@@ -35,7 +33,7 @@
 .login__modal-content h3 {
   font-size: 1rem;
   padding-top: 0.5em;
-  font-family: "Whitney-Light";
+  font-family: "Whitney-Book";
 }
 
 .login__modal-content h1,
@@ -44,6 +42,7 @@
 }
 
 .login__modal-content label {
+  font-family: "Whitney-Semibold";
   font-size: 0.8rem;
   padding: 1.35em 0 0.4em;
 }
@@ -71,6 +70,7 @@
 
 .login__modal-content input[type="submit"],
 .login__modal-content input[type="button"] {
+  font-family: "Whitney-Medium";
   margin-top: 1.8em;
   background-color: #5f73d2;
   border: 1px solid #5f73d2;
@@ -86,6 +86,7 @@
 }
 
 .login__modal-content p {
+  font-family: "Whitney-Book";
   color: #5d6167;
   padding: 0.9em 0;
   font-size: 0.9rem;
@@ -99,4 +100,3 @@
 .login__modal-content a:hover {
   text-decoration: underline;
 }
-
