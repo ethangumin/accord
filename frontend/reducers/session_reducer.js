@@ -9,7 +9,6 @@ const sessionReducer = (oldState = { id: null }, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      // debugger;
       newState.id = action.user.id;
       return newState;
     // return { id: action.user.id };
