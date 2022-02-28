@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create({username: "guest", email: "guest@gmail.com", password: "password"})
+Server.create({server_name: "guest's server", creator_id: 1})
