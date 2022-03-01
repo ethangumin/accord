@@ -39,7 +39,7 @@ export const updateServer = (server) => (dispatch) =>
     dispatch(receiveServer(server))
   );
 
-export default deleteServer = (serverId) => (dispatch) =>
+export const deleteServer = (serverId) => (dispatch) =>
   ServersApiUtil.deleteServer(serverId).then(() =>
     dispatch(removeServer(serverId))
   );
