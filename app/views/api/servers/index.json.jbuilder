@@ -1,5 +1,3 @@
-# json.array! @servers, partial: '/api/servers/server', as: :server
-
 json.key_format! camelize: :lower
 
 json.array! @servers do |server|
