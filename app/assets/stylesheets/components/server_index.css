@@ -1,0 +1,32 @@
+.server-index__container {
+    display: flex;
+    height: 100vh;
+}
+
+.server-index__servers-nav {
+    border: 1px solid black;
+    width: 10%;
+}
+
+.server-index__dm {
+    border: 1px solid black;
+    width: 30%;
+}
+
+.server-index__home {
+    border: 1px solid black;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.server-index__home__nav {
+    border: 1px solid black;
+    height: 8vh;
+}
+
+.server-index__home__content {
+    border: 1px solid black;
+    height: 92vh;
+}
+
