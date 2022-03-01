@@ -20,9 +20,9 @@ Server.create(server_name: "Emily Server 2", creator_id: 2)
 Server.create(server_name: "Emily Server 3", creator_id: 2)
 Server.create(server_name: "Kevin Server 1", creator_id: 3)
 Server.create(server_name: "Kirby Server 1", creator_id: 4)
-Server.create(server_name: "Kirby Server 1", creator_id: 4)
-Server.create(server_name: "Kirby Server 1", creator_id: 4)
-Server.create(server_name: "Kirby Server 1", creator_id: 4)
+Server.create(server_name: "Kirby Server 2", creator_id: 4)
+Server.create(server_name: "Kirby Server 3", creator_id: 4)
+Server.create(server_name: "Kirby Server 4", creator_id: 4)
 
 # channels seeds
 Channel.create(channel_name: "Guest Channel 1", server_id: 1)
