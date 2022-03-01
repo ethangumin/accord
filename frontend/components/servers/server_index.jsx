@@ -14,7 +14,15 @@ class ServerIndex extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+        <div className="server-index__container">
+          <div>Servers Container</div>
+          <div>Direct Messages Container</div>
+          <div>
+            <div>Home Nav</div>
+            <div>Home Content</div>
+          </div>
+        </div>
         <h1>Servers Index</h1>
         <h2>Hello {this.props.currentUser.username}</h2>
         <input
