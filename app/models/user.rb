@@ -15,6 +15,15 @@ class User < ApplicationRecord
         foreign_key: :creator_id,
         class_name: :Server
 
+    has_many :server_members,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :ServerMember
+
+    has_many :servers_enrolled,
+        through: :server_members,
+        source: :server
+
     attr_reader :password
 
     def self.find_by_credentials(email, password)
