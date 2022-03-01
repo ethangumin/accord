@@ -37,7 +37,6 @@ class Api::ServersController < ApplicationController
         if @server
             @server.destroy
         end
-        # redirect_to api_servers_url ### redirect is subject to change
     end
 
     private
