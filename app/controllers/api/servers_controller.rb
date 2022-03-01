@@ -1,4 +1,18 @@
 class Api::ServersController < ApplicationController
+    def index
+        @servers = Server.all
+        render :index
+    end
+
+    def show
+        @server = Server.find_by(id: params[:id])
+        if @server
+            render :show
+        else
+            render json: ["Server does not exists"], status: 404
+        end
+    end
+
     def create
         @server = Server.new(server_params)
         @server.creator_id = current_user.id
@@ -9,9 +23,22 @@ class Api::ServersController < ApplicationController
         end
     end
 
-    # def show
-    #     @server = Server.find_by(id: params[:id]);
-    # end
+    def update
+        @server = Server.find_by(id: params[:id])
+        if @server && @server.update(server_params)
+            render :show
+        else
+            render json: ["Server name must be at least one character long"], status: 400
+        end
+    end
+
+    def destroy
+        @server = Server.find_by(id: params[:id])
+        if @server
+            @server.destroy
+        end
+        # redirect_to api_servers_url ### redirect is subject to change
+    end
 
     private
     def server_params

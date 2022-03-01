@@ -9,7 +9,6 @@ class Api::SessionsController < ApplicationController
 
         if @user
             login!(@user)
-            # render json: ["Logged In"]
             render "api/users/show.json.jbuilder"
         else
             render json: ["Invalid Email/Password"], status: 401
@@ -20,7 +19,6 @@ class Api::SessionsController < ApplicationController
         @user = current_user
         if @user
             logout!
-            # render json: ["Logged Out"]
             render "api/users/show.json.jbuilder"
         else
             render json: ["No User Logged In"], status: 404
