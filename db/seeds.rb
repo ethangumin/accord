@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # users seeds
-User.create(username: "guest", email: "guest@gmail.com", password: "password")
+User.create(username: "Guest", email: "guest@gmail.com", password: "password")
 User.create(username: "Emily", email: "emily@gmail.com", password: "password")
 User.create(username: "Kevin", email: "kevin@gmail.com", password: "password")
 User.create(username: "Kirby", email: "kirby@gmail.com", password: "password")
@@ -65,3 +65,16 @@ ServerMember.create(user_id: 4, server_id: 5)
 ServerMember.create(user_id: 4, server_id: 3)
 ServerMember.create(user_id: 4, server_id: 6)
 
+# friendship seeds
+Friendship.create(user1_id: 1, user2_id: 2)
+Friendship.create(user1_id: 1, user2_id: 3)
+Friendship.create(user1_id: 1, user2_id: 4)
+Friendship.create(user1_id: 2, user2_id: 1)
+Friendship.create(user1_id: 2, user2_id: 3)
+Friendship.create(user1_id: 2, user2_id: 4)
+Friendship.create(user1_id: 3, user2_id: 1)
+Friendship.create(user1_id: 3, user2_id: 2)
+Friendship.create(user1_id: 3, user2_id: 4)
+Friendship.create(user1_id: 4, user2_id: 1)
+Friendship.create(user1_id: 4, user2_id: 2)
+Friendship.create(user1_id: 4, user2_id: 3)

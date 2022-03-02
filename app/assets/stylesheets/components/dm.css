@@ -2,7 +2,19 @@
 .current-user {
   display: flex;
   align-items: center;
-  padding-bottom: 0.5em;
+  padding: 0.25em;
+}
+
+.dm {
+  transition: background-color .15s ease-in-out;
+  border: 1px solid #232429;
+}
+
+.dm:hover {
+  cursor: pointer;
+  background-color: #27292D;
+  border: 1px solid #27292D;
+  border-radius: 4px;
 }
 
 .dm p + p,
@@ -23,4 +35,9 @@
 .dm__username,
 .current-user__username {
   font-size: 1.5rem;
+}
+
+.dm__x-mark {
+  height: 30px;
+  width: 30px;
 }
