@@ -2,7 +2,7 @@ import React from "react";
 
 const ServersNav = ({ enrolledServers }) => {
   return (
-    <ul>
+    <ul className="server-index__servers-nav">
       <li className="server-nav__item">Home</li>
       <li className="home-button-separator"></li>
       {/* {enrolledServers.map((server) => {
