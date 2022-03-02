@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ServersNav = (props) => {
-  let fetchServer = props.requestServer ? props.requestServer : null;
-
   return (
     <ul className="server-index__servers-nav">
       <li className="server-nav__item">
@@ -29,9 +27,9 @@ const ServersNav = (props) => {
                     to={`/server/${server.id}`}
                     style={{ textDecoration: "none", color: "#D4D5D6" }}
                     onClick={
-                      fetchServer
-                        ? () => fetchServer(server.id)
-                        : console.log("no access to requestServer")
+                      props.requestServer
+                        ? () => props.requestServer(server.id)
+                        : () => null
                     }
                   >
                     {serverAcronym}
