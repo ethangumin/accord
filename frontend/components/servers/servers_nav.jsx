@@ -1,9 +1,26 @@
-import React from 'react'
+import React from "react";
 
-function ServersNav() {
+const ServersNav = ({ servers }) => {
   return (
-    <div>Servers Nav</div>
-  )
-}
+    <ul>
+      <li className="server-nav__item">Home</li>
+      <li className="home-button-separator"></li>
+      {servers.map((server) => {
+        const serverAcronym = server.serverName
+          .split(" ")
+          .map((word) => word[0])
+          .join("");
 
-export default ServersNav
+        return (
+          <li key={server.id} className="server-nav__item">
+            {serverAcronym}
+          </li>
+        );
+      })}
+      <li className="server-nav__item create-server">+</li>
+      <li className="server-nav__item explore-servers">Exp</li>
+    </ul>
+  );
+};
+
+export default ServersNav;

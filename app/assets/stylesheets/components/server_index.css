@@ -6,6 +6,10 @@
 .server-index__servers-nav {
     border: 1px solid black;
     width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #181A1C;
 }
 
 .server-index__dm {

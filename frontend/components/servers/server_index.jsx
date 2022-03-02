@@ -12,7 +12,7 @@ class ServerIndex extends React.Component {
     return (
       <div className="server-index__container">
         <div className="server-index__servers-nav">
-          <ServersNav />
+          <ServersNav servers={this.props.currentUser.servers} />
         </div>
         <div className="server-index__dm">Direct Messages Container</div>
         <div className="server-index__home">
