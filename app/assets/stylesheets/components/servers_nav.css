@@ -18,6 +18,10 @@
   background-color: #4649ee;
 }
 
+.server-nav__servers {
+  overflow-y: scroll;
+}
+
 .create-server,
 .explore-servers {
   color: #31984a;

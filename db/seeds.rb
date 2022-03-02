@@ -62,4 +62,6 @@ ServerMember.create(user_id: 4, server_id: 10)
 ServerMember.create(user_id: 4, server_id: 1)
 ServerMember.create(user_id: 4, server_id: 2)
 ServerMember.create(user_id: 4, server_id: 5)
+ServerMember.create(user_id: 4, server_id: 3)
+ServerMember.create(user_id: 4, server_id: 6)
 

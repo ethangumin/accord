@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: flex-start;
   background-color: #181a1c;
+  padding: 0.5em 0 1em;
 }
 
 .server-index__dm {
