@@ -18,8 +18,7 @@ class ServerIndex extends React.Component {
     return (
       <div className="server-index__container">
         <ServersNav enrolledServers={this.props.enrolledServers} />
-        {/* <ServersNav /> */}
-        <DmIndex />
+        <DmIndex friends={this.props.friends} />
         <div className="server-index__home">
           <HomeNav logout={this.props.logout} history={this.props.history} />
           <HomeContent />

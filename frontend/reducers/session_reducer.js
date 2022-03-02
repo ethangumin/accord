@@ -11,7 +11,6 @@ const sessionReducer = (oldState = { id: null }, action) => {
     case RECEIVE_CURRENT_USER:
       newState.id = action.user.id;
       return newState;
-    // return { id: action.user.id };
     case LOGOUT_CURRENT_USER:
       newState.id = null;
       return newState;

@@ -5,10 +5,14 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
-    has_many :friends,
+    has_many :friendships,
         primary_key: :id,
         foreign_key: :user1_id,
         class_name: :Friendship
+
+    has_many :friends,
+        through: :friendships,
+        source: :user2
 
     has_many :servers,
         primary_key: :id,
