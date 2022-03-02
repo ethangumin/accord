@@ -3,10 +3,10 @@ import React from "react";
 const ServerChannels = ({server}) => {
   return (
     <div className="server-channels__container">
-      <h3>
+      <h3 className="server-channels__header">
         {server ? server.serverName : ""}
       </h3>
-      <div className="server__channels-section">
+      <div className="server-channels__channels-idx">
         <ul>
           {server
             ? server.channels.map((channel) => (

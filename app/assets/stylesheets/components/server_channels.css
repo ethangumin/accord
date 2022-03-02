@@ -1,7 +1,17 @@
 .server-channels__container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 25%;
   /* margin: 0.6em; */
   border: 1px solid black;
+}
+
+.server-channels__header {
+  border: 1px solid black;
+  height: 5vh;
+}
+
+.server-channels__channels-idx {
+  border: 1px solid black;
+  height: 95vh;
 }
