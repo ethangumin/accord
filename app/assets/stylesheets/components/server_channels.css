@@ -3,15 +3,49 @@
   flex-direction: column;
   width: 25%;
   /* margin: 0.6em; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  background-color: #232429;
 }
 
 .server-channels__header {
-  border: 1px solid black;
-  height: 5vh;
+  border-bottom: 1px solid black;
+  color: white;
+  height: 6vh;
+  font-family: "Whitney-Semibold";
+  padding: 0.6em;
+  font-size: 1.2rem;
 }
 
 .server-channels__channels-idx {
-  border: 1px solid black;
-  height: 95vh;
+  /* border: 1px solid black; */
+  height: 94vh;
+  font-family: "Whitney-Medium";
+  padding: 0.5em;
+}
+
+.server-channels__channels-idx ul li {
+  display: flex;
+  align-items: center;
+  padding: 0.25em 0;
+  cursor: pointer;
+  border: 1px;
+  border-radius: 3px;
+  color: #7b7f85;
+  transition: all 0.2s ease-in-out;
+}
+
+.server-channels__channels-idx ul li:hover {
+  background-color: #27292d;
+  border-color: #27292d;
+  color: #d1d2d3;
+}
+
+.server-channels__channels-idx img {
+  height: 25px;
+  width: 25px;
+  padding-right: 0.3em;
+}
+
+.server-channels__channels-idx p {
+  font-size: 1.25rem;
 }
