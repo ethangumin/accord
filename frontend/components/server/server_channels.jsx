@@ -12,7 +12,7 @@ const ServerChannels = ({ server }) => {
           {server
             ? server.channels.map((channel) => (
                 <li key={channel.id}>
-                  <img src={Hashtag} alt="hashtag" />
+                  <img src={Hashtag} alt="hashtag" className="channel-pound" />
                   <p>{channel.channelName}</p>
                 </li>
               ))
