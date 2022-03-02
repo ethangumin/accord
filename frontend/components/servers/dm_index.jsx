@@ -14,12 +14,6 @@ const DmIndex = ({friends}) => {
             <p>+</p>
           </div>
           <ul className="dm__messages">
-            {/* <Dm />
-            <Dm />
-            <Dm />
-            <Dm />
-            <Dm />
-            <Dm /> */}
             {friends.map(friend => (
               <Dm key={friend.id} friend={friend} />
             ))}

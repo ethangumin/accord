@@ -9,7 +9,6 @@ import ServerIndexContainer from "./servers/server_index_container";
 const App = () => {
   return (
     <div>
-      {/* <SplashContainer /> */}
       <Switch>
         <Route exact path="/" component={SplashContainer} />
         <AuthRoute path="/signup" component={SignUpFormContainer} />

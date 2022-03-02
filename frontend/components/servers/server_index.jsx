@@ -9,12 +9,7 @@ class ServerIndex extends React.Component {
     super(props);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchCurrentUser(this.props.currentUser.id);
-  // }
-
   render() {
-    // console.log(this.props.enrolledServers)
     return (
       <div className="server-index__container">
         <ServersNav enrolledServers={this.props.enrolledServers} />
