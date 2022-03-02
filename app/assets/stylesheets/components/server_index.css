@@ -15,21 +15,22 @@
 .server-index__dm {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 25%;
-  padding: 0.6em;
+  margin: 0.6em;
 }
 
 .server-index__home {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 65%;
   display: flex;
   flex-direction: column;
   padding: 0.6em;
+  background-color: #292B30;
 }
 
 .server-index__home__nav {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 5vh;
 }
 
