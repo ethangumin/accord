@@ -5,6 +5,7 @@ import SplashContainer from "./splash/splash_container";
 import SignUpFormContainer from "./login_signup/signup_form_container";
 import LoginFormContainer from "./login_signup/login_form_container";
 import ServerIndexContainer from "./servers/server_index_container";
+import Server from "./server/server";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <AuthRoute path="/signup" component={SignUpFormContainer} />
         <AuthRoute path="/login" component={LoginFormContainer} />
         <Route path="/servers" component={ServerIndexContainer} />
+        <Route path="/server/:id" component={Server} />
       </Switch>
     </div>
   );
