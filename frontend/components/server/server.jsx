@@ -1,6 +1,6 @@
 import React from "react";
 import ServersNav from "../servers/servers_nav";
-import Channel from "../channel/channel"
+import Channel from "../channel/channel";
 import ServerChannels from "./server_channels";
 
 class Server extends React.Component {
@@ -12,7 +12,10 @@ class Server extends React.Component {
     return (
       <div className="server__main-container">
         <ServersNav enrolledServers={this.props.enrolledServers} />
-        <ServerChannels server={this.props.currentServer} />
+        <ServerChannels
+          server={this.props.currentServer}
+          currentUser={this.props.currentUser}
+        />
         <Channel />
       </div>
     );

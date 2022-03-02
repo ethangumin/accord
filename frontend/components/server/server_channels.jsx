@@ -1,7 +1,7 @@
 import React from "react";
 import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
 
-const ServerChannels = ({ server }) => {
+const ServerChannels = ({ server, currentUser }) => {
   return (
     <div className="server-channels__container">
       <h3 className="server-channels__header">
@@ -18,6 +18,10 @@ const ServerChannels = ({ server }) => {
               ))
             : ""}
         </ul>
+        <div className="server-channels__curr-user">
+          <p></p>
+          <p>{currentUser.username}</p>
+        </div>
       </div>
     </div>
   );

@@ -6,7 +6,8 @@ const mSTP = (state, ownProps) => {
   // debugger
   return {
     currentServer: state.entities.servers[ownProps.match.params.id],
-    enrolledServers: state.entities.users[state.session.id].servers
+    enrolledServers: state.entities.users[state.session.id].servers,
+    currentUser: state.entities.users[state.session.id],
   };
 };
 
