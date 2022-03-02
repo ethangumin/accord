@@ -1,0 +1,51 @@
+.dm__container {
+  font-family: "Whitney-Medium";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+
+.dm__start-convo-container {
+  height: 5vh;
+  border-bottom: 1px solid black;
+}
+
+.dm__container input {
+  font-family: "Whitney-Medium";
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.4em;
+  border: 1px solid #181A1C;
+  border-radius: 4px;
+  columns: #5F6369;
+  background-color: #181A1C;
+}
+
+.dm__header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.5em;
+    font-family: "Whitney-Semibold";
+    color: #797D83;
+}
+
+.dm__messages {
+    font-size: 1.2rem;
+    font-family: "Whitney-Book";
+    margin-top: 0.5em;
+    color: #797D83;
+}
+
+.current-user {
+    font-family: "Whitney-book";
+    color: #797D83;
+}
+
+.current-user__username {
+    font-size: 1.5rem;
+}
+
+.current-user__icon {
+    font-size: 1.2rem;
+}

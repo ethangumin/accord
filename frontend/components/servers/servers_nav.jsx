@@ -1,11 +1,11 @@
 import React from "react";
 
-const ServersNav = ({ servers }) => {
+const ServersNav = ({ enrolledServers }) => {
   return (
     <ul>
       <li className="server-nav__item">Home</li>
       <li className="home-button-separator"></li>
-      {servers.map((server) => {
+      {/* {enrolledServers.map((server) => {
         const serverAcronym = server.serverName
           .split(" ")
           .map((word) => word[0])
@@ -16,7 +16,7 @@ const ServersNav = ({ servers }) => {
             {serverAcronym}
           </li>
         );
-      })}
+      })} */}
       <li className="server-nav__item create-server">+</li>
       <li className="server-nav__item explore-servers">Exp</li>
     </ul>
