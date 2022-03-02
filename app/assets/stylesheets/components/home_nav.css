@@ -1,0 +1,37 @@
+.home-nav__container {
+  display: flex;
+  justify-content: space-between;
+  color: #abadd1;
+  font-family: "Whitney-Book";
+}
+
+.home-nav__container input[type=button] {
+    font-family: "Whitney-Book";
+    font-size: .95rem;
+    border: 1px solid #30964A;
+    border-radius: 4px;
+    background-color: #30964A;
+    color: white;
+    padding: 0.25em .4em;
+}
+
+.home-nav__section-1,
+.home-nav__section-2 {
+  display: flex;
+  align-items: center;
+}
+
+.home-nav__section-1 *,
+.home-nav__section-2 * {
+  margin: 0.3em;
+  cursor: pointer;
+}
+
+.home-nav__container p {
+    transition: all .1s ease-in-out;
+}
+
+.home-nav__container p:hover {
+    color: #D3D4D5;
+}
+

@@ -1,0 +1,19 @@
+.home-content__container {
+  padding: 1em;
+  font-family: "";
+}
+
+.home-content__container input {
+  font-size: 1.1rem;
+  padding: 0.4em;
+  font-family: "Whitney-Book";
+  border: 1px solid #181a1c;
+  background-color: #181a1c;
+  color: #D4D5D6;
+  border-radius: 3px;
+  width: -webkit-fill-available;
+}
+
+.home-content__container input::placeholder {
+    color: #5F6369;
+}

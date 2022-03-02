@@ -1,0 +1,42 @@
+.server-nav__item {
+  font-family: "Whitney-Medium";
+  text-align: center;
+  border: 1px solid #292b30;
+  border-radius: 50%;
+  width: 70%;
+  margin: 0.5em auto 0;
+  padding: 1.5em 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-color: #292b30;
+  color: #d4d5d6;
+}
+
+.server-nav__item:hover {
+  border-radius: 25px;
+  border-color: #4649ee;
+  background-color: #4649ee;
+}
+
+.server-nav__servers {
+  overflow-y: scroll;
+}
+
+.create-server,
+.explore-servers {
+  color: #31984a;
+}
+
+.create-server:hover,
+.explore-servers:hover {
+  background-color: #31984a;
+  border-color: #31984a;
+  color: white;
+}
+
+.home-button-separator {
+  border-bottom: 2px solid #292b30;
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 0.5em;
+}
