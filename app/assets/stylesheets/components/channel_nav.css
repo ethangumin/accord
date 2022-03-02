@@ -1,0 +1,15 @@
+.channel-nav__container {
+  color: white;
+  height: 6vh;
+  font-family: "Whitney-Semibold";
+  padding: 0.6em;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  background-color: #292b30;
+  border-bottom: 1px solid black;
+}
+
+.channel-nav__container p {
+    padding-top: 0.12em;
+}

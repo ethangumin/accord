@@ -1,0 +1,76 @@
+/* .server-channels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+
+.server-channels__container {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  background-color: #232429;
+}
+
+.server-channels__header {
+  border-bottom: 1px solid black;
+  color: white;
+  height: 6vh;
+  font-family: "Whitney-Semibold";
+  padding: 0.6em;
+  font-size: 1.2rem;
+}
+
+.server-channels__channels-idx {
+  height: 94vh;
+  font-family: "Whitney-Medium";
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.server-channels__channels-idx ul li {
+  display: flex;
+  align-items: center;
+  padding: 0.25em 0;
+  cursor: pointer;
+  border: 1px;
+  border-radius: 3px;
+  color: #7b7f85;
+  transition: all 0.2s ease-in-out;
+}
+
+.server-channels__channels-idx ul li:hover {
+  background-color: #27292d;
+  border-color: #27292d;
+  color: #d1d2d3;
+}
+
+.channel-pound {
+  height: 25px;
+  width: 25px;
+  padding-right: 0.3em;
+}
+
+.server-channels__channels-idx p {
+  font-size: 1.25rem;
+}
+
+.server-channels__curr-user {
+  display: flex;
+  align-items: center;
+  padding: 0.25em;
+  margin-bottom: 0.45em;
+  color: #7b7f85;
+}
+
+.server-channels__curr-user p:first-child {
+  border: 1px solid #7b7f85;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.server-channels__curr-user p + p {
+  margin-left: 0.4em;
+}
