@@ -5,7 +5,7 @@ const ServersNav = ({ enrolledServers }) => {
     <ul className="server-index__servers-nav">
       <li className="server-nav__item">Home</li>
       <li className="home-button-separator"></li>
-      {/* {enrolledServers.map((server) => {
+      {enrolledServers.map((server) => {
         const serverAcronym = server.serverName
           .split(" ")
           .map((word) => word[0])
@@ -16,7 +16,7 @@ const ServersNav = ({ enrolledServers }) => {
             {serverAcronym}
           </li>
         );
-      })} */}
+      })}
       <li className="server-nav__item create-server">+</li>
       <li className="server-nav__item explore-servers">Exp</li>
     </ul>

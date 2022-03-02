@@ -10,7 +10,7 @@ const mSTP = (state) => ({
 
 const mDTP = (dispatch) => ({
   logout: () => dispatch(logout()),
-  fetchCurrentUser: (userId) => dispatch(fetchUser(userId)),
+  // fetchCurrentUser: (userId) => dispatch(fetchUser(userId)),
 });
 
 export default connect(mSTP, mDTP)(ServerIndex);

@@ -9,19 +9,20 @@ class ServerIndex extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchCurrentUser(this.props.currentUser.id);
-  }
+  // componentDidMount() {
+  //   this.props.fetchCurrentUser(this.props.currentUser.id);
+  // }
 
   render() {
     // console.log(this.props.enrolledServers)
     return (
       <div className="server-index__container">
-          <ServersNav enrolledServers={this.props.enrolledServers} />
-          <DmIndex />
+        <ServersNav enrolledServers={this.props.enrolledServers} />
+        {/* <ServersNav /> */}
+        <DmIndex />
         <div className="server-index__home">
-            <HomeNav logout={this.props.logout} history={this.props.history} />
-            <HomeContent />
+          <HomeNav logout={this.props.logout} history={this.props.history} />
+          <HomeContent />
         </div>
       </div>
     );

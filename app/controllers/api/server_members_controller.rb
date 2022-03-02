@@ -1,5 +1,6 @@
 class Api::ServerMembersController < ApplicationController
     # def show
-    #     render "api/"
+    #     @userId = current_user.id
+    #     render :show
     # end
 end
