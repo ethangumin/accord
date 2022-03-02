@@ -11,7 +11,10 @@ class Server extends React.Component {
   render() {
     return (
       <div className="server__main-container">
-        <ServersNav enrolledServers={this.props.enrolledServers} />
+        <ServersNav
+          enrolledServers={this.props.enrolledServers}
+          requestServer={this.props.requestServer}
+        />
         <ServerChannels
           server={this.props.currentServer}
           currentUser={this.props.currentUser}
