@@ -1,0 +1,16 @@
+.channel-content__container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  height: 95vh;
+}
+
+.channel-content__chat {
+  width: 75%;
+  border: 1px solid black;
+}
+
+.channel-content__members {
+  width: 25%;
+  border: 1px solid black;
+}

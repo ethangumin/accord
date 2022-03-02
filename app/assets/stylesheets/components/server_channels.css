@@ -1,0 +1,7 @@
+.server-channels__container {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  /* margin: 0.6em; */
+  border: 1px solid black;
+}
