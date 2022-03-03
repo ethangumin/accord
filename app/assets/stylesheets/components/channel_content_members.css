@@ -1,0 +1,28 @@
+.channel-content__members {
+  width: 25%;
+  font-family: "Whitney-Medium";
+  color: #7b7585;
+  background-color: #232429;
+  padding: 1.2em 0 1.2em 1.1em;
+}
+
+.channel-content__members h3 {
+  font-size: 0.9rem;
+}
+
+.channel-content__member {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5em;
+}
+
+.channel-content__member-icon {
+  border: 1px solid #7b7585;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.channel-content__member p + p {
+  margin-left: 0.5em;
+}
