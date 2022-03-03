@@ -13,7 +13,10 @@ class ServerIndex extends React.Component {
     return (
       <div className="server-index__container">
         <ServersNav enrolledServers={this.props.enrolledServers} />
-        <DmIndex friends={this.props.friends} />
+        <DmIndex
+          friends={this.props.friends}
+          currentUser={this.props.currentUser}
+        />
         <div className="server-index__home">
           <HomeNav logout={this.props.logout} history={this.props.history} />
           <HomeContent />
