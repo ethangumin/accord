@@ -9,7 +9,7 @@ class Server extends React.Component {
       .requestServer(this.props.match.params.id)
       .then(() =>
         this.props.fetchChannel(this.props.currentServer.channels[0].id)
-      );
+      );  
   }
 
   render() {
