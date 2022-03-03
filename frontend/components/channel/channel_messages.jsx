@@ -25,9 +25,7 @@ export default class ChannelMessages extends Component {
   }
 
   componentDidUpdate() {
-    if (this.bottom) {
-      this.bottom.current.scrollIntoView();
-    }
+    this.bottom.current.scrollIntoView();
   }
 
   render() {
@@ -46,9 +44,7 @@ export default class ChannelMessages extends Component {
         <div className="channel-messages__list" ref={this.bottom}>
           {messageList}
         </div>
-        <ChannelMessageForm
-          currentChannel={this.props.currentChannel}
-        />
+        <ChannelMessageForm currentChannel={this.props.currentChannel} />
       </div>
     );
   }
