@@ -29,7 +29,15 @@ class ServerChannels extends React.Component {
           <ul>
             {this.props.server
               ? this.props.server.channels.map((channel) => (
-                  <li key={channel.id} onClick={(e) => toggleChannelHandler(e)}>
+                  <li
+                    key={channel.id}
+                    onClick={() => this.props.fetchChannel(channel.id)}
+                    className={
+                      this.props.currentChannel.id === channel.id
+                        ? "server-channels__active"
+                        : "server-channels__inactive"
+                    }
+                  >
                     <img
                       src={Hashtag}
                       alt="hashtag"
