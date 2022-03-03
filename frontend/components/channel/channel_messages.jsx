@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ChannelContentMessagesForm from "./channel_content_messages_form";
+import ChannelMessageForm from "./channel_message_form";
 
-export default class ChannelContentMessages extends Component {
+export default class ChannelMessages extends Component {
   constructor(props) {
     super(props);
     this.state = { messages: [] };
@@ -46,7 +46,7 @@ export default class ChannelContentMessages extends Component {
         <div className="channel-messages__list" ref={this.bottom}>
           {messageList}
         </div>
-        <ChannelContentMessagesForm
+        <ChannelMessageForm
           currentChannel={this.props.currentChannel}
         />
       </div>

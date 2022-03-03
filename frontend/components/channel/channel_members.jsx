@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-const ChannelContentMembers = () => {
+const ChannelMembers = () => {
   return (
     <div className="channel-content__members">
       {/* Placeholder */}
@@ -13,6 +13,6 @@ const ChannelContentMembers = () => {
       </div>
     </div>
   );
-}
+};
 
-export default ChannelContentMembers
+export default ChannelMembers;
