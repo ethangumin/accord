@@ -1,0 +1,19 @@
+.channel_content_messages_form__container {
+    width: 100%;
+}
+
+.channel_content_messages_form__container input {
+  width: -webkit-fill-available;
+  margin: 0 1em;
+  font-size: 1rem;
+  padding: 0.7em;
+  font-family: "Whitney-Book";
+  color: #d1d2d3;
+  background-color: #393c42;
+  border: 1px solid #393c42;
+  border-radius: 4px;
+}
+
+.channel_content_messages_form__container input::placeholder {
+  color: #8d8f94;
+}
