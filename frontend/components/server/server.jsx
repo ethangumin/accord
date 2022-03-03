@@ -1,12 +1,15 @@
 import React from "react";
 import ServersNav from "../servers/servers_nav";
 import Channel from "../channel/channel";
-import ServerChannelsContainer from "./server_channels_container";
 import ServerChannels from "./server_channels";
 
 class Server extends React.Component {
   componentDidMount() {
-    this.props.requestServer(this.props.match.params.id);
+    this.props
+      .requestServer(this.props.match.params.id)
+      .then(() =>
+        this.props.fetchChannel(this.props.currentServer.channels[0].id)
+      );
   }
 
   render() {
@@ -15,19 +18,17 @@ class Server extends React.Component {
         <ServersNav
           enrolledServers={this.props.enrolledServers}
           requestServer={this.props.requestServer}
-        />
-        {/* <ServerChannelsContainer
-          server={this.props.currentServer}
-          currentUser={this.props.currentUser}
           fetchChannel={this.props.fetchChannel}
-        /> */}
+          currentServer={this.props.currentServer}
+        />
         <ServerChannels
           server={this.props.currentServer}
           currentUser={this.props.currentUser}
           fetchChannel={this.props.fetchChannel}
           currentChannel={this.props.currentChannel}
+          currentServer={this.props.currentServer}
         />
-        <Channel />
+        <Channel currentChannel={this.props.currentChannel} />
       </div>
     );
   }

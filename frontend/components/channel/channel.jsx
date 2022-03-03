@@ -2,22 +2,11 @@ import React from "react";
 import ChannelNav from "./channel_nav";
 import ChannelContent from "./channel_content";
 
-// class Channel extends React.Component {
-//   render(){
-//     return (
-//       <div className="channel__container">
-//         <ChannelNav />
-//         <ChannelContent />
-//       </div>
-//     );
-//   }
-// }
-
-const Channel = () => {
+const Channel = ({ currentChannel }) => {
   return (
     <div className="channel__container">
-      <ChannelNav />
-      <ChannelContent />
+      <ChannelNav currentChannel={currentChannel} />
+      <ChannelContent currentChannel={currentChannel} />
     </div>
   );
 };

@@ -31,7 +31,7 @@
   border: 1px;
   border-radius: 3px;
   /* color: #7b7f85; */
-  transition: all 0.2s ease-in-out;
+  /* transition: all 0.2s ease-in-out; */
 }
 
 .server-channels__channels-idx ul li:hover {

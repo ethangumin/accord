@@ -1,11 +1,11 @@
 import React from 'react'
 import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
 
-const ChannelNav = () => {
+const ChannelNav = ({currentChannel}) => {
   return (
     <div className="channel-nav__container">
       <img src={Hashtag} alt="hashtag" className='channel-pound' />
-      <p>Placeholder Channel Name</p>
+      <p>{currentChannel.channelName}</p>
     </div>
   );
 }
