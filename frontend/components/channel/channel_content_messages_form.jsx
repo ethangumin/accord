@@ -26,6 +26,7 @@ export default class MessageForm extends React.Component {
             type="text"
             placeholder={`Message #${this.props.currentChannel.channelName}`}
             onChange={this.update("body")}
+            value={this.state.body}
           />
           <input type="submit" style={{ display: "none" }} />
         </form>

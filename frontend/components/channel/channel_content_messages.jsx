@@ -24,15 +24,17 @@ export default class ChannelContentMessages extends Component {
     );
   }
 
-  //   componentDidUpdate() {
-  //     this.bottom.current.scrollIntoView();
-  //   }
+  componentDidUpdate() {
+    if (this.bottom) {
+      this.bottom.current.scrollIntoView();
+    }
+  }
 
   render() {
     const messageList = this.state.messages.map((message) => {
       return (
         //   tentative key
-        <li key={Math.random() * 1000000000}>
+        <li key={Math.random() * 1000000000} className="channel-message">
           {message}
           <div ref={this.bottom} />
         </li>
@@ -41,13 +43,9 @@ export default class ChannelContentMessages extends Component {
 
     return (
       <div className="channel-messages__container">
-        <div className="channel-messages__list">{messageList}</div>
-
-        {/* input should be in ChannelContentMessagesForm */}
-        {/* <input
-          type="text"
-          placeholder={`Message #${this.props.currentChannel.channelName}`}
-        /> */}
+        <div className="channel-messages__list" ref={this.bottom}>
+          {messageList}
+        </div>
         <ChannelContentMessagesForm
           currentChannel={this.props.currentChannel}
         />

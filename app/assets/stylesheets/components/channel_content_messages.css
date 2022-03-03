@@ -7,3 +7,14 @@
   padding-bottom: 1em;
   background-color: #292b30;
 }
+
+.channel-messages__list {
+  width: 90%;
+  overflow-y: scroll;
+}
+
+.channel-message {
+  font-family: "Whitney-Book";
+  color: #d0d0d3;
+  list-style-type: none;
+}
