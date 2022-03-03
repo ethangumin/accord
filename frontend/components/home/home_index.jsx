@@ -1,10 +1,10 @@
 import React from "react";
 import HomeContent from "./home_content";
 import HomeNav from "./home_nav";
-import ServersNav from "./servers_nav";
-import DmIndex from "./dm_index";
+import ServersNav from "../server/servers_nav";
+import DmIndex from "./dm/dm_index";
 
-class ServerIndex extends React.Component {
+class HomeIndex extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -26,4 +26,4 @@ class ServerIndex extends React.Component {
   }
 }
 
-export default ServerIndex;
+export default HomeIndex;

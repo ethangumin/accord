@@ -14,24 +14,3 @@
  *= require_self
  */
 
-/* CSS Reset */
-@import url("./base//reset.css");
-
-/* Base */
-@import url("./base/util.css");
-
-/* Components */
-@import url("./components/splash.css");
-@import url("./components/login.css");
-@import url("./components/signup.css");
-@import url("./components/server_index.css");
-@import url("./components/servers_nav.css");
-@import url("./components/dm_index.css");
-@import url("./components/dm.css");
-@import url("./components/home_nav.css");
-@import url("./components/home_content.css");
-@import url("./components/server.css");
-
-
-
-

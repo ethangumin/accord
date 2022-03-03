@@ -1,12 +1,12 @@
 import React from "react";
-import ChannelContentMembers from "./channel_content_members";
-import ChannelContentMessages from "./channel_content_messages";
+import ChannelMembers from "./channel_members";
+import ChannelMessages from "./channel_messages";
 
 const ChannelContent = ({ currentChannel }) => {
   return (
     <div className="channel-content__container">
-      <ChannelContentMessages currentChannel={currentChannel} />
-      <ChannelContentMembers />
+      <ChannelMessages currentChannel={currentChannel} />
+      <ChannelMembers />
     </div>
   );
 };
