@@ -5,11 +5,7 @@ import ServerChannels from "./server_channels";
 
 class Server extends React.Component {
   componentDidMount() {
-    this.props
-      .requestServer(this.props.match.params.id)
-      .then(() =>
-        this.props.fetchChannel(this.props.currentServer.channels[0].id)
-      );  
+    this.props.requestServer(this.props.match.params.id);
   }
 
   render() {
