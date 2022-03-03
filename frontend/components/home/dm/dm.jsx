@@ -1,5 +1,6 @@
 import React from "react";
-import xMark from '../../../app/assets/images/xmark-solid.svg' ;
+import xMark from '../../../../app/assets/images/xmark-solid.svg';
+
 
 const Dm = ({ friend }) => {
   return (
