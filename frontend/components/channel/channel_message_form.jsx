@@ -3,7 +3,11 @@ import React from "react";
 export default class ChannelMessageForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { body: "" };
+    this.state = {
+      sender_id: this.props.currentUser.id,
+      channel_id: this.props.currentChannel.id,
+      body: "",
+    };
   }
 
   update(field) {
@@ -12,9 +16,9 @@ export default class ChannelMessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].speak({
-      message: this.state.body,
-    });
+    const payload = Object.assign({}, this.state);
+    payload.channel_id = this.props.currentChannel.id;
+    App.cable.subscriptions.subscriptions[0].speak({message: payload});
     this.setState({ body: "" });
   }
 

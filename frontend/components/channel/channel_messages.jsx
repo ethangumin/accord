@@ -10,12 +10,16 @@ export default class ChannelMessages extends Component {
 
   componentDidMount() {
     App.cable.subscriptions.create(
-      { channel: "ChatChannel" },
+      // pass in currentChannelId to access it as params
+      // not currently being passed as params :(
+      { channel: "ChatChannel", channelId: this.props.currentChannel.id },
       {
         received: (data) => {
-          this.setState({
-            messages: this.state.messages.concat(data.message),
-          });
+          switch (data.type) {
+            case "message":
+              this.props.receiveMessage(data.message);
+              break;
+          }
         },
         speak: function (data) {
           return this.perform("speak", data);
@@ -44,7 +48,11 @@ export default class ChannelMessages extends Component {
         <div className="channel-messages__list" ref={this.bottom}>
           {messageList}
         </div>
-        <ChannelMessageForm currentChannel={this.props.currentChannel} />
+        <ChannelMessageForm
+          currentChannel={this.props.currentChannel}
+          sendMessage={this.props.sendMessage}
+          currentUser={this.props.currentUser}
+        />
       </div>
     );
   }
