@@ -28,7 +28,9 @@ export default class ChannelMessages extends Component {
   }
 
   componentDidUpdate() {
-    this.bottom.current.scrollIntoView();
+    if(this.bottom.current){
+      this.bottom.current.scrollIntoView();
+    }
   }
 
   render() {
