@@ -1,6 +1,7 @@
 import React from "react";
 import ServersNav from "./servers_nav";
-import Channel from "../channel/channel";
+// import Channel from "../channel/channel";
+import ChannelContainer from "../channel/channel_container";
 import ServerChannels from "./server_channels";
 
 class Server extends React.Component {
@@ -24,7 +25,7 @@ class Server extends React.Component {
           currentChannel={this.props.currentChannel}
           currentServer={this.props.currentServer}
         />
-        <Channel currentChannel={this.props.currentChannel} />
+        <ChannelContainer currentChannel={this.props.currentChannel} />
       </div>
     );
   }
