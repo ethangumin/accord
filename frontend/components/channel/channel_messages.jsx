@@ -4,7 +4,6 @@ import ChannelMessageForm from "./channel_message_form";
 export default class ChannelMessages extends Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [] };
     this.bottom = React.createRef();
   }
 
@@ -33,15 +32,16 @@ export default class ChannelMessages extends Component {
   }
 
   render() {
-    const messageList = this.state.messages.map((message) => {
-      return (
-        //   tentative key
-        <li key={Math.random() * 1000000000} className="channel-message">
-          {message}
-          <div ref={this.bottom} />
-        </li>
-      );
-    });
+    const messageList = this.props.currentChannel.messages
+      ? this.props.currentChannel.messages.map((message) => {
+          return (
+            <li key={message.id} className="channel-message">
+              {message.body}
+              <div ref={this.bottom} />
+            </li>
+          );
+        })
+      : "";
 
     return (
       <div className="channel-messages__container">
