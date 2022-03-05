@@ -8,14 +8,13 @@ export default class ChannelMessages extends Component {
   }
 
   componentDidMount() {
-    debugger;
+    // debugger;
 
     App.cable.subscriptions.create(
-      // pass in currentChannelId to access it as params
-      // not currently being passed as params :(
+      // How can I make this dynamic? Currently, subscription only created on mount
       {
         channel: "ChatChannel",
-        channelId: this.props.currentChannel
+        channelId: Object.keys(this.props.currentChannel).length !== 0
           ? this.props.currentChannel.id
           : this.props.currentUser.servers[0].channels[0].id,
       },

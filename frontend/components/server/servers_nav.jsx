@@ -6,7 +6,7 @@ const ServersNav = (props) => {
     <ul className="server-index__servers-nav">
       <li className="server-nav__item">
         <Link
-          to="/servers"
+          to="/home"
           style={{ textDecoration: "none", color: "#D4D5D6" }}
         >
           Home

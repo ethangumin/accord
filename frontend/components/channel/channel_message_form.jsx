@@ -19,7 +19,7 @@ export default class ChannelMessageForm extends React.Component {
     const payload = Object.assign({}, this.state);
     payload.channel_id = this.props.currentChannel.id;
     // debugger;
-    App.cable.subscriptions.subscriptions[0].speak({message: payload});
+    App.cable.subscriptions.subscriptions[0].speak({ message: payload });
     this.setState({ body: "" });
   }
 

@@ -23,7 +23,7 @@ const Splash = ({ currentUser, logout }) => {
           </ul>
           <Link
             className="splash__enter-btn"
-            to={currentUser ? "/servers" : "/login"}
+            to={currentUser ? "/home" : "/login"}
           >
             {enterButton}
           </Link>

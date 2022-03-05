@@ -4,6 +4,7 @@ import { fetchChannel } from "../../actions/channel_actions";
 import Server from "./server";
 
 const mSTP = (state, ownProps) => {
+  debugger;
   return {
     currentServer: state.entities.servers[ownProps.match.params.id],
     enrolledServers: state.entities.users[state.session.id].servers,

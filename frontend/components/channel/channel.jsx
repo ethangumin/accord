@@ -4,6 +4,7 @@ import ChannelContent from "./channel_content";
 
 class Channel extends React.Component {
   render() {
+    // debugger;
     return (
       <div className="channel__container">
         <ChannelNav currentChannel={this.props.currentChannel} />

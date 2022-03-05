@@ -14,7 +14,7 @@ export default class SignupForm extends Component {
 
   componentDidUpdate() {
     if (this.props.activeUser) {
-      this.props.history.push("/servers");
+      this.props.history.push("/home");
     }
   }
 
