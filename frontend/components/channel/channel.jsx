@@ -12,6 +12,7 @@ class Channel extends React.Component {
           currentChannel={this.props.currentChannel}
           receiveMessage={this.props.receiveMessage}
           currentUser={this.props.currentUser}
+          currentChannelId={this.props.currentChannelId}
         />
       </div>
     );

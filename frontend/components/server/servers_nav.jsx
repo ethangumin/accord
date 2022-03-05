@@ -2,13 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ServersNav = (props) => {
+  // debugger;
   return (
     <ul className="server-index__servers-nav">
       <li className="server-nav__item">
-        <Link
-          to="/home"
-          style={{ textDecoration: "none", color: "#D4D5D6" }}
-        >
+        <Link to="/home" style={{ textDecoration: "none", color: "#D4D5D6" }}>
           Home
         </Link>
       </li>
@@ -24,7 +22,7 @@ const ServersNav = (props) => {
               return (
                 <div key={server.id} className="server-nav__item">
                   <Link
-                    to={`/server/${server.id}`}
+                    to={`/server/${server.id}/channel/${server.channels[0].id}`}
                     style={{ textDecoration: "none", color: "#D4D5D6" }}
                     onClick={
                       props.requestServer

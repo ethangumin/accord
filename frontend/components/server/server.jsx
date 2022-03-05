@@ -14,7 +14,7 @@ class Server extends React.Component {
         <ServersNav
           enrolledServers={this.props.enrolledServers}
           requestServer={this.props.requestServer}
-          fetchChannel={this.props.fetchChannel}
+          // fetchChannel={this.props.fetchChannel}
           currentServer={this.props.currentServer}
         />
         <ServerChannels
@@ -22,9 +22,13 @@ class Server extends React.Component {
           currentUser={this.props.currentUser}
           fetchChannel={this.props.fetchChannel}
           currentChannel={this.props.currentChannel}
+          currentChannelId={this.props.currentChannelId}
           currentServer={this.props.currentServer}
         />
-        <ChannelContainer currentChannel={this.props.currentChannel} />
+        <ChannelContainer
+          currentChannel={this.props.currentChannel}
+          currentChannelId={this.props.currentChannelId}
+        />
       </div>
     );
   }

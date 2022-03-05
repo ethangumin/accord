@@ -14,9 +14,7 @@ export default class ChannelMessages extends Component {
       // How can I make this dynamic? Currently, subscription only created on mount
       {
         channel: "ChatChannel",
-        channelId: Object.keys(this.props.currentChannel).length !== 0
-          ? this.props.currentChannel.id
-          : this.props.currentUser.servers[0].channels[0].id,
+        channelId: this.props.currentChannelId,
       },
       {
         received: (data) => {
