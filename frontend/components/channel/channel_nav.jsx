@@ -4,8 +4,9 @@ import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
 const ChannelNav = ({currentChannel}) => {
   return (
     <div className="channel-nav__container">
-      <img src={Hashtag} alt="hashtag" className='channel-pound' />
+      <img src={Hashtag} alt="hashtag" className="channel-pound" />
       <p>{currentChannel.channelName}</p>
+      {/* <p>{currentChannel ? currentChannel.channelName : ""}</p> */}
     </div>
   );
 }

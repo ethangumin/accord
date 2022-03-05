@@ -1,6 +1,5 @@
 import React from "react";
 import ServersNav from "./servers_nav";
-// import Channel from "../channel/channel";
 import ChannelContainer from "../channel/channel_container";
 import ServerChannels from "./server_channels";
 

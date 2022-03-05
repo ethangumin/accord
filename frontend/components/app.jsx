@@ -5,7 +5,8 @@ import SplashContainer from "./splash/splash_container";
 import SignUpFormContainer from "./auth/signup_form_container";
 import LoginFormContainer from "./auth/login_form_container";
 import HomeIndexContainer from "./home/home_index_container";
-import ServerContainer from "./server/server_container"
+import ServerContainer from "./server/server_container";
+// import ChannelContainer from "./channel/channel_container";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <AuthRoute path="/login" component={LoginFormContainer} />
         <Route path="/servers" component={HomeIndexContainer} />
         <Route path="/server/:id" component={ServerContainer} />
+        {/* <Route path="/server/:id/channel/:channelId" component={ChannelContainer} /> */}
       </Switch>
     </div>
   );

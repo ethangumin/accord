@@ -8,10 +8,17 @@ export default class ChannelMessages extends Component {
   }
 
   componentDidMount() {
+    debugger;
+
     App.cable.subscriptions.create(
       // pass in currentChannelId to access it as params
       // not currently being passed as params :(
-      { channel: "ChatChannel", channelId: this.props.currentChannel.id },
+      {
+        channel: "ChatChannel",
+        channelId: this.props.currentChannel
+          ? this.props.currentChannel.id
+          : this.props.currentUser.servers[0].channels[0].id,
+      },
       {
         received: (data) => {
           switch (data.type) {
@@ -28,7 +35,7 @@ export default class ChannelMessages extends Component {
   }
 
   componentDidUpdate() {
-    if(this.bottom.current){
+    if (this.bottom.current) {
       this.bottom.current.scrollIntoView();
     }
   }
