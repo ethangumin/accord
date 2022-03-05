@@ -7,20 +7,22 @@ class ServerChannels extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchChannel(this.props.currentChannelId);
+  }
+
   // componentDidUpdate(prevProps) {
+  //   // debugger;
   //   if (this.props.server) {
   //     for (let channel of this.props.server.channels) {
-  //       if (channel.id === prevProps.currentChannel.id) return;
+  //       // debugger;
+  //       if (channel.id === prevProps.currentChannelId) return;
   //     }
   //     this.props.fetchChannel(this.props.server.channels[0].id);
   //   } else {
   //     return;
   //   }
   // }
-
-  componentDidMount() {
-    this.props.fetchChannel(this.props.currentChannelId);
-  }
 
   render() {
     // const selectedChannel =

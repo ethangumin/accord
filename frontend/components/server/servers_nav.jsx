@@ -26,7 +26,12 @@ const ServersNav = (props) => {
                     style={{ textDecoration: "none", color: "#D4D5D6" }}
                     onClick={
                       props.requestServer
-                        ? () => props.requestServer(server.id)
+                        ? () =>
+                            props
+                              .requestServer(server.id)
+                              .then(() =>
+                                props.fetchChannel(server.channels[0].id)
+                              )
                         : () => null
                     }
                   >

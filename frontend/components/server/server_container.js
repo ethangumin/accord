@@ -10,7 +10,7 @@ const mSTP = (state, ownProps) => {
     enrolledServers: state.entities.users[state.session.id].servers,
     currentUser: state.entities.users[state.session.id],
     currentChannel: state.entities.channels,
-    currentChannelId: ownProps.match.params.channelId
+    currentChannelId: parseInt(ownProps.match.params.channelId),
   };
 };
 
