@@ -22,9 +22,13 @@ class Server extends React.Component {
           currentUser={this.props.currentUser}
           fetchChannel={this.props.fetchChannel}
           currentChannel={this.props.currentChannel}
+          currentChannelId={this.props.currentChannelId}
           currentServer={this.props.currentServer}
         />
-        <ChannelContainer currentChannel={this.props.currentChannel} />
+        <ChannelContainer
+          currentChannel={this.props.currentChannel}
+          currentChannelId={this.props.currentChannelId}
+        />
       </div>
     );
   }
