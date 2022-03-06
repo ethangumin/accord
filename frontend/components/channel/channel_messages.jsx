@@ -23,13 +23,16 @@ export default class ChannelMessages extends Component {
       },
       {
         received: (data) => {
+          // debugger;
           switch (data.type) {
             case "message":
               this.props.receiveMessage(data.message);
+              // debugger;
               break;
           }
         },
         speak: function (data) {
+          // debugger;
           return this.perform("speak", data);
         },
       }
