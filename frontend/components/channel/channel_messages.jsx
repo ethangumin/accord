@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import App from "../app";
 import ChannelMessageForm from "./channel_message_form";
 
 export default class ChannelMessages extends Component {
@@ -9,12 +8,6 @@ export default class ChannelMessages extends Component {
   }
 
   componentDidMount() {
-    // debugger;
-
-    // if (App.cable.subscriptions.subscriptions.length > 1) {
-    //   App.cable.subscriptions.remove(App.cable.subscriptions.subscriptions[1]);
-    // }
-
     App.cable.subscriptions.create(
       // How can I make this dynamic? Currently, subscription only created on mount
       {
@@ -23,21 +16,33 @@ export default class ChannelMessages extends Component {
       },
       {
         received: (data) => {
-          // debugger;
           switch (data.type) {
             case "message":
               this.props.receiveMessage(data.message);
-              // debugger;
               break;
+            // case "messages":
+            //   this.setState({ messages: data.messages });
+            //   break;
           }
         },
         speak: function (data) {
-          // debugger;
           return this.perform("speak", data);
         },
+        // load: function () {
+        //   return this.perform("load");
+        // },
       }
     );
+
+    // if (this.bottom.current) {
+    //   this.bottom.current.scrollIntoView();
+    // }
   }
+
+  // loadChat(e) {
+  //   e.preventDefault();
+  //   App.cable.subscriptions.subscriptions[0].load();
+  // }
 
   componentDidUpdate() {
     if (this.bottom.current) {
@@ -47,10 +52,11 @@ export default class ChannelMessages extends Component {
 
   render() {
     // debugger;
+
     const messageList = this.props.currentChannel.messages
-      ? this.props.currentChannel.messages.map((message) => {
+      ? this.props.currentChannel.messages.map((message, index) => {
           return (
-            <li key={message.id} className="channel-message">
+            <li key={index} className="channel-message">
               {message.body}
               <div ref={this.bottom} />
             </li>
