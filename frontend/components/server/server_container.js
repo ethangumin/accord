@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { requestServer } from "../../actions/server_actions";
+import { requestServer, createServer } from "../../actions/server_actions";
 import { fetchChannel } from "../../actions/channel_actions";
 import Server from "./server";
 
@@ -17,6 +17,7 @@ const mSTP = (state, ownProps) => {
 const mDTP = (dispatch) => ({
   requestServer: (serverId) => dispatch(requestServer(serverId)),
   fetchChannel: (channelId) => dispatch(fetchChannel(channelId)),
+  createServer: (server) => dispatch(createServer(server)),
 });
 
 export default connect(mSTP, mDTP)(Server);
