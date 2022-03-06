@@ -11,26 +11,11 @@ class ServerChannels extends React.Component {
     this.props.fetchChannel(this.props.currentChannelId);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   // debugger;
-  //   if (this.props.server) {
-  //     for (let channel of this.props.server.channels) {
-  //       // debugger;
-  //       if (channel.id === prevProps.currentChannelId) return;
-  //     }
-  //     this.props.fetchChannel(this.props.server.channels[0].id);
-  //   } else {
-  //     return;
-  //   }
-  // }
-
   render() {
-    // const selectedChannel =
-    // debugger;
     const mapChannelsToServer = this.props.server
       ? this.props.server.channels.map((channel) => {
           return (
-            <div key={channel.id}>
+            <div key={channel.id} className="server-channels__channel">
               <Link
                 to={`/server/${this.props.server.id}/channel/${channel.id}`}
                 onClick={() => this.props.fetchChannel(channel.id)}

@@ -23,18 +23,17 @@
   justify-content: space-between;
 }
 
-.server-channels__channels-idx ul li {
+.server-channels__channel a {
   display: flex;
   align-items: center;
   padding: 0.25em 0;
   cursor: pointer;
   border: 1px;
   border-radius: 3px;
-  /* color: #7b7f85; */
-  /* transition: all 0.2s ease-in-out; */
+  text-decoration: none;
 }
 
-.server-channels__channels-idx ul li:hover {
+.server-channels__channel a:hover {
   background-color: #27292d;
   border-color: #27292d;
   color: #d1d2d3;

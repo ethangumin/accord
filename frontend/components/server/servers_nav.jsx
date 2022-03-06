@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ServersNav = (props) => {
-  // debugger;
   return (
     <ul className="server-index__servers-nav">
       <li className="server-nav__item">
