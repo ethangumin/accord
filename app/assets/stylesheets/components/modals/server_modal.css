@@ -8,8 +8,7 @@
 }
 
 .server-modal__hide {
-  visibility: hidden;
-  height: 0;
+  display: none;
 }
 
 .server-modal {
