@@ -17,6 +17,8 @@ class Server extends React.Component {
           fetchChannel={this.props.fetchChannel}
           currentServer={this.props.currentServer}
           createServer={this.props.createServer}
+          createServerMember={this.props.createServerMember}
+          createChannel={this.props.createChannel}
         />
         <ServerChannels
           server={this.props.currentServer}

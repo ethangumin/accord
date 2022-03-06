@@ -7,9 +7,18 @@ export default class ServerModal extends Component {
   }
 
   createServerHandler(e) {
-    debugger;
+    // debugger;
     e.preventDefault();
-    this.props.createServer({ server_name: this.state.serverName });
+    this.props
+      .createServer({ server_name: this.state.serverName })
+      .then((server) => {
+        // debugger;
+        this.props.createServerMember({ server_id: server.server.id });
+        this.props.createChannel({
+          channel_name: "General",
+          server_id: server.server.id,
+        });
+      });
     this.props.toggleServerModal(e);
     this.setState({ serverName: "" });
   }

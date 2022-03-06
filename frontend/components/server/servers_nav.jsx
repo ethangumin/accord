@@ -67,6 +67,8 @@ class ServersNav extends React.Component {
           active={this.state.ServerModal}
           toggleServerModal={this.toggleServerModal}
           createServer={this.props.createServer}
+          createServerMember={this.props.createServerMember}
+          createChannel={this.props.createChannel}
         />
       </ul>
     );

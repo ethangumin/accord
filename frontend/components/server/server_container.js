@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { requestServer, createServer } from "../../actions/server_actions";
-import { fetchChannel } from "../../actions/channel_actions";
+import { createServerMember } from "../../actions/server_member_actions";
+import { fetchChannel, createChannel } from "../../actions/channel_actions";
 import Server from "./server";
 
 const mSTP = (state, ownProps) => {
@@ -18,6 +19,9 @@ const mDTP = (dispatch) => ({
   requestServer: (serverId) => dispatch(requestServer(serverId)),
   fetchChannel: (channelId) => dispatch(fetchChannel(channelId)),
   createServer: (server) => dispatch(createServer(server)),
+  createServerMember: (serverMember) =>
+    dispatch(createServerMember(serverMember)),
+  createChannel: (channel) => dispatch(createChannel(channel)),
 });
 
 export default connect(mSTP, mDTP)(Server);

@@ -2,6 +2,8 @@ import { connect } from "react-redux";
 import HomeIndex from "./home_index";
 import { logout } from "../../actions/session_actions";
 import { createServer } from "../../actions/server_actions";
+import { createServerMember } from "../../actions/server_member_actions";
+import { createChannel } from "../../actions/channel_actions";
 
 const mSTP = (state) => ({
   currentUser: state.entities.users[state.session.id],
@@ -12,6 +14,9 @@ const mSTP = (state) => ({
 const mDTP = (dispatch) => ({
   logout: () => dispatch(logout()),
   createServer: (server) => dispatch(createServer(server)),
+  createServerMember: (serverMember) =>
+    dispatch(createServerMember(serverMember)),
+  createChannel: (channel) => dispatch(createChannel(channel)),
 });
 
 export default connect(mSTP, mDTP)(HomeIndex);

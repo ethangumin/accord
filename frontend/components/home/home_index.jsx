@@ -15,6 +15,8 @@ class HomeIndex extends React.Component {
         <ServersNav
           enrolledServers={this.props.enrolledServers}
           createServer={this.props.createServer}
+          createServerMember={this.props.createServerMember}
+          createChannel={this.props.createChannel}
         />
         <DmIndex
           friends={this.props.friends}
