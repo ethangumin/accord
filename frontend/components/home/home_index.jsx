@@ -12,7 +12,10 @@ class HomeIndex extends React.Component {
   render() {
     return (
       <div className="server-index__container">
-        <ServersNav enrolledServers={this.props.enrolledServers} />
+        <ServersNav
+          enrolledServers={this.props.enrolledServers}
+          createServer={this.props.createServer}
+        />
         <DmIndex
           friends={this.props.friends}
           currentUser={this.props.currentUser}

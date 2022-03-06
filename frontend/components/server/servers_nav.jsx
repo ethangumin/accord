@@ -63,7 +63,11 @@ class ServersNav extends React.Component {
           +
         </li>
         <li className="server-nav__item explore-servers">Exp</li>
-        <ServerModal active={this.state.ServerModal} toggleServerModal={this.toggleServerModal} />
+        <ServerModal
+          active={this.state.ServerModal}
+          toggleServerModal={this.toggleServerModal}
+          createServer={this.props.createServer}
+        />
       </ul>
     );
   }
