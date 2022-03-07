@@ -6,6 +6,7 @@ export default class ChannelMessageForm extends React.Component {
     this.state = {
       sender_id: this.props.currentUser.id,
       channel_id: this.props.currentChannel.id,
+      sender_username: this.props.currentUser.username,
       body: "",
     };
   }
@@ -18,7 +19,6 @@ export default class ChannelMessageForm extends React.Component {
     e.preventDefault();
     const payload = Object.assign({}, this.state);
     payload.channel_id = this.props.currentChannel.id;
-    // debugger;
     let currentSubscriptionIdx;
     for (let i = 0; i < App.cable.subscriptions.subscriptions.length; i++) {
       const subscriptionId = JSON.parse(
@@ -28,8 +28,6 @@ export default class ChannelMessageForm extends React.Component {
         currentSubscriptionIdx = i;
       }
     }
-    // debugger;
-    // choose subscription based on currentChannel.id
     App.cable.subscriptions.subscriptions[currentSubscriptionIdx].speak({
       message: payload,
     });

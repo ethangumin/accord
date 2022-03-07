@@ -10,13 +10,11 @@ export default class ChannelMessages extends Component {
   }
 
   componentDidMount() {
-    // debugger;
     this.createSubscription();
     this.loadChat();
   }
 
   componentDidUpdate(prevProps) {
-    // debugger;
     const currentSubscriptions = App.cable.subscriptions.subscriptions;
     let channelInSubscriptions = false;
     for (let subscription of currentSubscriptions) {
@@ -46,12 +44,7 @@ export default class ChannelMessages extends Component {
     }
   }
 
-  // else if (Object.values(prevProps.currentMessages).length === 0) {
-  //       this.loadChat();
-  //     }
-
   createSubscription() {
-    // debugger;
     App.cable.subscriptions.create(
       {
         channel: "ChatChannel",
@@ -69,7 +62,6 @@ export default class ChannelMessages extends Component {
           }
         },
         speak: function (data) {
-          // debugger;
           return this.perform("speak", data);
         },
         load: function () {
@@ -80,32 +72,31 @@ export default class ChannelMessages extends Component {
   }
 
   loadChat() {
-    // e.preventDefault();
-    // debugger;
     const currentSubscriptions = App.cable.subscriptions.subscriptions;
     for (let i = 0; i < currentSubscriptions.length; i++) {
       const subscriptionId = JSON.parse(
         App.cable.subscriptions.subscriptions[i].identifier
       ).channelId;
       if (subscriptionId === this.props.currentChannelId) {
-        // debugger;
         App.cable.subscriptions.subscriptions[i].load();
       }
     }
   }
 
-  // componentDidUpdate() {
-  //   if (this.bottom.current) {
-  //     this.bottom.current.scrollIntoView();
-  //   }
-  // }
-
   render() {
+    // debugger;
     const messageList = this.props.currentMessages
       ? Object.values(this.props.currentMessages).map((message, index) => {
           return (
             <li key={index} className="channel-message">
-              {message.body}
+              <p>{message.sender_username ? message.sender_username[0] : ""}</p>
+              <div className="channel-message_info">
+                <div className="channel-message__username-date">
+                  <p>{message.sender_username}</p>
+                  <p>{message.created_at}</p>
+                </div>
+                <p>{message.body}</p>
+              </div>
               <div ref={this.bottom} />
             </li>
           );
@@ -122,7 +113,6 @@ export default class ChannelMessages extends Component {
           sendMessage={this.props.sendMessage}
           currentUser={this.props.currentUser}
         />
-        {/* <button onClick={(e) => this.loadChat(e)}>Load Messages</button> */}
       </div>
     );
   }
