@@ -17,4 +17,33 @@
   font-family: "Whitney-Book";
   color: #d0d0d3;
   list-style-type: none;
+  display: flex;
+  margin-bottom: 1em;
+  align-items: center;
+}
+
+.channel-message > p {
+  border: 1px solid white;
+  padding: 1em 1.3em;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 0.5em;
+}
+
+.channel-message__username-date {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 0.2em;
+}
+
+.channel-message__username-date p:first-child {
+  color: white;
+  font-family: "Whitney-Semibold";
+  font-size: 1.1rem;
+}
+
+.channel-message__username-date p:last-child {
+  margin-left: 0.3em;
+  font-size: 0.8em;
+  color: #5e6269;
 }

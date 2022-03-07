@@ -10,4 +10,8 @@ class Message < ApplicationRecord
         primary_key: :id,
         foreign_key: :channel_id,
         class_name: :Channel
+
+    def created_at
+        attributes['created_at'].strftime("%m/%d/%Y %H:%M")
+    end
 end
