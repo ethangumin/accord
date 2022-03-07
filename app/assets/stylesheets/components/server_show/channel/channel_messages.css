@@ -24,10 +24,12 @@
 
 .channel-message > p {
   border: 1px solid white;
-  padding: 1em 1.3em;
   border-radius: 50%;
   text-align: center;
   margin-right: 0.5em;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
 }
 
 .channel-message__username-date {

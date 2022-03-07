@@ -84,14 +84,15 @@ export default class ChannelMessages extends Component {
   }
 
   render() {
+    // debugger;
     const messageList = this.props.currentMessages
       ? Object.values(this.props.currentMessages).map((message, index) => {
           return (
             <li key={index} className="channel-message">
-              <p>{message.sender_id}</p>
+              <p>{message.sender_username ? message.sender_username[0] : ""}</p>
               <div className="channel-message_info">
                 <div className="channel-message__username-date">
-                  <p>Guest</p>
+                  <p>{message.sender_username}</p>
                   <p>{message.created_at}</p>
                 </div>
                 <p>{message.body}</p>

@@ -6,6 +6,7 @@ export default class ChannelMessageForm extends React.Component {
     this.state = {
       sender_id: this.props.currentUser.id,
       channel_id: this.props.currentChannel.id,
+      sender_username: this.props.currentUser.username,
       body: "",
     };
   }
