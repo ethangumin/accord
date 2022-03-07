@@ -9,6 +9,7 @@ class Server extends React.Component {
   }
 
   render() {
+    // debugger
     return (
       <div className="server__main-container">
         <ServersNav
@@ -16,6 +17,10 @@ class Server extends React.Component {
           requestServer={this.props.requestServer}
           fetchChannel={this.props.fetchChannel}
           currentServer={this.props.currentServer}
+          createServer={this.props.createServer}
+          createServerMember={this.props.createServerMember}
+          createChannel={this.props.createChannel}
+          currentUser={this.props.currentUser}
         />
         <ServerChannels
           server={this.props.currentServer}

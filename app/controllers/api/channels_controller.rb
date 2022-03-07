@@ -1,6 +1,8 @@
 class Api::ChannelsController < ApplicationController
     def create
+        # debugger
         @channel = Channel.new(channel_params)
+        # debugger
         if @channel.save
             render :show
         else
@@ -33,6 +35,7 @@ class Api::ChannelsController < ApplicationController
 
     private
     def channel_params
+        # debugger
         params.require(:channel).permit(:channel_name, :server_id)
     end
 end

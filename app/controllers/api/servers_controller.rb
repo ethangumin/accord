@@ -16,10 +16,17 @@ class Api::ServersController < ApplicationController
     def create
         @server = Server.new(server_params)
         @server.creator_id = current_user.id
-        if @server.save
-            render :show
-        else
-            render json: ["Invalid Server Params"], status: 404
+        # debugger        
+        if @server.save 
+            @channel = Channel.new(channel_name: "General", server_id: @server.id)
+            # debugger
+            if @channel.save
+                render :show
+            else
+                render json: ["Invalid Server Params"], status: 404
+            end
+        # else
+            # render json: ["Invalid Server Params"], status: 404
         end
     end
 

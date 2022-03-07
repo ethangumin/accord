@@ -6,7 +6,6 @@ import SignUpFormContainer from "./auth/signup_form_container";
 import LoginFormContainer from "./auth/login_form_container";
 import HomeIndexContainer from "./home/home_index_container";
 import ServerContainer from "./server/server_container";
-import ChannelContainer from "./channel/channel_container";
 
 const App = () => {
   return (
@@ -16,7 +15,6 @@ const App = () => {
         <AuthRoute path="/signup" component={SignUpFormContainer} />
         <AuthRoute path="/login" component={LoginFormContainer} />
         <Route path="/home" component={HomeIndexContainer} />
-        {/* <Route path="/server/:id" component={ServerContainer} /> */}
         <Route exact path="/server/:id/channel/:channelId" component={ServerContainer} />
       </Switch>
     </div>

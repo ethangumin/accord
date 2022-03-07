@@ -10,9 +10,16 @@ class HomeIndex extends React.Component {
   }
 
   render() {
+    // debugger;
     return (
       <div className="server-index__container">
-        <ServersNav enrolledServers={this.props.enrolledServers} />
+        <ServersNav
+          enrolledServers={this.props.enrolledServers}
+          createServer={this.props.createServer}
+          createServerMember={this.props.createServerMember}
+          createChannel={this.props.createChannel}
+          currentUser={this.props.currentUser}
+        />
         <DmIndex
           friends={this.props.friends}
           currentUser={this.props.currentUser}
