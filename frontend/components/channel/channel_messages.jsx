@@ -12,10 +12,10 @@ export default class ChannelMessages extends Component {
   componentDidMount() {
     // debugger;
     this.createSubscription();
-    // this.loadChat();
+    this.loadChat();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     // debugger;
     const currentSubscriptions = App.cable.subscriptions.subscriptions;
     let channelInSubscriptions = false;
@@ -32,7 +32,25 @@ export default class ChannelMessages extends Component {
     if (this.bottom.current) {
       this.bottom.current.scrollIntoView();
     }
+
+    // debugger;
+    if (prevProps.currentChannelId !== this.props.currentChannelId) {
+      this.loadChat();
+    } else if (
+      prevProps.currentMessages.length !== this.props.currentMessages.length
+    ) {
+      // debugger;
+      this.loadChat();
+    } else if (Object.values(prevProps.currentChannel).length === 0) {
+      this.loadChat();
+    } else if (prevProps.currentChannel !== this.props.currentChannel) {
+      this.loadChat();
+    }
   }
+
+  // else if (Object.values(prevProps.currentMessages).length === 0) {
+  //       this.loadChat();
+  //     }
 
   createSubscription() {
     // debugger;
@@ -53,6 +71,7 @@ export default class ChannelMessages extends Component {
           }
         },
         speak: function (data) {
+          // debugger;
           return this.perform("speak", data);
         },
         load: function () {
@@ -62,14 +81,16 @@ export default class ChannelMessages extends Component {
     );
   }
 
-  loadChat(e) {
-    e.preventDefault();
+  loadChat() {
+    // e.preventDefault();
+    // debugger;
     const currentSubscriptions = App.cable.subscriptions.subscriptions;
     for (let i = 0; i < currentSubscriptions.length; i++) {
       const subscriptionId = JSON.parse(
         App.cable.subscriptions.subscriptions[i].identifier
       ).channelId;
       if (subscriptionId === this.props.currentChannelId) {
+        // debugger;
         App.cable.subscriptions.subscriptions[i].load();
       }
     }
@@ -103,7 +124,7 @@ export default class ChannelMessages extends Component {
           sendMessage={this.props.sendMessage}
           currentUser={this.props.currentUser}
         />
-        <button onClick={(e) => this.loadChat(e)}>Load Messages</button>
+        {/* <button onClick={(e) => this.loadChat(e)}>Load Messages</button> */}
       </div>
     );
   }
