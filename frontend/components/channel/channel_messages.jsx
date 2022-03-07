@@ -64,8 +64,15 @@ export default class ChannelMessages extends Component {
 
   loadChat(e) {
     e.preventDefault();
-    // need to specify the subscription below
-    App.cable.subscriptions.subscriptions[0].load();
+    const currentSubscriptions = App.cable.subscriptions.subscriptions;
+    for (let i = 0; i < currentSubscriptions.length; i++) {
+      const subscriptionId = JSON.parse(
+        App.cable.subscriptions.subscriptions[i].identifier
+      ).channelId;
+      if (subscriptionId === this.props.currentChannelId) {
+        App.cable.subscriptions.subscriptions[i].load();
+      }
+    }
   }
 
   // componentDidUpdate() {
