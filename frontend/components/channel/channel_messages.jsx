@@ -33,13 +33,11 @@ export default class ChannelMessages extends Component {
       this.bottom.current.scrollIntoView();
     }
 
-    // debugger;
     if (prevProps.currentChannelId !== this.props.currentChannelId) {
       this.loadChat();
     } else if (
       prevProps.currentMessages.length !== this.props.currentMessages.length
     ) {
-      // debugger;
       this.loadChat();
     } else if (Object.values(prevProps.currentChannel).length === 0) {
       this.loadChat();
