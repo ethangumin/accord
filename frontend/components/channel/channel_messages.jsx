@@ -12,9 +12,30 @@ export default class ChannelMessages extends Component {
   componentDidMount() {
     // debugger;
     this.createSubscription();
+    // this.loadChat();
+  }
+
+  componentDidUpdate() {
+    // debugger;
+    const currentSubscriptions = App.cable.subscriptions.subscriptions;
+    let channelInSubscriptions = false;
+    for (let subscription of currentSubscriptions) {
+      const subscriptionId = JSON.parse(subscription.identifier).channelId;
+      if (subscriptionId === this.props.currentChannelId) {
+        channelInSubscriptions = true;
+      }
+    }
+    if (channelInSubscriptions === false) {
+      this.createSubscription();
+    }
+
+    if (this.bottom.current) {
+      this.bottom.current.scrollIntoView();
+    }
   }
 
   createSubscription() {
+    // debugger;
     App.cable.subscriptions.create(
       {
         channel: "ChatChannel",
@@ -43,18 +64,17 @@ export default class ChannelMessages extends Component {
 
   loadChat(e) {
     e.preventDefault();
+    // need to specify the subscription below
     App.cable.subscriptions.subscriptions[0].load();
   }
 
-  componentDidUpdate() {
-    if (this.bottom.current) {
-      this.bottom.current.scrollIntoView();
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.bottom.current) {
+  //     this.bottom.current.scrollIntoView();
+  //   }
+  // }
 
   render() {
-    // debugger;
-
     const messageList = this.props.currentMessages
       ? Object.values(this.props.currentMessages).map((message, index) => {
           return (
