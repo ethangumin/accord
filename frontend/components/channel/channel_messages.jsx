@@ -6,12 +6,16 @@ export default class ChannelMessages extends Component {
     super(props);
     this.bottom = React.createRef();
     this.loadChat = this.loadChat.bind(this);
+    this.createSubscription = this.createSubscription.bind(this);
   }
 
   componentDidMount() {
     // debugger;
+    this.createSubscription();
+  }
+
+  createSubscription() {
     App.cable.subscriptions.create(
-      // How can I make this dynamic? Currently, subscription only created on mount
       {
         channel: "ChatChannel",
         channelId: this.props.currentChannelId,
@@ -50,17 +54,6 @@ export default class ChannelMessages extends Component {
 
   render() {
     // debugger;
-
-    // const messageList = this.props.currentChannel.messages
-    //   ? this.props.currentChannel.messages.map((message, index) => {
-    //       return (
-    //         <li key={index} className="channel-message">
-    //           {message.body}
-    //           <div ref={this.bottom} />
-    //         </li>
-    //       );
-    //     })
-    //   : "";
 
     const messageList = this.props.currentMessages
       ? Object.values(this.props.currentMessages).map((message, index) => {
