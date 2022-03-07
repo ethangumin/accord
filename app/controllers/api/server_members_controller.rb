@@ -6,7 +6,7 @@ class Api::ServerMembersController < ApplicationController
         @server_member.user_id = @user.id
         # debugger
         if @server_member.save
-            render "api/users/show.json.jbuilder"
+            render json: ["placeholder"]
         else
             render json: ["invalid server_id"], status: 404
         end

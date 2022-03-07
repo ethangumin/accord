@@ -4,6 +4,8 @@ import {
   REMOVE_SERVER,
 } from "../actions/server_actions";
 
+// import { RECEIVE_CHANNEL } from "../actions/channel_actions";
+
 const serversReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
@@ -14,10 +16,12 @@ const serversReducer = (oldState = {}, action) => {
     case RECEIVE_SERVER:
       newState[action.server.id] = action.server;
       return newState;
-      // return action.server;
+    // return action.server;
     case REMOVE_SERVER:
       delete newState[action.serverId];
       return newState;
+    // case RECEIVE_CHANNEL:
+    //   debugger;
     default:
       return oldState;
   }

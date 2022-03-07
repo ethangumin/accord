@@ -7,10 +7,76 @@
   position: fixed;
 }
 
+.server-modal__bg div {
+  width: 35%;
+}
+
 .server-modal__hide {
   display: none;
 }
 
 .server-modal {
   background-color: white;
+  padding: 1em;
+  border-radius: 3px;
+  width: fit-content;
+  padding: 0.6em 1em;
+}
+
+.server-modal__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.server-modal__content h1 {
+  font-family: "Whitney-Bold";
+  font-size: 1.35rem;
+  margin-bottom: 0.5em;
+}
+
+.server-modal__content p {
+  color: #4c515b;
+  font-size: 0.94rem;
+  padding-bottom: 2em;
+}
+
+.server-modal__content p,
+.server-modal__content input {
+  font-family: "Whitney-Book";
+}
+
+.server-modal__content input {
+  padding: 0.45em;
+  margin: 0.3em 0;
+}
+
+.server-modal__content input[type="text"] {
+  border: 1px solid #bcbdc1;
+  border-radius: 3px;
+}
+
+.server-modal__content input[type="submit"] {
+  color: white;
+  background-color: #4549ef;
+  border: 1px solid #4549ef;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.server-modal__content label {
+  font-size: 0.82rem;
+  font-family: "Whitney-Medium";
+  color: #3e444d;
+  margin-bottom: 0.4em;
+}
+
+.server-modal__content h1,
+.server-modal__content p {
+  text-align: center;
+}
+
+.server-modal__submit {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 0 auto;
 }

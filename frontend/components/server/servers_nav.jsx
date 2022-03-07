@@ -17,6 +17,7 @@ class ServersNav extends React.Component {
   }
 
   render() {
+    // debugger;
     return (
       <ul className="server-index__servers-nav">
         <li className="server-nav__item">
@@ -69,6 +70,7 @@ class ServersNav extends React.Component {
           createServer={this.props.createServer}
           createServerMember={this.props.createServerMember}
           createChannel={this.props.createChannel}
+          currentUser={this.props.currentUser}
         />
       </ul>
     );

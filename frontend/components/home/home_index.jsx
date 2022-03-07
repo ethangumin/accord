@@ -10,6 +10,7 @@ class HomeIndex extends React.Component {
   }
 
   render() {
+    // debugger;
     return (
       <div className="server-index__container">
         <ServersNav
@@ -17,6 +18,7 @@ class HomeIndex extends React.Component {
           createServer={this.props.createServer}
           createServerMember={this.props.createServerMember}
           createChannel={this.props.createChannel}
+          currentUser={this.props.currentUser}
         />
         <DmIndex
           friends={this.props.friends}
