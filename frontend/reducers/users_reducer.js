@@ -23,13 +23,20 @@ const usersReducer = (oldState = {}, action) => {
       };
       const servers = Object.values(newState)[0].servers;
 
+      // debugger;
       for (let server of servers) {
         if (server.id === newServer.id) {
           return oldState;
         }
       }
 
-      servers.push(newServer);
+      const newServers = [...servers, newServer];
+
+      // debugger;
+      Object.values(newState)[0].servers = newServers;
+
+      // debugger;
+      // servers.push(newServer);
       return newState;
     case RECEIVE_CHANNEL:
       // debugger;
@@ -39,11 +46,17 @@ const usersReducer = (oldState = {}, action) => {
         serverId: action.channel.serverId,
       };
 
+      // debugger;
+
       const currentServer = Object.values(newState)[0].servers.find(
         (server) => server.id === action.channel.serverId
       );
 
+      // debugger;
+
       const channels = currentServer.channels;
+
+      // debugger;
 
       for(let channel of channels){
         if(channel.id === newChannel.id){
@@ -51,7 +64,14 @@ const usersReducer = (oldState = {}, action) => {
         }
       }
 
-      channels.push(newChannel);
+      const newChannels = [...channels, newChannel];
+
+      // debugger;
+
+      currentServer.channels = newChannels;
+
+      // debugger;
+      // channels.push(newChannel);
       return newState;
     default:
       return oldState;

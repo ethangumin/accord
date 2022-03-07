@@ -5,11 +5,14 @@ import { createServer } from "../../actions/server_actions";
 import { createServerMember } from "../../actions/server_member_actions";
 import { createChannel } from "../../actions/channel_actions";
 
-const mSTP = (state) => ({
-  currentUser: state.entities.users[state.session.id],
-  enrolledServers: state.entities.users[state.session.id].servers,
-  friends: state.entities.users[state.session.id].friends,
-});
+const mSTP = (state) => {
+  // debugger;
+  return {
+    currentUser: state.entities.users[state.session.id],
+    enrolledServers: state.entities.users[state.session.id].servers,
+    friends: state.entities.users[state.session.id].friends,
+  };
+};
 
 const mDTP = (dispatch) => ({
   logout: () => dispatch(logout()),

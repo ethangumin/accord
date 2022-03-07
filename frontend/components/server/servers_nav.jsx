@@ -18,6 +18,7 @@ class ServersNav extends React.Component {
 
   render() {
     // debugger;
+
     return (
       <ul className="server-index__servers-nav">
         <li className="server-nav__item">
@@ -37,7 +38,11 @@ class ServersNav extends React.Component {
                 return (
                   <div key={server.id} className="server-nav__item">
                     <Link
-                      to={`/server/${server.id}/channel/${server.channels[0].id}`}
+                      to={
+                        server.channels.length > 0
+                          ? `/server/${server.id}/channel/${server.channels[0].id}`
+                          : "/home"
+                      }
                       style={{ textDecoration: "none", color: "#D4D5D6" }}
                       onClick={
                         this.props.requestServer

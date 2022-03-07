@@ -15,6 +15,7 @@ export default class ChannelMessageForm extends React.Component {
   }
 
   handleSubmit(e) {
+    // debugger;
     e.preventDefault();
     const payload = Object.assign({}, this.state);
     payload.channel_id = this.props.currentChannel.id;

@@ -10,7 +10,7 @@ const channelsReducer = (oldState = {}, action) => {
       newState = action.channel;
       return newState;
     case RECEIVE_MESSAGE:
-      newState.messages.push(action.message);
+      newState.messages.push(action.message.id);
       return newState;
     default:
       return oldState;
