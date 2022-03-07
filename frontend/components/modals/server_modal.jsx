@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-export default class ServerModal extends Component {
+class ServerModal extends Component {
   constructor(props) {
     super(props);
     this.state = { serverName: `${this.props.currentUser.username}'s Server` };
+    this.createServerHandler = this.createServerHandler.bind(this);
   }
 
   createServerHandler(e) {
@@ -12,10 +14,9 @@ export default class ServerModal extends Component {
       .createServer({ server_name: this.state.serverName })
       .then((server) => {
         this.props.createServerMember({ server_id: server.server.id });
-        this.props.createChannel({
-          channel_name: "General",
-          server_id: server.server.id,
-        });
+        this.props.history.push(
+          `/server/${server.server.id}/channel/${server.server.channels[0].id}`
+        );
       });
     this.props.toggleServerModal(e);
     this.setState({
@@ -52,7 +53,6 @@ export default class ServerModal extends Component {
             <label>SERVER NAME</label>
             <input
               type="text"
-              // placeholder={`${this.props.currentUser.username}'s Server`}
               value={this.state.serverName}
               onChange={(e) => this.setState({ serverName: e.target.value })}
             />
@@ -65,3 +65,5 @@ export default class ServerModal extends Component {
     );
   }
 }
+
+export default withRouter(ServerModal);
