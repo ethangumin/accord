@@ -20,6 +20,7 @@ class ServerChannels extends React.Component {
   }
 
   render() {
+    // debugger;
     const mapChannelsToServer = this.props.server
       ? this.props.server.channels.map((channel) => {
           return (
@@ -41,6 +42,15 @@ class ServerChannels extends React.Component {
         })
       : "";
 
+    const createChannelButton =
+      this.props.server &&
+      this.props.currentUser &&
+      this.props.server.creatorId === this.props.currentUser.id ? (
+        <p onClick={(e) => this.toggleChannelModal(e)}>+</p>
+      ) : (
+        <p></p>
+      );
+
     return (
       <div className="server-channels__container">
         <h3 className="server-channels__header">
@@ -50,7 +60,8 @@ class ServerChannels extends React.Component {
           <div>
             <div className="server-channels__text-channels-header">
               <p>TEXT CHANNELS</p>
-              <p onClick={(e) => this.toggleChannelModal(e)}>+</p>
+              {createChannelButton}
+              {/* <p onClick={(e) => this.toggleChannelModal(e)}>+</p> */}
             </div>
             <ul>{mapChannelsToServer}</ul>
           </div>
