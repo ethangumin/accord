@@ -13,7 +13,9 @@ class ServerModal extends Component {
     this.props
       .createServer({ server_name: this.state.serverName })
       .then((server) => {
+        debugger;
         this.props.createServerMember({ server_id: server.server.id });
+        this.props.fetchChannel(server.server.channels[0].id)
         this.props.history.push(
           `/server/${server.server.id}/channel/${server.server.channels[0].id}`
         );
