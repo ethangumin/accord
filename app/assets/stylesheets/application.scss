@@ -15,46 +15,51 @@
  */
 
 @font-face {
-  font-family: "Whitney";
-  src: font-url("../fonts/Whitney/whitneybold.otf") format("opentype");
+  font-family: "Arkit Bold";
+  src: url("./fonts/Arkit/Arkit-Bold.otf");
 }
 
 @font-face {
-  font-family: "Whitney";
-  src: font-url("../fonts/Whitney/whitneybook.otf") format("opentype");
+  font-family: "Whitney-Bold";
+  src: url("./fonts/Whitney/whitneybold.otf");
 }
 
 @font-face {
-  font-family: "Whitney";
-  src: font-url("../fonts/Whitney/whitneybookitalic.otf") format("opentype");
+  font-family: "Whitney-Book";
+  src: url("./fonts/Whitney/whitneybook.otf");
 }
 
 @font-face {
-  font-family: "Whitney";
-  src: font-url("../fonts/Whitney/whitneylight.otf") format("opentype");
+  font-family: "Whitney-BookItalic";
+  src: url("./fonts/Whitney/whitneybookitalic.otf");
 }
 
 @font-face {
-  font-family: "Whitney";
-  src: font-url("../fonts/Whitney/whitneylightitalic.otf") format("opentype");
+  font-family: "Whitney-Light";
+  src: url("./fonts/Whitney/whitneylight.otf");
 }
 
 @font-face {
-  font-family: "Whitney";
-  src: font-url("../fonts/Whitney/whitneymedium.otf") format("opentype");
+  font-family: "Whitney-LightItalic";
+  src: url("./fonts/Whitney/whitneylightitalic.otf");
 }
 
 @font-face {
-  font-family: "Whitney";
-  src: font-url("../fonts/Whitney/whitneymediumitalic.otf") format("opentype");
+  font-family: "Whitney-Medium";
+  src: url("./fonts/Whitney/whitneymedium.otf");
 }
 
 @font-face {
-  font-family: "Whitney";
-  src: font-url("../fonts/Whitney/WhitneySemiboldItalic.otf") format("opentype");
+  font-family: "Whitney-MediumItalic";
+  src: url("./fonts/Whitney/whitneymediumitalic.otf");
 }
 
 @font-face {
-  font-family: "Whitney";
-  src: font-url("../fonts/Whitney/whitneysemibold.otf") format("opentype");
+  font-family: "Whitney-SemiboldItalic";
+  src: url("./fonts/Whitney/WhitneySemiboldItalic.otf");
+}
+
+@font-face {
+  font-family: "Whitney-Semibold";
+  src: url("./fonts/Whitney/whitneysemibold.otf");
 }
