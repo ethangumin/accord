@@ -1,8 +1,6 @@
 class Api::ChannelsController < ApplicationController
     def create
-        # debugger
         @channel = Channel.new(channel_params)
-        # debugger
         if @channel.save
             render :show
         else

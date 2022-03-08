@@ -15,12 +15,12 @@ class ServerChannels extends React.Component {
   }
 
   toggleChannelModal(e) {
-    // debugger;
     e.preventDefault();
     this.setState({ channelModalActive: !this.state.channelModalActive });
   }
 
   render() {
+    // debugger;
     const mapChannelsToServer = this.props.server
       ? this.props.server.channels.map((channel) => {
           return (
@@ -63,6 +63,7 @@ class ServerChannels extends React.Component {
         <ChannelModal
           channelModalActive={this.state.channelModalActive}
           toggleChannelModal={this.toggleChannelModal}
+          createChannel={this.props.createChannel}
         />
       </div>
     );
