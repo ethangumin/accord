@@ -57,7 +57,16 @@ class ServerModal extends Component {
               onChange={(e) => this.setState({ serverName: e.target.value })}
             />
             <div className="server-modal__submit">
-              <input type="submit" value="Create" />
+              <input
+                type="submit"
+                value="Create"
+                disabled={this.state.serverName.length === 0 ? true : false}
+                className={
+                  this.state.serverName.length === 0
+                    ? "server-modal__submit-btn server-modal__submit-disabled"
+                    : "server-modal__submit-btn"
+                }
+              />
             </div>
           </form>
         </div>
