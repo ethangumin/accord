@@ -5,6 +5,7 @@
   height: 100%;
   width: 100%;
   position: fixed;
+  background-color: #000000bf;
 }
 
 .server-modal__bg div {
@@ -55,7 +56,7 @@
   border-radius: 3px;
 }
 
-.server-modal__content input[type="submit"] {
+.server-modal__submit-btn {
   color: white;
   background-color: #4549ef;
   border: 1px solid #4549ef;
@@ -79,4 +80,10 @@
   display: flex;
   justify-content: flex-end;
   margin: 0 0 0 auto;
+}
+
+.server-modal__submit-disabled {
+  cursor: not-allowed;
+  background-color: #969bf4;
+  border-color: #969bf4;
 }

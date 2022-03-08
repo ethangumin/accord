@@ -4,7 +4,7 @@ import {
   REMOVE_SERVER,
 } from "../actions/server_actions";
 
-// import { RECEIVE_CHANNEL } from "../actions/channel_actions";
+import { RECEIVE_CHANNEL } from "../actions/channel_actions";
 
 const serversReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -16,12 +16,34 @@ const serversReducer = (oldState = {}, action) => {
     case RECEIVE_SERVER:
       newState[action.server.id] = action.server;
       return newState;
-    // return action.server;
     case REMOVE_SERVER:
       delete newState[action.serverId];
       return newState;
-    // case RECEIVE_CHANNEL:
-    //   debugger;
+    case RECEIVE_CHANNEL:
+      // debugger;
+      let channels;
+
+      if (Object.values(newState).length > 0) {
+        channels = newState[action.channel.serverId].channels;
+      } else {
+        return oldState;
+      }
+
+      const newChannel = {
+        id: action.channel.id,
+        channelName: action.channel.channelName,
+        serverId: action.channel.serverId,
+      };
+
+      for (let channel of channels) {
+        if (channel.id === newChannel.id) {
+          return oldState;
+        }
+      }
+
+      const updatedChannels = [...channels, newChannel];
+      newState[action.channel.serverId].channels = updatedChannels;
+      return newState;
     default:
       return oldState;
   }

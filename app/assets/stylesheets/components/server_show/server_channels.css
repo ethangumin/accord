@@ -64,6 +64,17 @@
   font-size: 1.25rem;
 }
 
+.server-channels__text-channels-header {
+  display: flex;
+  justify-content: space-between;
+  color: #7b7f85;
+  margin-bottom: 0.5em;
+}
+
+.server-channels__text-channels-header p:last-child {
+  cursor: pointer;
+}
+
 .server-channels__curr-user {
   display: flex;
   align-items: center;

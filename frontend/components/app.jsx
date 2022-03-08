@@ -16,6 +16,7 @@ const App = () => {
         <AuthRoute path="/login" component={LoginFormContainer} />
         <Route path="/home" component={HomeIndexContainer} />
         <Route exact path="/server/:id/channel/:channelId" component={ServerContainer} />
+        {/* <Route path="" /> */}
       </Switch>
     </div>
   );

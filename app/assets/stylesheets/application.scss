@@ -1,0 +1,65 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@font-face {
+  font-family: "Arkit Bold";
+  src: url("./fonts/Arkit/Arkit-Bold.otf");
+}
+
+@font-face {
+  font-family: "Whitney-Bold";
+  src: url("./fonts/Whitney/whitneybold.otf");
+}
+
+@font-face {
+  font-family: "Whitney-Book";
+  src: url("./fonts/Whitney/whitneybook.otf");
+}
+
+@font-face {
+  font-family: "Whitney-BookItalic";
+  src: url("./fonts/Whitney/whitneybookitalic.otf");
+}
+
+@font-face {
+  font-family: "Whitney-Light";
+  src: url("./fonts/Whitney/whitneylight.otf");
+}
+
+@font-face {
+  font-family: "Whitney-LightItalic";
+  src: url("./fonts/Whitney/whitneylightitalic.otf");
+}
+
+@font-face {
+  font-family: "Whitney-Medium";
+  src: url("./fonts/Whitney/whitneymedium.otf");
+}
+
+@font-face {
+  font-family: "Whitney-MediumItalic";
+  src: url("./fonts/Whitney/whitneymediumitalic.otf");
+}
+
+@font-face {
+  font-family: "Whitney-SemiboldItalic";
+  src: url("./fonts/Whitney/WhitneySemiboldItalic.otf");
+}
+
+@font-face {
+  font-family: "Whitney-Semibold";
+  src: url("./fonts/Whitney/whitneysemibold.otf");
+}

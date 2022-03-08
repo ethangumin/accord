@@ -29,6 +29,7 @@ class Server extends React.Component {
           currentChannel={this.props.currentChannel}
           currentChannelId={this.props.currentChannelId}
           currentServer={this.props.currentServer}
+          createChannel={this.props.createChannel}
         />
         <ChannelContainer
           currentChannel={this.props.currentChannel}

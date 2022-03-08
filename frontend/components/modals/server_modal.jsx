@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-export default class ServerModal extends Component {
+class ServerModal extends Component {
   constructor(props) {
     super(props);
     this.state = { serverName: `${this.props.currentUser.username}'s Server` };
+    this.createServerHandler = this.createServerHandler.bind(this);
   }
 
   createServerHandler(e) {
@@ -11,11 +13,12 @@ export default class ServerModal extends Component {
     this.props
       .createServer({ server_name: this.state.serverName })
       .then((server) => {
+        // debugger;
         this.props.createServerMember({ server_id: server.server.id });
-        this.props.createChannel({
-          channel_name: "General",
-          server_id: server.server.id,
-        });
+        this.props.fetchChannel(server.server.channels[0].id)
+        this.props.history.push(
+          `/server/${server.server.id}/channel/${server.server.channels[0].id}`
+        );
       });
     this.props.toggleServerModal(e);
     this.setState({
@@ -52,12 +55,20 @@ export default class ServerModal extends Component {
             <label>SERVER NAME</label>
             <input
               type="text"
-              // placeholder={`${this.props.currentUser.username}'s Server`}
               value={this.state.serverName}
               onChange={(e) => this.setState({ serverName: e.target.value })}
             />
             <div className="server-modal__submit">
-              <input type="submit" value="Create" />
+              <input
+                type="submit"
+                value="Create"
+                disabled={this.state.serverName.length === 0 ? true : false}
+                className={
+                  this.state.serverName.length === 0
+                    ? "server-modal__submit-btn server-modal__submit-disabled"
+                    : "server-modal__submit-btn"
+                }
+              />
             </div>
           </form>
         </div>
@@ -65,3 +76,5 @@ export default class ServerModal extends Component {
     );
   }
 }
+
+export default withRouter(ServerModal);

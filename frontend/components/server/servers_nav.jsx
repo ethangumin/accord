@@ -76,6 +76,7 @@ class ServersNav extends React.Component {
           createServerMember={this.props.createServerMember}
           createChannel={this.props.createChannel}
           currentUser={this.props.currentUser}
+          fetchChannel={this.props.fetchChannel}
         />
       </ul>
     );
