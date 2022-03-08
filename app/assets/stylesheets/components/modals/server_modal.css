@@ -5,6 +5,7 @@
   height: 100%;
   width: 100%;
   position: fixed;
+  background-color: #000000bf;
 }
 
 .server-modal__bg div {

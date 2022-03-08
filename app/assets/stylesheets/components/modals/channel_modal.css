@@ -1,0 +1,92 @@
+.channel-modal__bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000000bf;
+}
+
+.channel-modal__bg div {
+  width: 35%;
+}
+
+.channel-modal__hide {
+  display: none;
+}
+
+.channel-modal {
+  background-color: #292b30;
+  padding: 1em;
+  border-radius: 3px;
+  width: fit-content;
+}
+
+.channel-modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-modal h1 {
+  font-family: "Whitney-Bold";
+  font-size: 1.5rem;
+  text-align: center;
+  color: white;
+}
+
+.channel-modal h3 {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 0.4em;
+  font-family: "Whitney-Book";
+  color: #a3a6aa;
+}
+
+.channel-modal label {
+  font-family: "Whitney-Semibold";
+  font-size: 0.85rem;
+  margin-top: 1.2em;
+  color: #d4d5d6;
+}
+
+.channel-modal input[type="text"] {
+  margin: 0.55em 0;
+  padding: 0.4em;
+  border: 1px solid #1a1b1d;
+  background-color: #25262b;
+  color: #d4d5d6;
+  border-radius: 2px;
+}
+
+.channel-modal__submit {
+  padding: 0.45em;
+  margin-top: 0.5em;
+  margin-left: auto;
+  border: 1px solid #4549ef;
+  background-color: #4549ef;
+  color: white;
+  font-family: "Whitney-Book";
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.channel-modal__submit:hover {
+  background-color: #373ab7;
+  border-color: #373ab7;
+}
+
+.channel-modal__submit-disabled {
+  cursor: not-allowed;
+  background-color: #333782;
+  border-color: #333782;
+}
+
+.channel-modal__submit-disabled:hover {
+  background-color: #333782;
+  border-color: #333782;
+}
