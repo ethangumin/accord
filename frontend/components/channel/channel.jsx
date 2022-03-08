@@ -1,6 +1,7 @@
 import React from "react";
 import ChannelNav from "./channel_nav";
 import ChannelContent from "./channel_content";
+import { withRouter } from "react-router-dom";
 
 class Channel extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class Channel extends React.Component {
           receiveMessages={this.props.receiveMessages}
           currentUser={this.props.currentUser}
           currentChannelId={this.props.currentChannelId}
+          // currentChannelId={this.props.match.params.channelId}
           currentMessages={this.props.currentMessages}
         />
       </div>
@@ -21,4 +23,4 @@ class Channel extends React.Component {
   }
 }
 
-export default Channel;
+export default withRouter(Channel);

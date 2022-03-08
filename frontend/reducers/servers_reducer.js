@@ -21,13 +21,20 @@ const serversReducer = (oldState = {}, action) => {
       return newState;
     case RECEIVE_CHANNEL:
       // debugger;
-      let channels = newState[action.channel.serverId].channels;
+      let channels;
+
+      if (Object.values(newState).length > 0) {
+        channels = newState[action.channel.serverId].channels;
+      } else {
+        return oldState;
+      }
+
       const newChannel = {
         id: action.channel.id,
         channelName: action.channel.channelName,
         serverId: action.channel.serverId,
       };
-      // debugger;
+
       for (let channel of channels) {
         if (channel.id === newChannel.id) {
           return oldState;
