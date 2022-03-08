@@ -23,16 +23,23 @@
   overflow-y: scroll;
 }
 
-.create-server,
 .explore-servers {
+  margin: 0.5em;
+}
+
+.create-server,
+.explore-servers a {
   color: #31984a;
+}
+
+.explore-servers a {
+  text-decoration: none;
 }
 
 .create-server:hover,
 .explore-servers:hover {
-  background-color: #31984a;
-  border-color: #31984a;
-  color: white;
+  background-color: #cacbcc;
+  border-color: #cacbcc;
 }
 
 .home-button-separator {
