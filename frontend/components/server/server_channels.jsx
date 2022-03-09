@@ -34,9 +34,18 @@ class ServerChannels extends React.Component {
                       : "server-channels__inactive"
                   }
                 >
-                  <img src={Hashtag} alt="hashtag" className="channel-pound" />
-                  <p>{channel.channelName}</p>
+                  <div className="server-channels__name-hash">
+                    <img
+                      src={Hashtag}
+                      alt="hashtag"
+                      className="channel-pound"
+                    />
+                    <p>{channel.channelName}</p>
+                  </div>
+                  {/* <p>E</p> */}
                 </Link>
+                <p>edit</p>
+                <p>destroy</p>
               </div>
             );
           })

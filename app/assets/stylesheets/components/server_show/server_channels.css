@@ -26,17 +26,24 @@
 .server-channels__channel a {
   display: flex;
   align-items: center;
-  padding: 0.25em 0;
+  padding: 0.25em;
+  /* padding: 0.25em 0.5em; */
   cursor: pointer;
   border: 1px;
   border-radius: 3px;
   text-decoration: none;
+  /* justify-content: space-between; */
 }
 
 .server-channels__channel a:hover {
   background-color: #27292d;
   border-color: #27292d;
   color: #d1d2d3;
+}
+
+.server-channels__name-hash {
+  display: flex;
+  align-items: center;
 }
 
 .server-channels__active {

@@ -9,3 +9,9 @@ export const createChannel = (channel) =>
     method: "POST",
     data: { channel },
   });
+
+export const deleteChannel = (channelId) =>
+  $.ajax({
+    url: `/api/channels/${channelId}`,
+    method: "DELETE",
+  });
