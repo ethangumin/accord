@@ -6,7 +6,7 @@ import SignUpFormContainer from "./auth/signup_form_container";
 import LoginFormContainer from "./auth/login_form_container";
 import HomeIndexContainer from "./home/home_index_container";
 import ServerContainer from "./server/server_container";
-import ServerDiscoveryContainer from "./server/server_discovery_container";
+import ServerDiscoveryContainer from "./server/server_discovery/server_discovery_container";
 
 const App = () => {
   return (
