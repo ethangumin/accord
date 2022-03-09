@@ -72,13 +72,13 @@ class ServersNav extends React.Component {
           className="server-nav__item create-server"
           onClick={(e) => this.toggleServerModal(e)}
         />
-        <Link to="/server-discovery">
+        {/* <Link to="/server-discovery"> */}
           <img
             src={Compass}
             alt="explore servers button"
             className="server-nav__item explore-servers"
           />
-        </Link>
+        {/* </Link> */}
         <ServerModal
           active={this.state.ServerModal}
           toggleServerModal={this.toggleServerModal}
