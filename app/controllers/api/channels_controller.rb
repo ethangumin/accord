@@ -25,10 +25,7 @@ class Api::ChannelsController < ApplicationController
     end
 
     def update
-        @channel = Channel.find_by(id: params[:id])
-        if @channel
-            @channel.destroy
-        end
+        
     end
 
     private

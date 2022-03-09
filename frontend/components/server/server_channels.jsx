@@ -20,27 +20,36 @@ class ServerChannels extends React.Component {
   }
 
   render() {
-    // debugger;
-    const mapChannelsToServer = this.props.server
-      ? this.props.server.channels.map((channel) => {
-          return (
-            <div key={channel.id} className="server-channels__channel">
-              <Link
-                to={`/server/${this.props.server.id}/channel/${channel.id}`}
-                onClick={() => this.props.fetchChannel(channel.id)}
-                className={
-                  this.props.currentChannel.id === channel.id
-                    ? "server-channels__active"
-                    : "server-channels__inactive"
-                }
-              >
-                <img src={Hashtag} alt="hashtag" className="channel-pound" />
-                <p>{channel.channelName}</p>
-              </Link>
-            </div>
-          );
-        })
-      : "";
+    const mapChannelsToServer =
+      this.props.server && this.props.server.channels
+        ? this.props.server.channels.map((channel) => {
+            return (
+              <div key={channel.id} className="server-channels__channel">
+                <Link
+                  to={`/server/${this.props.server.id}/channel/${channel.id}`}
+                  onClick={() => this.props.fetchChannel(channel.id)}
+                  className={
+                    this.props.currentChannel.id === channel.id
+                      ? "server-channels__active"
+                      : "server-channels__inactive"
+                  }
+                >
+                  <div className="server-channels__name-hash">
+                    <img
+                      src={Hashtag}
+                      alt="hashtag"
+                      className="channel-pound"
+                    />
+                    <p>{channel.channelName}</p>
+                  </div>
+                  {/* <p>E</p> */}
+                </Link>
+                <p>edit</p>
+                <p>destroy</p>
+              </div>
+            );
+          })
+        : "";
 
     const createChannelButton =
       this.props.server &&

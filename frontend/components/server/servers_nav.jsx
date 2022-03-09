@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ServerModal from "../modals/server_modal";
+import Plus from "../../../app/assets/images/plus-solid.svg";
+import Compass from "../../../app/assets/images/compass-solid.svg";
 
 class ServersNav extends React.Component {
   constructor(props) {
@@ -17,15 +19,11 @@ class ServersNav extends React.Component {
   }
 
   render() {
-    // debugger;
-
     return (
       <ul className="server-index__servers-nav">
-        <li className="server-nav__item">
-          <Link to="/home" style={{ textDecoration: "none", color: "#D4D5D6" }}>
-            Home
-          </Link>
-        </li>
+        <Link to="/home" style={{ textDecoration: "none", color: "#D4D5D6" }}>
+          <li className="server-nav__item">Home</li>
+        </Link>
         <li className="home-button-separator"></li>
         <div className="server-nav__servers">
           {this.props.enrolledServers
@@ -36,39 +34,44 @@ class ServersNav extends React.Component {
                   .join("");
 
                 return (
-                  <div key={server.id} className="server-nav__item">
-                    <Link
-                      to={
-                        server.channels.length > 0
-                          ? `/server/${server.id}/channel/${server.channels[0].id}`
-                          : "/home"
-                      }
-                      style={{ textDecoration: "none", color: "#D4D5D6" }}
-                      onClick={
-                        this.props.requestServer
-                          ? () =>
-                              this.props
-                                .requestServer(server.id)
-                                .then(() =>
-                                  this.props.fetchChannel(server.channels[0].id)
-                                )
-                          : () => null
-                      }
-                    >
-                      {serverAcronym}
-                    </Link>
-                  </div>
+                  <Link
+                    key={server.id}
+                    to={
+                      server.channels.length > 0
+                        ? `/server/${server.id}/channel/${server.channels[0].id}`
+                        : "/home"
+                    }
+                    style={{ textDecoration: "none", color: "#D4D5D6" }}
+                    onClick={
+                      this.props.requestServer
+                        ? () =>
+                            this.props
+                              .requestServer(server.id)
+                              .then(() =>
+                                this.props.fetchChannel(server.channels[0].id)
+                              )
+                        : () => null
+                    }
+                  >
+                    <div className="server-nav__item">{serverAcronym}</div>
+                  </Link>
                 );
               })
             : ""}
         </div>
-        <li
+        <img
+          src={Plus}
+          alt="create server button"
           className="server-nav__item create-server"
           onClick={(e) => this.toggleServerModal(e)}
-        >
-          +
-        </li>
-        <li className="server-nav__item explore-servers">Exp</li>
+        />
+        <Link to="/server-discovery">
+          <img
+            src={Compass}
+            alt="explore servers button"
+            className="server-nav__item explore-servers"
+          />
+        </Link>
         <ServerModal
           active={this.state.ServerModal}
           toggleServerModal={this.toggleServerModal}
