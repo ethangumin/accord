@@ -2,6 +2,9 @@ import React from "react";
 import Dm from "./dm";
 
 const DmIndex = ({ friends, currentUser }) => {
+  // debugger;
+
+  const user = currentUser.id ? currentUser : currentUser.user;
   return (
     <div className="server-index__dm">
       <div className="dm__container">
@@ -14,14 +17,14 @@ const DmIndex = ({ friends, currentUser }) => {
             <p>+</p>
           </div>
           <ul className="dm__messages">
-            {friends.map((friend) => (
+            {/* {friends.map((friend) => (
               <Dm key={friend.id} friend={friend} />
-            ))}
+            ))} */}
           </ul>
         </div>
         <div className="current-user">
-          <p className="current-user__icon">{currentUser.username[0]}</p>
-          <p className="current-user__username">{currentUser.username}</p>
+          <p className="current-user__icon">{user.username[0]}</p>
+          <p className="current-user__username">{user.username}</p>
         </div>
       </div>
     </div>

@@ -16,6 +16,7 @@ export default class ChannelMessageForm extends React.Component {
   }
 
   handleSubmit(e) {
+    // debugger;
     e.preventDefault();
     const payload = Object.assign({}, this.state);
     payload.channel_id = this.props.currentChannel.id;
@@ -24,10 +25,11 @@ export default class ChannelMessageForm extends React.Component {
       const subscriptionId = JSON.parse(
         App.cable.subscriptions.subscriptions[i].identifier
       ).channelId;
-      if (subscriptionId === payload.channel_id) {
+      if (subscriptionId === payload.channel_id.toString()) {
         currentSubscriptionIdx = i;
       }
     }
+    // debugger;
     App.cable.subscriptions.subscriptions[currentSubscriptionIdx].speak({
       message: payload,
     });
@@ -35,6 +37,7 @@ export default class ChannelMessageForm extends React.Component {
   }
 
   render() {
+    // debugger;
     return (
       <div className="channel_content_messages_form__container">
         <form onSubmit={this.handleSubmit.bind(this)}>

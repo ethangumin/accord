@@ -67,6 +67,10 @@
   color: #7b7f85;
 }
 
+.hide-channel {
+  display: none;
+}
+
 .server-channels__channels-idx p {
   font-size: 1.25rem;
 }

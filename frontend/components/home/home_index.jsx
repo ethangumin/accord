@@ -9,12 +9,17 @@ class HomeIndex extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchUser(this.props.currentUser.id);
+  }
+
   render() {
     // debugger;
     return (
       <div className="server-index__container">
         <ServersNav
           enrolledServers={this.props.enrolledServers}
+          currentChannels={this.props.currentChannels}
           createServer={this.props.createServer}
           createServerMember={this.props.createServerMember}
           createChannel={this.props.createChannel}

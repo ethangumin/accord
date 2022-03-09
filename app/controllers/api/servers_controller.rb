@@ -7,6 +7,7 @@ class Api::ServersController < ApplicationController
     def show
         @server = Server.find_by(id: params[:id])
         if @server
+            @channels = @server.channels
             render :show
         else
             render json: ["Server does not exists"], status: 404

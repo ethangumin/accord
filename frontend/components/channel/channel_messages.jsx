@@ -112,6 +112,8 @@ export default class ChannelMessages extends Component {
           currentChannel={this.props.currentChannel}
           sendMessage={this.props.sendMessage}
           currentUser={this.props.currentUser}
+          currentChannels={this.props.currentChannels}
+          currentChannelId={this.props.currentChannelId}
         />
       </div>
     );

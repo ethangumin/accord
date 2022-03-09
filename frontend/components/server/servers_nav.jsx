@@ -33,12 +33,19 @@ class ServersNav extends React.Component {
                   .map((word) => word[0])
                   .join("");
 
+                const serverChannels = this.props.currentChannels
+                  ? this.props.currentChannels.filter((channel) => {
+                      return channel.serverId === server.id;
+                    })
+                  : "";
+
+                // debugger;
                 return (
                   <Link
                     key={server.id}
                     to={
-                      server.channels.length > 0
-                        ? `/server/${server.id}/channel/${server.channels[0].id}`
+                      serverChannels.length > 0
+                        ? `/server/${server.id}/channel/${serverChannels[0].id}`
                         : "/home"
                     }
                     style={{ textDecoration: "none", color: "#D4D5D6" }}
@@ -48,7 +55,7 @@ class ServersNav extends React.Component {
                             this.props
                               .requestServer(server.id)
                               .then(() =>
-                                this.props.fetchChannel(server.channels[0].id)
+                                this.props.fetchChannel(serverChannels[0].id)
                               )
                         : () => null
                     }

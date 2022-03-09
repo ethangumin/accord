@@ -8,6 +8,7 @@ const mSTP = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id],
     currentMessages: state.entities.messages,
     currentChannelId: ownProps.currentChannelId,
+    currentChannels: ownProps.currentChannels
   };
 };
 

@@ -10,45 +10,51 @@ class ServerChannels extends React.Component {
     this.toggleChannelModal = this.toggleChannelModal.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchChannel(this.props.currentChannelId);
-  }
-
   toggleChannelModal(e) {
     e.preventDefault();
     this.setState({ channelModalActive: !this.state.channelModalActive });
   }
 
   render() {
+    // debugger;
     const mapChannelsToServer =
-      this.props.server && this.props.server.channels
-        ? this.props.server.channels.map((channel) => {
-            return (
-              <div key={channel.id} className="server-channels__channel">
-                <Link
-                  to={`/server/${this.props.server.id}/channel/${channel.id}`}
-                  onClick={() => this.props.fetchChannel(channel.id)}
-                  className={
-                    this.props.currentChannel.id === channel.id
-                      ? "server-channels__active"
-                      : "server-channels__inactive"
-                  }
-                >
-                  <div className="server-channels__name-hash">
-                    <img
-                      src={Hashtag}
-                      alt="hashtag"
-                      className="channel-pound"
-                    />
-                    <p>{channel.channelName}</p>
-                  </div>
-                  {/* <p>E</p> */}
-                </Link>
-                <p>edit</p>
-                <p>destroy</p>
-              </div>
-            );
-          })
+      this.props.server && this.props.currentChannels
+        ? this.props.currentChannels
+            .filter((channel) => channel.serverId === this.props.server.id)
+            .map((channel, index) => {
+              return (
+                <div key={channel.id} className="server-channels__channel">
+                  <Link
+                    to={`/server/${this.props.server.id}/channel/${channel.id}`}
+                    onClick={() => this.props.fetchChannel(channel.id)}
+                    className={
+                      this.props.currentChannel.id === channel.id
+                        ? "server-channels__active"
+                        : "server-channels__inactive"
+                    }
+                  >
+                    <div className="server-channels__name-hash">
+                      <img
+                        src={Hashtag}
+                        alt="hashtag"
+                        className="channel-pound"
+                      />
+                      <p>{channel.channelName}</p>
+                    </div>
+                    {/* <p>E</p> */}
+                  </Link>
+                  <p>edit</p>
+                  <p
+                    onClick={() => this.props.deleteChannel(channel.id)}
+                    // style={index === 0 ? { display: "none" } : ""}
+                    className={index === 0 ? "hide-channel" : ""}
+                  >
+                    destroy
+                  </p>
+                  {/* <p>destroy</p> */}
+                </div>
+              );
+            })
         : "";
 
     const createChannelButton =

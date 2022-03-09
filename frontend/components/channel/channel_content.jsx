@@ -9,6 +9,7 @@ const ChannelContent = ({
   currentChannelId,
   receiveMessages,
   currentMessages,
+  currentChannels,
 }) => {
   return (
     <div className="channel-content__container">
@@ -19,6 +20,7 @@ const ChannelContent = ({
         currentChannelId={currentChannelId}
         receiveMessages={receiveMessages}
         currentMessages={currentMessages}
+        currentChannels={currentChannels}
       />
       <ChannelMembers currentChannel={currentChannel} />
     </div>

@@ -9,7 +9,7 @@ const Dm = ({ friend }) => {
         <p className="dm__icon">{friend.username[0]}</p>
         <p className="dm__username">{friend.username}</p>
       </div>
-      {/* <img src={xMark} alt="x mark" className="dm__x-mark" /> */}
+      <img src={xMark} alt="x mark" className="dm__x-mark" />
     </div>
   );
 };
