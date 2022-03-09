@@ -20,7 +20,6 @@ class ServerChannels extends React.Component {
   }
 
   render() {
-    // debugger;
     const mapChannelsToServer =
       this.props.server && this.props.server.channels
         ? this.props.server.channels.map((channel) => {

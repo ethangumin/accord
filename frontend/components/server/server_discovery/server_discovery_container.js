@@ -13,7 +13,6 @@ const mSTP = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
     enrolledServers: state.entities.users[state.session.id].servers,
-    // currentServer: state.entities.servers[ownProps.match.params.id],
     servers: state.entities.servers,
   };
 };

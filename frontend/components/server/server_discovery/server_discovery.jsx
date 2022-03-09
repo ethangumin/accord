@@ -18,6 +18,8 @@ export default class ServerDiscovery extends Component {
         <ServerDiscoveryBody
           requestServers={this.props.requestServers}
           servers={this.props.servers}
+          createServerMember={this.props.createServerMember}
+          currentUser={this.props.currentUser}
         />
       </div>
     );

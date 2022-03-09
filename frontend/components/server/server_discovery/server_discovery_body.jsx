@@ -26,6 +26,14 @@ class ServerDiscoveryBody extends React.Component {
     this.setState({ serverName: e.target.value });
   }
 
+  subscribeHandler(e) {
+    e.preventDefault();
+    this.props.createServerMember({
+      user_id: this.props.currentUser.id,
+      server_id: this.state.selectedServer.id,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -41,9 +49,12 @@ class ServerDiscoveryBody extends React.Component {
           <input type="submit" value="Submit" />
         </form>
         <div>
-          {this.state.selectedServer
-            ? this.state.selectedServer.serverName
-            : ""}
+          <p>
+            {this.state.selectedServer
+              ? this.state.selectedServer.serverName
+              : ""}
+          </p>
+          <button onClick={(e) => this.subscribeHandler(e)}>Subscribe</button>
         </div>
       </div>
     );
