@@ -26,7 +26,7 @@ class ServerChannels extends React.Component {
                 <div key={channel.id} className="server-channels__channel">
                   <Link
                     to={`/server/${this.props.server.id}/channel/${channel.id}`}
-                    onClick={() => this.props.fetchChannel(channel.id)}
+                    // onClick={() => this.props.fetchChannel(channel.id)}
                     className={
                       this.props.currentChannel.id === channel.id
                         ? "server-channels__active"
@@ -41,9 +41,8 @@ class ServerChannels extends React.Component {
                       />
                       <p>{channel.channelName}</p>
                     </div>
-                    {/* <p>E</p> */}
                   </Link>
-                  <p>edit</p>
+                  {/* <p>edit</p>
                   <p
                     onClick={() => this.props.deleteChannel(channel.id)}
                     // style={index === 0 ? { display: "none" } : ""}
@@ -51,7 +50,7 @@ class ServerChannels extends React.Component {
                   >
                     destroy
                   </p>
-                  {/* <p>destroy</p> */}
+                  <p>destroy</p> */}
                 </div>
               );
             })

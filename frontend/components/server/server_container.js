@@ -9,7 +9,7 @@ import {
 import Server from "./server";
 
 const mSTP = (state, ownProps) => {
-  // debugger;
+  debugger;
   return {
     currentServer: state.entities.servers[ownProps.match.params.id],
     enrolledServers: Object.values(state.entities.servers),

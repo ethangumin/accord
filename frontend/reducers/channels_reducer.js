@@ -20,9 +20,9 @@ const channelsReducer = (oldState = {}, action) => {
         newState[channel.id] = channel;
       }
       return newState;
-    case RECEIVE_CHANNEL:
-      newState = action.channel;
-      return newState;
+    // case RECEIVE_CHANNEL:
+    //   newState = action.channel;
+    //   return newState;
     // case RECEIVE_MESSAGE:
     //   debugger;
     //   newState.messages.push(action.message.id);

@@ -21,6 +21,7 @@ class Server extends React.Component {
           createServerMember={this.props.createServerMember}
           createChannel={this.props.createChannel}
           currentUser={this.props.currentUser}
+          currentChannels={this.props.currentChannels}
         />
         <ServerChannels
           currentChannels={this.props.currentChannels}

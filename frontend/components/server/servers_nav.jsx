@@ -49,16 +49,16 @@ class ServersNav extends React.Component {
                         : "/home"
                     }
                     style={{ textDecoration: "none", color: "#D4D5D6" }}
-                    onClick={
-                      this.props.requestServer
-                        ? () =>
-                            this.props
-                              .requestServer(server.id)
-                              .then(() =>
-                                this.props.fetchChannel(serverChannels[0].id)
-                              )
-                        : () => null
-                    }
+                    // onClick={
+                    //   this.props.requestServer
+                    //     ? () =>
+                    //         this.props
+                    //           .requestServer(server.id)
+                    //           .then(() =>
+                    //             this.props.fetchChannel(serverChannels[0].id)
+                    //           )
+                    //     : () => null
+                    // }
                   >
                     <div className="server-nav__item">{serverAcronym}</div>
                   </Link>
