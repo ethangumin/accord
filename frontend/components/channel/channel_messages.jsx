@@ -37,7 +37,7 @@ export default class ChannelMessages extends Component {
       prevProps.currentMessages.length !== this.props.currentMessages.length
     ) {
       this.loadChat();
-    } else if (Object.values(prevProps.currentChannel).length === 0) {
+    } else if (prevProps.currentChannel && Object.values(prevProps.currentChannel).length === 0) {
       this.loadChat();
     } else if (prevProps.currentChannel !== this.props.currentChannel) {
       this.loadChat();

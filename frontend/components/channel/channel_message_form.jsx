@@ -1,12 +1,15 @@
 import React from "react";
 
 export default class ChannelMessageForm extends React.Component {
+  // debugger;
   constructor(props) {
     super(props);
     this.state = {
-      sender_id: this.props.currentUser.id,
-      channel_id: this.props.currentChannel.id,
-      sender_username: this.props.currentUser.username,
+      sender_id: this.props.currentUser ? this.props.currentUser.id : "",
+      channel_id: this.props.currentChannel ? this.props.currentChannel.id : "",
+      sender_username: this.props.currentUser
+        ? this.props.currentUser.username
+        : "",
       body: "",
     };
   }
@@ -43,7 +46,11 @@ export default class ChannelMessageForm extends React.Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
             type="text"
-            placeholder={`Message #${this.props.currentChannel.channelName}`}
+            placeholder={`Message #${
+              this.props.currentChannel
+                ? this.props.currentChannel.channelName
+                : ""
+            }`}
             onChange={this.update("body")}
             value={this.state.body}
           />
