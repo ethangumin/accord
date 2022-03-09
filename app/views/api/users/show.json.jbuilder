@@ -9,7 +9,7 @@ json.servers do
     json.array! @servers do |server|
         json.id server.id
         json.server_name server.server_name
-        
+        json.creator_id server.creator_id
     end
 end
 json.channels do

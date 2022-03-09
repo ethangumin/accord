@@ -28,7 +28,7 @@ class ServerChannels extends React.Component {
                     to={`/server/${this.props.server.id}/channel/${channel.id}`}
                     // onClick={() => this.props.fetchChannel(channel.id)}
                     className={
-                      this.props.currentChannel.id === channel.id
+                      this.props.currentChannelId === channel.id
                         ? "server-channels__active"
                         : "server-channels__inactive"
                     }

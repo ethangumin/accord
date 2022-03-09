@@ -1,5 +1,4 @@
 import { RECEIVE_CHANNEL } from "../actions/channel_actions";
-import { RECEIVE_MESSAGE } from "../actions/message_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 import { RECEIVE_SERVER } from "../actions/server_actions";
@@ -27,13 +26,9 @@ const channelsReducer = (oldState = {}, action) => {
         return newState;
       }
       return oldState;
-    // case RECEIVE_CHANNEL:
-    //   newState = action.channel;
-    //   return newState;
-    // case RECEIVE_MESSAGE:
-    //   debugger;
-    //   newState.messages.push(action.message.id);
-    //   return newState;
+    case RECEIVE_CHANNEL:
+      newState[action.channel.id] = action.channel;
+      return newState;
     default:
       return oldState;
   }
