@@ -4,7 +4,11 @@ import { withRouter } from "react-router-dom";
 class ServerModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { serverName: `${this.props.currentUser.username}'s Server` };
+    this.state = {
+      serverName: this.props.currentUser
+        ? `${this.props.currentUser.username}'s Server`
+        : "",
+    };
     this.createServerHandler = this.createServerHandler.bind(this);
   }
 

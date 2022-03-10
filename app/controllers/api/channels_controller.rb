@@ -21,11 +21,18 @@ class Api::ChannelsController < ApplicationController
         @channel = Channel.find_by(id: params[:id])
         if @channel
             @channel.destroy
+            render :show
         end
     end
 
     def update
-        
+        # debugger
+        @channel = Channel.find_by(id: params[:id])
+        if @channel && @channel.update(channel_params)
+            render :show
+        else
+            render json: ["Channel name must be at least one character long"], status: 400
+        end
     end
 
     private

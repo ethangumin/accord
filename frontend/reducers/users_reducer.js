@@ -76,22 +76,22 @@ const usersReducer = (oldState = {}, action) => {
     //   // debugger;
     //   // channels.push(newChannel);
     //   return newState;
-    case REMOVE_CHANNEL:
-      debugger;
-      const currServer = Object.values(newState)[0].servers.find(
-        (server) => server.id === action.channel.serverId
-      );
+    // case REMOVE_CHANNEL:
+    //   debugger;
+    //   const currServer = Object.values(newState)[0].servers.find(
+    //     (server) => server.id === action.channel.serverId
+    //   );
 
-      let currChannels = currentServer.channels;
+    //   let currChannels = currentServer.channels;
 
-      for(let channel of currChannels){
-        if(channel.id === action.channelId){
-          // delete channel
-          return newState;
-        }
-      }
+    //   for(let channel of currChannels){
+    //     if(channel.id === action.channelId){
+    //       // delete channel
+    //       return newState;
+    //     }
+    //   }
 
-      return oldState;
+    //   return oldState;
     default:
       return oldState;
   }

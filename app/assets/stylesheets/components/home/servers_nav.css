@@ -23,10 +23,6 @@
   overflow-y: scroll;
 }
 
-.explore-servers {
-  margin: 0.5em;
-}
-
 .create-server,
 .explore-servers a {
   color: #31984a;
@@ -47,4 +43,27 @@
   width: 40%;
   margin: 0 auto;
   padding-top: 0.5em;
+}
+
+.server-nav__item-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.server-nav-item-bubble {
+  font-family: "Whitney-Medium";
+  position: fixed;
+  margin-left: 5em;
+  margin-top: 0.5em;
+  color: white;
+  border: 1px solid black;
+  padding: 0.6em;
+  background-color: #000000e8;
+  border-radius: 6px;
+}
+
+.server-nav-item-bubble-hidden {
+  transition: all .2s;
+  display: none;
 }

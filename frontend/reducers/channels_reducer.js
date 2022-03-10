@@ -1,4 +1,4 @@
-import { RECEIVE_CHANNEL } from "../actions/channel_actions";
+import { RECEIVE_CHANNEL, REMOVE_CHANNEL } from "../actions/channel_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 import { RECEIVE_SERVER } from "../actions/server_actions";
@@ -21,13 +21,17 @@ const channelsReducer = (oldState = {}, action) => {
       }
       return newState;
     case RECEIVE_SERVER:
-      if(action.data.channel){
+      if (action.data.channel) {
         newState[action.data.channel.id] = action.data.channel;
         return newState;
       }
       return oldState;
     case RECEIVE_CHANNEL:
+      // debugger;
       newState[action.channel.id] = action.channel;
+      return newState;
+    case REMOVE_CHANNEL:
+      delete newState[action.channelId];
       return newState;
     default:
       return oldState;

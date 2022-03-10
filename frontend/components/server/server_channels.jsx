@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
 import ChannelModal from "../modals/channel_modal";
+import EditChannelModal from "../modals/edit_channel_modal";
 
 class ServerChannels extends React.Component {
   constructor(props) {
@@ -42,15 +43,32 @@ class ServerChannels extends React.Component {
                       <p>{channel.channelName}</p>
                     </div>
                   </Link>
-                  {/* <p>edit</p>
+                  <p
+                    className={
+                      this.props.currentUser.id !== this.props.server.creatorId
+                        ? "hide-channel"
+                        : ""
+                    }
+                  >
+                    edit
+                  </p>
                   <p
                     onClick={() => this.props.deleteChannel(channel.id)}
-                    // style={index === 0 ? { display: "none" } : ""}
-                    className={index === 0 ? "hide-channel" : ""}
+                    className={
+                      index === 0 ||
+                      this.props.currentUser.id !== this.props.server.creatorId
+                        ? "hide-channel"
+                        : ""
+                    }
                   >
-                    destroy
+                    delete
                   </p>
-                  <p>destroy</p> */}
+                  <EditChannelModal
+                    currentChannel={channel}
+                    updateChannel={this.props.updateChannel}
+                    currentUserId={this.props.currentUser.id}
+                    serverCreatorId={this.props.server.creatorId}
+                  />
                 </div>
               );
             })

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ServerModal from "../modals/server_modal";
+import ServerNavItemBubble from "./server_nav_item_bubble";
 import Plus from "../../../app/assets/images/plus-solid.svg";
 import Compass from "../../../app/assets/images/compass-solid.svg";
 
@@ -9,6 +10,7 @@ class ServersNav extends React.Component {
     super(props);
     this.state = {
       ServerModal: false,
+      serverBubble: false,
     };
     this.toggleServerModal = this.toggleServerModal.bind(this);
   }
@@ -17,6 +19,10 @@ class ServersNav extends React.Component {
     e.preventDefault();
     this.setState({ ServerModal: !this.state.ServerModal });
   }
+
+  // toggleServerBubble(e) {
+  //   this.setState({ serverBubble: true });
+  // }
 
   render() {
     return (
@@ -38,30 +44,27 @@ class ServersNav extends React.Component {
                       return channel.serverId === server.id;
                     })
                   : "";
-
-                // debugger;
                 return (
-                  <Link
-                    key={server.id}
-                    to={
-                      serverChannels.length > 0
-                        ? `/server/${server.id}/channel/${serverChannels[0].id}`
-                        : "/home"
-                    }
-                    style={{ textDecoration: "none", color: "#D4D5D6" }}
-                    // onClick={
-                    //   this.props.requestServer
-                    //     ? () =>
-                    //         this.props
-                    //           .requestServer(server.id)
-                    //           .then(() =>
-                    //             this.props.fetchChannel(serverChannels[0].id)
-                    //           )
-                    //     : () => null
-                    // }
-                  >
-                    <div className="server-nav__item">{serverAcronym}</div>
-                  </Link>
+                  <div key={server.id} className="server-nav__item-div">
+                    <Link
+                      to={
+                        serverChannels.length > 0
+                          ? `/server/${server.id}/channel/${serverChannels[0].id}`
+                          : "/home"
+                      }
+                      style={{ textDecoration: "none", color: "#D4D5D6" }}
+                      onMouseEnter={() => this.setState({ serverBubble: true })}
+                      onMouseLeave={() =>
+                        this.setState({ serverBubble: false })
+                      }
+                    >
+                      <div className="server-nav__item">{serverAcronym}</div>
+                    </Link>
+                    {/* <ServerNavItemBubble
+                      serverBubbleActive={this.state.serverBubble}
+                      serverName={server.serverName}
+                    /> */}
+                  </div>
                 );
               })
             : ""}
@@ -73,11 +76,11 @@ class ServersNav extends React.Component {
           onClick={(e) => this.toggleServerModal(e)}
         />
         {/* <Link to="/server-discovery"> */}
-          <img
-            src={Compass}
-            alt="explore servers button"
-            className="server-nav__item explore-servers"
-          />
+        <img
+          src={Compass}
+          alt="explore servers button"
+          className="server-nav__item explore-servers"
+        />
         {/* </Link> */}
         <ServerModal
           active={this.state.ServerModal}

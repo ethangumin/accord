@@ -15,3 +15,10 @@ export const deleteChannel = (channelId) =>
     url: `/api/channels/${channelId}`,
     method: "DELETE",
   });
+
+export const updateChannel = (channel) =>
+  $.ajax({
+    url: `/api/channels/${channel.id}`,
+    method: "PATCH",
+    data: { channel },
+  });

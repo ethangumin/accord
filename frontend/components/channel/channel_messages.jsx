@@ -23,32 +23,36 @@ export default class ChannelMessages extends Component {
         channelInSubscriptions = true;
       }
     }
-    if (channelInSubscriptions === false) {
-      this.createSubscription();
-    }
+    // if (channelInSubscriptions === false) {
+    //   this.createSubscription();
+    // }
 
     if (this.bottom.current) {
       this.bottom.current.scrollIntoView();
     }
 
-    if (prevProps.currentChannelId !== this.props.currentChannelId) {
+    if (channelInSubscriptions === false) {
       // debugger;
+      this.createSubscription();
+      this.loadChat();
+    } else if (prevProps.currentChannelId !== this.props.currentChannelId) {
       this.loadChat();
     } else if (
       prevProps.currentMessages.length !== this.props.currentMessages.length
     ) {
-      // debugger;
       this.loadChat();
-    } else if (prevProps.currentChannel && Object.values(prevProps.currentChannel).length === 0) {
-      // debugger;
+    } else if (
+      prevProps.currentChannel &&
+      Object.values(prevProps.currentChannel).length === 0
+    ) {
       this.loadChat();
     } else if (prevProps.currentChannel !== this.props.currentChannel) {
-      // debugger;
       this.loadChat();
     }
   }
 
   createSubscription() {
+    // debugger;
     App.cable.subscriptions.create(
       {
         channel: "ChatChannel",
@@ -82,6 +86,7 @@ export default class ChannelMessages extends Component {
         App.cable.subscriptions.subscriptions[i].identifier
       ).channelId;
       if (subscriptionId === this.props.currentChannelId) {
+        // debugger;
         App.cable.subscriptions.subscriptions[i].load();
       }
     }
