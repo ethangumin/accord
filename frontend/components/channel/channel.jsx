@@ -5,17 +5,21 @@ import { withRouter } from "react-router-dom";
 
 class Channel extends React.Component {
   render() {
-    // debugger;
+    const currentChannel = this.props.currentChannels.find(
+      (channel) => channel.id === parseInt(this.props.currentChannelId)
+    );
+
+    
     return (
       <div className="channel__container">
-        <ChannelNav currentChannel={this.props.currentChannel} />
+        <ChannelNav currentChannel={currentChannel} />
         <ChannelContent
-          currentChannel={this.props.currentChannel}
+          currentChannel={currentChannel}
+          currentChannels={this.props.currentChannels}
           receiveMessage={this.props.receiveMessage}
           receiveMessages={this.props.receiveMessages}
           currentUser={this.props.currentUser}
-          currentChannelId={this.props.currentChannelId}
-          // currentChannelId={this.props.match.params.channelId}
+          currentChannelId={this.props.match.params.channelId}
           currentMessages={this.props.currentMessages}
         />
       </div>

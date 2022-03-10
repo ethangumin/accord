@@ -12,12 +12,9 @@ class ServerModal extends Component {
     e.preventDefault();
     this.props
       .createServer({ server_name: this.state.serverName })
-      .then((server) => {
-        // debugger;
-        this.props.createServerMember({ server_id: server.server.id });
-        this.props.fetchChannel(server.server.channels[0].id)
+      .then((data) => {
         this.props.history.push(
-          `/server/${server.server.id}/channel/${server.server.channels[0].id}`
+          `/server/${data.data.server.id}/channel/${data.data.channel.id}`
         );
       });
     this.props.toggleServerModal(e);

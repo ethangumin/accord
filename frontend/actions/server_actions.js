@@ -9,9 +9,9 @@ const receiveServers = (servers) => ({
   servers: servers,
 });
 
-const receiveServer = (server) => ({
+const receiveServer = (data) => ({
   type: RECEIVE_SERVER,
-  server: server,
+  data: data,
 });
 
 const removeServer = (serverId) => ({

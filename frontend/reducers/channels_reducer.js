@@ -1,16 +1,33 @@
 import { RECEIVE_CHANNEL } from "../actions/channel_actions";
-import { RECEIVE_MESSAGE } from "../actions/message_actions";
+import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
+import { RECEIVE_USER } from "../actions/user_actions";
+import { RECEIVE_SERVER } from "../actions/server_actions";
 
 const channelsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
 
   switch (action.type) {
-    case RECEIVE_CHANNEL:
-      newState = action.channel;
+    case RECEIVE_USER:
+      let channels = action.data.channels;
+      for (let channel of channels) {
+        newState[channel.id] = channel;
+      }
       return newState;
-    case RECEIVE_MESSAGE:
-      newState.messages.push(action.message.id);
+    case RECEIVE_CURRENT_USER:
+      let currChannels = action.data.channels;
+      for (let channel of currChannels) {
+        newState[channel.id] = channel;
+      }
+      return newState;
+    case RECEIVE_SERVER:
+      if(action.data.channel){
+        newState[action.data.channel.id] = action.data.channel;
+        return newState;
+      }
+      return oldState;
+    case RECEIVE_CHANNEL:
+      newState[action.channel.id] = action.channel;
       return newState;
     default:
       return oldState;

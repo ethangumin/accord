@@ -5,7 +5,9 @@ import ServerChannels from "./server_channels";
 
 class Server extends React.Component {
   componentDidMount() {
+    // debugger;
     this.props.requestServer(this.props.match.params.id);
+    this.props.fetchUser(this.props.currentUser.id);
   }
 
   render() {
@@ -21,8 +23,10 @@ class Server extends React.Component {
           createServerMember={this.props.createServerMember}
           createChannel={this.props.createChannel}
           currentUser={this.props.currentUser}
+          currentChannels={this.props.currentChannels}
         />
         <ServerChannels
+          currentChannels={this.props.currentChannels}
           server={this.props.currentServer}
           currentUser={this.props.currentUser}
           fetchChannel={this.props.fetchChannel}
@@ -30,9 +34,11 @@ class Server extends React.Component {
           currentChannelId={this.props.currentChannelId}
           currentServer={this.props.currentServer}
           createChannel={this.props.createChannel}
+          deleteChannel={this.props.deleteChannel}
         />
         <ChannelContainer
           currentChannel={this.props.currentChannel}
+          currentChannels={this.props.currentChannels}
           currentChannelId={this.props.currentChannelId}
         />
       </div>

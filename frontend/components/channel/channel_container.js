@@ -3,11 +3,11 @@ import { receiveMessage, receiveMessages } from "../../actions/message_actions";
 import Channel from "./channel";
 
 const mSTP = (state, ownProps) => {
-  // debugger;
   return {
     currentUser: state.entities.users[state.session.id],
     currentMessages: state.entities.messages,
     currentChannelId: ownProps.currentChannelId,
+    currentChannels: ownProps.currentChannels
   };
 };
 

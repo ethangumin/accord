@@ -7,7 +7,16 @@ class Api::SessionsController < ApplicationController
             params[:user][:password]
         )
 
+        # debugger
         if @user
+            @servers = @user.servers_enrolled
+            @channels = []
+
+            @servers.each do |server|
+                @channels << server.channels
+            end
+            
+            @channels = @channels.flatten
             login!(@user)
             render "api/users/show.json.jbuilder"
         else

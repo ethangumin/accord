@@ -2,6 +2,14 @@ class Api::UsersController < ApplicationController
     def show
         @user = User.find_by(id: params[:id])
         if @user
+            @servers = @user.servers_enrolled
+            @channels = []
+
+            @servers.each do |server|
+                @channels << server.channels
+            end
+            
+            @channels = @channels.flatten
             render :show
         else
             render json: ["No user found"], status: 404

@@ -32,14 +32,18 @@ export default class ChannelMessages extends Component {
     }
 
     if (prevProps.currentChannelId !== this.props.currentChannelId) {
+      // debugger;
       this.loadChat();
     } else if (
       prevProps.currentMessages.length !== this.props.currentMessages.length
     ) {
+      // debugger;
       this.loadChat();
-    } else if (Object.values(prevProps.currentChannel).length === 0) {
+    } else if (prevProps.currentChannel && Object.values(prevProps.currentChannel).length === 0) {
+      // debugger;
       this.loadChat();
     } else if (prevProps.currentChannel !== this.props.currentChannel) {
+      // debugger;
       this.loadChat();
     }
   }
@@ -84,7 +88,6 @@ export default class ChannelMessages extends Component {
   }
 
   render() {
-    // debugger;
     const messageList = this.props.currentMessages
       ? Object.values(this.props.currentMessages).map((message, index) => {
           return (
@@ -112,6 +115,8 @@ export default class ChannelMessages extends Component {
           currentChannel={this.props.currentChannel}
           sendMessage={this.props.sendMessage}
           currentUser={this.props.currentUser}
+          currentChannels={this.props.currentChannels}
+          currentChannelId={this.props.currentChannelId}
         />
       </div>
     );

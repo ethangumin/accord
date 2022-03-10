@@ -33,25 +33,32 @@ class ServersNav extends React.Component {
                   .map((word) => word[0])
                   .join("");
 
+                const serverChannels = this.props.currentChannels
+                  ? this.props.currentChannels.filter((channel) => {
+                      return channel.serverId === server.id;
+                    })
+                  : "";
+
+                // debugger;
                 return (
                   <Link
                     key={server.id}
                     to={
-                      server.channels.length > 0
-                        ? `/server/${server.id}/channel/${server.channels[0].id}`
+                      serverChannels.length > 0
+                        ? `/server/${server.id}/channel/${serverChannels[0].id}`
                         : "/home"
                     }
                     style={{ textDecoration: "none", color: "#D4D5D6" }}
-                    onClick={
-                      this.props.requestServer
-                        ? () =>
-                            this.props
-                              .requestServer(server.id)
-                              .then(() =>
-                                this.props.fetchChannel(server.channels[0].id)
-                              )
-                        : () => null
-                    }
+                    // onClick={
+                    //   this.props.requestServer
+                    //     ? () =>
+                    //         this.props
+                    //           .requestServer(server.id)
+                    //           .then(() =>
+                    //             this.props.fetchChannel(serverChannels[0].id)
+                    //           )
+                    //     : () => null
+                    // }
                   >
                     <div className="server-nav__item">{serverAcronym}</div>
                   </Link>
@@ -65,13 +72,13 @@ class ServersNav extends React.Component {
           className="server-nav__item create-server"
           onClick={(e) => this.toggleServerModal(e)}
         />
-        <Link to="/server-discovery">
+        {/* <Link to="/server-discovery"> */}
           <img
             src={Compass}
             alt="explore servers button"
             className="server-nav__item explore-servers"
           />
-        </Link>
+        {/* </Link> */}
         <ServerModal
           active={this.state.ServerModal}
           toggleServerModal={this.toggleServerModal}
