@@ -42,15 +42,13 @@ class ServerChannels extends React.Component {
                       <p>{channel.channelName}</p>
                     </div>
                   </Link>
-                  {/* <p>edit</p>
+                  <p>edit</p>
                   <p
                     onClick={() => this.props.deleteChannel(channel.id)}
-                    // style={index === 0 ? { display: "none" } : ""}
                     className={index === 0 ? "hide-channel" : ""}
                   >
-                    destroy
+                    delete
                   </p>
-                  <p>destroy</p> */}
                 </div>
               );
             })

@@ -21,6 +21,7 @@ class Api::ChannelsController < ApplicationController
         @channel = Channel.find_by(id: params[:id])
         if @channel
             @channel.destroy
+            render :show
         end
     end
 

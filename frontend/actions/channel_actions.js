@@ -9,7 +9,7 @@ const receiveChannel = (channel) => ({
 });
 
 const removeChannel = (channelId) => ({
-  type: RECEIVE_CHANNEL,
+  type: REMOVE_CHANNEL,
   channelId: channelId,
 });
 
@@ -24,6 +24,6 @@ export const createChannel = (channel) => (dispatch) =>
   );
 
 export const deleteChannel = (channelId) => (dispatch) =>
-  ChannelApiUtil.deleteChannel(channelId).then((channelId) =>
-    dispatch(removeChannel(channelId))
+  ChannelApiUtil.deleteChannel(channelId).then((channel) =>
+    dispatch(removeChannel(channel.id))
   );
