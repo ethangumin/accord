@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
 import DeleteBtn from "../../../app/assets/images/xmark-solid.svg";
 import EditBtn from "../../../app/assets/images/pen-to-square-solid.svg";
@@ -56,7 +56,20 @@ class ServerChannels extends React.Component {
                     <img
                       src={DeleteBtn}
                       alt="delete channel button"
-                      onClick={() => this.props.deleteChannel(channel.id)}
+                      onClick={() =>
+                        this.props
+                          .deleteChannel(channel.id)
+                          .then(() =>
+                            this.props.history.push(
+                              `/server/${this.props.server.id}/channel/${
+                                this.props.currentChannels.find(
+                                  (channel) =>
+                                    channel.server_id === this.props.serverId
+                                ).id
+                              }`
+                            )
+                          )
+                      }
                       className={
                         index === 0 ||
                         this.props.currentUser.id !==
@@ -127,4 +140,4 @@ class ServerChannels extends React.Component {
   }
 }
 
-export default ServerChannels;
+export default withRouter(ServerChannels);
