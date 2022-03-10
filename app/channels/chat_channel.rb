@@ -11,7 +11,6 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def update(data)
-    
   end
 
   def destroy(data)

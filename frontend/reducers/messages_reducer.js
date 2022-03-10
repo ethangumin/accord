@@ -10,7 +10,8 @@ const messagesReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_MESSAGE:
-      return action.message;
+      newState[action.message.id] = action.message;
+      return newState;
     case RECEIVE_MESSAGES:
       return action.messages;
     case REMOVE_MESSAGE:
