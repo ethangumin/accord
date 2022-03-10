@@ -93,6 +93,7 @@ export default class ChannelMessages extends Component {
   }
 
   render() {
+    // debugger;
     const messageList = this.props.currentMessages
       ? Object.values(this.props.currentMessages).map((message, index) => {
           return (
