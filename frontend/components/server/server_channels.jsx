@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
 import ChannelModal from "../modals/channel_modal";
+import EditChannelModal from "../modals/edit_channel_modal";
 
 class ServerChannels extends React.Component {
   constructor(props) {
@@ -62,6 +63,12 @@ class ServerChannels extends React.Component {
                   >
                     delete
                   </p>
+                  <EditChannelModal
+                    currentChannel={channel}
+                    updateChannel={this.props.updateChannel}
+                    currentUserId={this.props.currentUser.id}
+                    serverCreatorId={this.props.server.creatorId}
+                  />
                 </div>
               );
             })

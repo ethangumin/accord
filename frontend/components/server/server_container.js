@@ -5,6 +5,7 @@ import {
   fetchChannel,
   createChannel,
   deleteChannel,
+  updateChannel,
 } from "../../actions/channel_actions";
 import Server from "./server";
 import { fetchUser } from "../../actions/user_actions";
@@ -30,6 +31,7 @@ const mDTP = (dispatch) => ({
   createChannel: (channel) => dispatch(createChannel(channel)),
   deleteChannel: (channelId) => dispatch(deleteChannel(channelId)),
   fetchUser: (userId) => dispatch(fetchUser(userId)),
+  updateChannel: (channel) => dispatch(updateChannel(channel)),
 });
 
 export default connect(mSTP, mDTP)(Server);

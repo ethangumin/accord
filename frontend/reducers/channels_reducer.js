@@ -27,10 +27,10 @@ const channelsReducer = (oldState = {}, action) => {
       }
       return oldState;
     case RECEIVE_CHANNEL:
+      // debugger;
       newState[action.channel.id] = action.channel;
       return newState;
     case REMOVE_CHANNEL:
-      debugger;
       delete newState[action.channelId];
       return newState;
     default:
