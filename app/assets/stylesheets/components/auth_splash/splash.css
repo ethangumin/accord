@@ -24,7 +24,6 @@
 .splash__header h1 {
   font-size: 1.4rem;
   font-family: "Whitney-Bold";
-  cursor: pointer;
   padding-left: 0.25em;
 }
 
@@ -111,4 +110,9 @@
 .splash__open-browser-btn:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
   background-color: #292b30;
+}
+
+.social-link {
+  text-decoration: none;
+  color: white;
 }

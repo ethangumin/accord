@@ -14,12 +14,24 @@ const Splash = ({ currentUser, logout }) => {
             <h1>Accord</h1>
           </div>
           <ul className="splash__nav">
-            <li>Download</li>
-            <li>Nitro</li>
-            <li>Safety</li>
-            <li>Support</li>
-            <li>Blog</li>
-            <li>Careers</li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/ethan-gumin-2959b996/"
+                className="social-link"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ethangumin" className="social-link">
+                Github
+              </a>
+            </li>
+            <li>
+              <a href="https://angel.co/u/ethan-gumin" className="social-link">
+                AngelList
+              </a>
+            </li>
           </ul>
           <Link
             className="splash__enter-btn"
@@ -37,16 +49,20 @@ const Splash = ({ currentUser, logout }) => {
             sequi fugiat tenetur quasi quis?
           </p>
           <div className="splash__btns">
-            <input
-              type="button"
-              value="Download"
-              className="splash__download-btn"
-            />
-            <input
-              type="button"
-              value="Open Accord in your browser"
-              className="splash__open-browser-btn"
-            />
+            <Link to={currentUser ? "/home" : "/login"}>
+              <input
+                type="button"
+                value="Jump In"
+                className="splash__download-btn"
+              />
+            </Link>
+            <Link to={currentUser ? "/home" : "/login"}>
+              <input
+                type="button"
+                value="Open Accord in your browser"
+                className="splash__open-browser-btn"
+              />
+            </Link>
           </div>
         </div>
       </div>
