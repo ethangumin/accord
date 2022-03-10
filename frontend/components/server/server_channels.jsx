@@ -33,14 +33,22 @@ class ServerChannels extends React.Component {
             .filter((channel) => channel.serverId === this.props.server.id)
             .map((channel, index) => {
               return (
-                <div key={channel.id} className="server-channels__channel">
+                <div
+                  key={channel.id}
+                  className={
+                    this.props.currentChannelId === channel.id
+                      ? "server-channels__active server-channels__channel"
+                      : "server-channels__inactive server-channels__channel"
+                  }
+                >
                   <Link
                     to={`/server/${this.props.server.id}/channel/${channel.id}`}
-                    className={
-                      this.props.currentChannelId === channel.id
-                        ? "server-channels__active"
-                        : "server-channels__inactive"
-                    }
+                    // className={
+                    //   this.props.currentChannelId === channel.id
+                    //     ? "server-channels__active"
+                    //     : "server-channels__inactive"
+                    // }
+                    className="server-channels__route"
                   >
                     <div className="server-channels__name-hash">
                       <img
@@ -51,27 +59,31 @@ class ServerChannels extends React.Component {
                       <p>{channel.channelName}</p>
                     </div>
                   </Link>
-                  <img
-                    src={EditBtn}
-                    alt="edit channel"
-                    className={
-                      this.props.currentUser.id !== this.props.server.creatorId
-                        ? "hide-channel"
-                        : ""
-                    }
-                    onClick={() => this.toggleEditChannelModal()}
-                  />
-                  <img
-                    src={DeleteBtn}
-                    alt="delete channel button"
-                    onClick={() => this.props.deleteChannel(channel.id)}
-                    className={
-                      index === 0 ||
-                      this.props.currentUser.id !== this.props.server.creatorId
-                        ? "hide-channel"
-                        : ""
-                    }
-                  />
+                  <div>
+                    <img
+                      src={DeleteBtn}
+                      alt="delete channel button"
+                      onClick={() => this.props.deleteChannel(channel.id)}
+                      className={
+                        index === 0 ||
+                        this.props.currentUser.id !==
+                          this.props.server.creatorId
+                          ? "hide-channel"
+                          : "delete-channel-btn"
+                      }
+                    />
+                    <img
+                      src={EditBtn}
+                      alt="edit channel"
+                      className={
+                        this.props.currentUser.id !==
+                        this.props.server.creatorId
+                          ? "hide-channel"
+                          : "edit-channel-btn"
+                      }
+                      onClick={() => this.toggleEditChannelModal()}
+                    />
+                  </div>
                   <EditChannelModal
                     currentChannel={channel}
                     updateChannel={this.props.updateChannel}

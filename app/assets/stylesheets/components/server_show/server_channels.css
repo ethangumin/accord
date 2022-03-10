@@ -24,6 +24,12 @@
   justify-content: space-between;
 }
 
+.server-channels__channel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .server-channels__channel a {
   display: flex;
   align-items: center;
@@ -34,6 +40,11 @@
   border-radius: 3px;
   text-decoration: none;
   /* justify-content: space-between; */
+}
+
+.server-channels__route {
+  text-decoration: none;
+  color: #7b7f85;
 }
 
 .server-channels__channel a:hover {
@@ -51,6 +62,10 @@
   border: 1px solid #2b2e33;
   background-color: #2b2e33;
   border-radius: 3px;
+  color: white;
+}
+
+.server-channels__active a {
   color: white;
 }
 
@@ -104,4 +119,17 @@
 
 .server-channels__curr-user p + p {
   margin-left: 0.4em;
+}
+
+.edit-channel-btn {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 0.1em;
+  cursor: pointer;
+}
+
+.delete-channel-btn {
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
 }
