@@ -42,10 +42,23 @@ class ServerChannels extends React.Component {
                       <p>{channel.channelName}</p>
                     </div>
                   </Link>
-                  <p>edit</p>
+                  <p
+                    className={
+                      this.props.currentUser.id !== this.props.server.creatorId
+                        ? "hide-channel"
+                        : ""
+                    }
+                  >
+                    edit
+                  </p>
                   <p
                     onClick={() => this.props.deleteChannel(channel.id)}
-                    className={index === 0 ? "hide-channel" : ""}
+                    className={
+                      index === 0 ||
+                      this.props.currentUser.id !== this.props.server.creatorId
+                        ? "hide-channel"
+                        : ""
+                    }
                   >
                     delete
                   </p>
