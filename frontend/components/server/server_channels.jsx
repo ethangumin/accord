@@ -15,12 +15,10 @@ class ServerChannels extends React.Component {
   }
 
   toggleChannelModal() {
-    // e.preventDefault();
     this.setState({ channelModalActive: !this.state.channelModalActive });
   }
 
   toggleEditChannelModal() {
-    // e.preventDefault();
     this.setState({
       editChannelModalActive: !this.state.editChannelModalActive,
     });
@@ -43,11 +41,6 @@ class ServerChannels extends React.Component {
                 >
                   <Link
                     to={`/server/${this.props.server.id}/channel/${channel.id}`}
-                    // className={
-                    //   this.props.currentChannelId === channel.id
-                    //     ? "server-channels__active"
-                    //     : "server-channels__inactive"
-                    // }
                     className="server-channels__route"
                   >
                     <div className="server-channels__name-hash">
@@ -116,7 +109,6 @@ class ServerChannels extends React.Component {
             <div className="server-channels__text-channels-header">
               <p>TEXT CHANNELS</p>
               {createChannelButton}
-              {/* <p onClick={(e) => this.toggleChannelModal(e)}>+</p> */}
             </div>
             <ul>{mapChannelsToServer}</ul>
           </div>

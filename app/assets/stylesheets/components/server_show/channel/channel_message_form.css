@@ -4,7 +4,6 @@
 
 .channel_content_messages_form__container input {
   width: -webkit-fill-available;
-  /* width: 94%; */
   margin: 0 1em;
   font-size: 1rem;
   padding: 0.7em;

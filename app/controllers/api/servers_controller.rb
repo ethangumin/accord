@@ -15,7 +15,6 @@ class Api::ServersController < ApplicationController
     end
 
     def create
-        # debugger
         @server = Server.new(server_params)
         @server.creator_id = current_user.id
         if @server.save

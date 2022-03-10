@@ -23,16 +23,12 @@ export default class ChannelMessages extends Component {
         channelInSubscriptions = true;
       }
     }
-    // if (channelInSubscriptions === false) {
-    //   this.createSubscription();
-    // }
 
     if (this.bottom.current) {
       this.bottom.current.scrollIntoView();
     }
 
     if (channelInSubscriptions === false) {
-      // debugger;
       this.createSubscription();
       this.loadChat();
     } else if (prevProps.currentChannelId !== this.props.currentChannelId) {
@@ -52,7 +48,6 @@ export default class ChannelMessages extends Component {
   }
 
   createSubscription() {
-    // debugger;
     App.cable.subscriptions.create(
       {
         channel: "ChatChannel",
@@ -86,14 +81,12 @@ export default class ChannelMessages extends Component {
         App.cable.subscriptions.subscriptions[i].identifier
       ).channelId;
       if (subscriptionId === this.props.currentChannelId) {
-        // debugger;
         App.cable.subscriptions.subscriptions[i].load();
       }
     }
   }
 
   render() {
-    // debugger;
     const messageList = this.props.currentMessages
       ? Object.values(this.props.currentMessages).map((message, index) => {
           return (

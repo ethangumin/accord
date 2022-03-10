@@ -9,7 +9,6 @@ import {
 } from "../../../actions/server_actions";
 
 const mSTP = (state) => {
-  // debugger;
   return {
     currentUser: state.entities.users[state.session.id],
     enrolledServers: state.entities.users[state.session.id].servers,

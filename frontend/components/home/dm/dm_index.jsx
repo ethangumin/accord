@@ -2,8 +2,6 @@ import React from "react";
 import Dm from "./dm";
 
 const DmIndex = ({ friends, currentUser }) => {
-  // debugger;
-
   const user = currentUser.id ? currentUser : currentUser.user;
   return (
     <div className="server-index__dm">

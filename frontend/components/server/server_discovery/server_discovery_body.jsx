@@ -19,7 +19,6 @@ class ServerDiscoveryBody extends React.Component {
         break;
       }
     }
-    console.log("No server with that name");
   }
 
   updateFieldHandler(e) {

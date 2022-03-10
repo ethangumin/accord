@@ -7,7 +7,6 @@ class Api::SessionsController < ApplicationController
             params[:user][:password]
         )
 
-        # debugger
         if @user
             @servers = @user.servers_enrolled
             @channels = []

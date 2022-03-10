@@ -7,7 +7,6 @@ import { fetchUser } from "../../actions/user_actions";
 import { createChannel, fetchChannel } from "../../actions/channel_actions";
 
 const mSTP = (state) => {
-  // debugger;
   return {
     currentUser: state.entities.users[state.session.id],
     enrolledServers: Object.values(state.entities.servers),

@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 
 class ChannelNav extends React.Component {
   logoutHandler(e) {
-    // debugger;
     e.preventDefault();
     this.props.logout();
     this.props.history.push("/");
@@ -32,22 +31,3 @@ class ChannelNav extends React.Component {
 }
 
 export default withRouter(ChannelNav);
-
-// const ChannelNav = ({ currentChannel, logout }) => {
-//   const logoutHandler = (e) => {
-//     debugger;
-//     e.preventDefault();
-//     logout();
-//     props.history.push("/");
-//   };
-
-//   return (
-//     <div className="channel-nav__container">
-//       <img src={Hashtag} alt="hashtag" className="channel-pound" />
-//       <p>{currentChannel ? currentChannel.channelName : ""}</p>
-//       <input type="button" value="Logout" onClick={(e) => logoutHandler(e)} />
-//     </div>
-//   );
-// };
-
-// export default withRouter(ChannelNav);

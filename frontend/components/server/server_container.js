@@ -11,7 +11,6 @@ import Server from "./server";
 import { fetchUser } from "../../actions/user_actions";
 
 const mSTP = (state, ownProps) => {
-  // debugger;
   return {
     currentServer: state.entities.servers[ownProps.match.params.id],
     enrolledServers: Object.values(state.entities.servers),
