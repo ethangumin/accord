@@ -9,10 +9,12 @@ class Channel extends React.Component {
       (channel) => channel.id === parseInt(this.props.currentChannelId)
     );
 
-    
     return (
       <div className="channel__container">
-        <ChannelNav currentChannel={currentChannel} />
+        <ChannelNav
+          currentChannel={currentChannel}
+          logout={this.props.logout}
+        />
         <ChannelContent
           currentChannel={currentChannel}
           currentChannels={this.props.currentChannels}

@@ -2,12 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect, withRouter, Route } from "react-router-dom";
 
+// Once you make a home page, Auth route redirect to home
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
   <Route
     path={path}
     exact={exact}
     render={(props) =>
-      !loggedIn ? <Component {...props} /> : <Redirect to="/home" />
+      !loggedIn ? <Component {...props} /> : <Redirect to="/server/1/channel/1" />
     }
   />
 );

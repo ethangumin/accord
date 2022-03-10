@@ -27,10 +27,10 @@ class ServersNav extends React.Component {
   render() {
     return (
       <ul className="server-index__servers-nav">
-        <Link to="/home" style={{ textDecoration: "none", color: "#D4D5D6" }}>
+        {/* <Link to="/home" style={{ textDecoration: "none", color: "#D4D5D6" }}>
           <li className="server-nav__item">Home</li>
         </Link>
-        <li className="home-button-separator"></li>
+        <li className="home-button-separator"></li> */}
         <div className="server-nav__servers">
           {this.props.enrolledServers
             ? this.props.enrolledServers.map((server) => {
@@ -76,11 +76,11 @@ class ServersNav extends React.Component {
           onClick={(e) => this.toggleServerModal(e)}
         />
         {/* <Link to="/server-discovery"> */}
-        <img
+        {/* <img
           src={Compass}
           alt="explore servers button"
           className="server-nav__item explore-servers"
-        />
+        /> */}
         {/* </Link> */}
         <ServerModal
           active={this.state.ServerModal}

@@ -6,10 +6,33 @@
   font-size: 1.2rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #292b30;
   border-bottom: 1px solid black;
 }
 
 .channel-nav__container p {
-    padding-top: 0.12em;
+  padding-top: 0.12em;
+}
+
+.channel-nav__channel-name {
+  display: flex;
+  align-items: center;
+}
+
+.channel-nav__container input[type="button"] {
+  font-family: "Whitney-Book";
+  font-size: 0.95rem;
+  border: 1px solid #30964a;
+  border-radius: 4px;
+  background-color: #30964a;
+  color: white;
+  padding: 0.25em 0.4em;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.channel-nav__container input[type="button"]:hover {
+  border: 1px solid #309649da;
+  background-color: #309649da;
 }

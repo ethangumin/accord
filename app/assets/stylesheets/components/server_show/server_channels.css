@@ -8,10 +8,11 @@
 .server-channels__header {
   border-bottom: 1px solid black;
   color: white;
-  height: 6vh;
+  height: 5.5vh;
   font-family: "Whitney-Semibold";
   padding: 0.6em;
   font-size: 1.2rem;
+  margin-top: 0.2em;
 }
 
 .server-channels__channels-idx {
