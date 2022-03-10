@@ -31,6 +31,7 @@ export default class ChannelMessages extends Component {
       this.bottom.current.scrollIntoView();
     }
 
+    // debugger
     if (prevProps.currentChannelId !== this.props.currentChannelId) {
       // debugger;
       this.loadChat();
@@ -39,7 +40,10 @@ export default class ChannelMessages extends Component {
     ) {
       // debugger;
       this.loadChat();
-    } else if (prevProps.currentChannel && Object.values(prevProps.currentChannel).length === 0) {
+    } else if (
+      prevProps.currentChannel &&
+      Object.values(prevProps.currentChannel).length === 0
+    ) {
       // debugger;
       this.loadChat();
     } else if (prevProps.currentChannel !== this.props.currentChannel) {

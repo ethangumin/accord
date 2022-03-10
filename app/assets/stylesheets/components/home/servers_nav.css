@@ -23,10 +23,6 @@
   overflow-y: scroll;
 }
 
-.explore-servers {
-  margin: 0.5em;
-}
-
 .create-server,
 .explore-servers a {
   color: #31984a;
