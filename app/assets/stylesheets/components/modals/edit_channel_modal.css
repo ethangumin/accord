@@ -1,0 +1,54 @@
+.edit-channel-modal__bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000000bf;
+}
+
+.edit-channel-modal__hide {
+  display: none;
+}
+
+.edit-channel-modal {
+  background-color: #292b30;
+  padding: 1em;
+  border-radius: 3px;
+  width: fit-content;
+}
+
+.edit-channel-modal input[type="text"] {
+  margin: 0.55em 0;
+  padding: 0.5em;
+  border: 1px solid #4f515c;
+  border-right: none;
+  background-color: #4f515c;
+  color: #d4d5d6;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.edit-channel-modal__submit {
+  padding: 0.49em;
+  margin-top: 0.5em;
+  margin-left: auto;
+  border: 1px solid #4549ef;
+  background-color: #4549ef;
+  color: white;
+  font-family: "Whitney-Book";
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.edit-channel-modal__submit:hover {
+  border: 1px solid #4548efc4;
+  background-color: #4548efc4;
+}
