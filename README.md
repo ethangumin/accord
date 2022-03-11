@@ -1,24 +1,38 @@
-# README
+# Accord
+[Accord](https://accord-app-1.herokuapp.com/#/) is a clone of the instant messaging platform, Discord. Using Accord, users are able to create servers and channels, and can communicate with each other via group messaging.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+------
+## Technologies Utilized
+------
+Frontend
++ React
++ CSS
++ Redux
 
-Things you may want to cover:
+Backend
++ PostgreSQL
++ Rails
 
-* Ruby version
+Live Chat
++ Action Cable
 
-* System dependencies
+------
+## Key Features
+------
+## Live Chat
 
-* Configuration
+Users can instant message each other through channels located within servers.
 
-* Database creation
+![Live Chat Demo](./app/assets/images/gifs/accord-live-chat-demo.gif)
 
-* Database initialization
+## Channels
 
-* How to run the test suite
+Users can create, update, and delete channels in servers that they've created. They can also view others' servers and channels.
 
-* Services (job queues, cache servers, search engines, etc.)
+![Channels Crud Demo](./app/assets/images/gifs/accord-channel-crud-demo.gif)
 
-* Deployment instructions
+## Servers
 
-* ...
+Users can create and view servers.
+
+![Create Live Server Demo](./app/assets/images/gifs/accord-create-server-demo.gif)
