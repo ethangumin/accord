@@ -1,9 +1,8 @@
 # Accord
 [Accord](https://accord-app-1.herokuapp.com/#/) is a clone of the instant messaging platform, Discord. Using Accord, users are able to create servers and channels, and can communicate with each other via group messaging.
 
-------
 ## Technologies Utilized
-------
+
 Frontend
 + React
 + CSS
@@ -16,9 +15,9 @@ Backend
 Live Chat
 + Action Cable
 
-------
+
 ## Key Features
-------
+
 ## Live Chat
 
 Users can instant message each other through channels located within servers.
