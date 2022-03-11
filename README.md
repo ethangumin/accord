@@ -18,20 +18,28 @@ Live Chat
 
 ## Key Features
 
-## Live Chat
+### Live Chat
 
 Users can instant message each other through channels located within servers.
 
 ![Live Chat Demo](./app/assets/images/gifs/accord-live-chat-demo.gif)
 
-## Channels
+### Channels
 
 Users can create, update, and delete channels in servers that they've created. They can also view others' servers and channels.
 
 ![Channels Crud Demo](./app/assets/images/gifs/accord-channel-crud-demo.gif)
 
-## Servers
+### Servers
 
 Users can create and view servers.
 
 ![Create Live Server Demo](./app/assets/images/gifs/accord-create-server-demo.gif)
+
+## Future Plans
+
++ Search for server
++ Friends list
+  + Add Friend
+  + DM between friends
++ Profile Images
