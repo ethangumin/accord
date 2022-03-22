@@ -5,6 +5,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta property="og:title" content="Accord" />
+     <meta property='og:image' content="<%= image_url('project_pic.png') %>"/>
+     <meta property="og:description"
+       content="Accord is a clone of the instant messaging platform, Discord. Using Accord, users are able to create servers and channels, and can communicate with each other via group messaging."
+     />
+     <meta property="og:url"
+       content="https://accord-app-1.herokuapp.com/#/"
+     />
+
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag "discord-brands-favicon.svg" %>
