@@ -12,6 +12,10 @@ export default class LoginForm extends Component {
     this.loginGuestHandler = this.loginGuestHandler.bind(this);
   }
 
+  componentDidMount(){
+    this.props.clearSessionErrors();
+  }
+
   componentDidUpdate() {
     if (this.props.activeUser) {
       this.props.history.push("/home");
