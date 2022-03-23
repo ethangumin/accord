@@ -12,6 +12,10 @@ export default class SignupForm extends Component {
     this.submitHandler = this.submitHandler.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearSessionErrors();
+  }
+
   componentDidUpdate() {
     if (this.props.activeUser) {
       this.props.history.push("/home");
