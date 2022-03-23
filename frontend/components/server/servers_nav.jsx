@@ -25,6 +25,7 @@ class ServersNav extends React.Component {
   // }
 
   render() {
+    // debugger;
     return (
       <ul className="server-index__servers-nav">
         <Link to="/home" style={{ textDecoration: "none", color: "#D4D5D6" }}>
