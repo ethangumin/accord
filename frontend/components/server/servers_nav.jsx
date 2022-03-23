@@ -3,13 +3,20 @@ import { Link } from "react-router-dom";
 import ServerModal from "../modals/server_modal";
 import ServerNavItemBubble from "./server_nav_item_bubble";
 import Plus from "../../../app/assets/images/plus-solid.svg";
-import EditDeleteServerContextMenu from "./edit_delete_server_modal";
+import EditDeleteServerContextMenu from "./edit_delete_server_context_menu";
 
 const ServersNav = (props) => {
   const [serverModal, setServerModal] = useState(false);
   const [serverBubble, setServerBubble] = useState(false);
   const [editDeleteMenu, setEditDeleteMenu] = useState(false);
   const [serverPos, setServerPos] = useState({ x: "0px", y: "0px" });
+
+  useEffect(() => {
+    window.addEventListener("click", (e) => {
+      e.preventDefault();
+      setEditDeleteMenu(false);
+    })
+  }, [])
 
   const toggleServerModal = (e) => {
     e.preventDefault();
@@ -22,7 +29,7 @@ const ServersNav = (props) => {
     const yPos = e.pageX + "px";
 
     setServerPos({ x: xPos, y: yPos });
-    setEditDeleteMenu(!editDeleteMenu);
+    setEditDeleteMenu(true);
   };
 
   return (

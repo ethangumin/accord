@@ -4,11 +4,14 @@ const EditDeleteServerContextMenu = (props) => {
   return (
     <div
       className={
-        props.status ? "edit-delete-server-modal__container" : "hidden"
+        props.status ? "edit-delete-server-ctx-menu__container" : "hidden"
       }
       style={props.style}
     >
-      <form>EditDeleteServerContextMenu</form>
+      <div className="edit-delete-server-ctx-menu">
+        <p>Edit Server</p>
+        <p>Delete Server</p>
+      </div>
     </div>
   );
 };
