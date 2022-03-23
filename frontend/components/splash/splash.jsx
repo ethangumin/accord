@@ -35,8 +35,8 @@ const Splash = ({ currentUser, logout }) => {
           </ul>
           <Link
             className="splash__enter-btn"
-            // to={currentUser ? "/home" : "/login"}
-            to={currentUser ? "/server/1/channel/1" : "/login"}
+            to={currentUser ? "/home" : "/login"}
+            // to={currentUser ? "/server/1/channel/1" : "/login"}
           >
             {enterButton}
           </Link>
@@ -50,16 +50,16 @@ const Splash = ({ currentUser, logout }) => {
             sequi fugiat tenetur quasi quis?
           </p>
           <div className="splash__btns">
-            <Link to={currentUser ? "/server/1/channel/1" : "/login"}>
-              {/* <Link to={currentUser ? "/home" : "/login"}> */}
+            {/* <Link to={currentUser ? "/server/1/channel/1" : "/login"}> */}
+            <Link to={currentUser ? "/home" : "/login"}>
               <input
                 type="button"
                 value="Jump In"
                 className="splash__download-btn"
               />
             </Link>
-            <Link to={currentUser ? "/server/1/channel/1" : "/login"}>
-              {/* <Link to={currentUser ? "/home" : "/login"}> */}
+            {/* <Link to={currentUser ? "/server/1/channel/1" : "/login"}> */}
+            <Link to={currentUser ? "/home" : "/login"}>
               <input
                 type="button"
                 value="Open Accord in your browser"
