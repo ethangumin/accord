@@ -10,26 +10,28 @@ const ServersNav = (props) => {
   const [serverBubble, setServerBubble] = useState(false);
   const [editDeleteMenu, setEditDeleteMenu] = useState(false);
   const [serverPos, setServerPos] = useState({ x: "0px", y: "0px" });
+  const [ctxServer, setCtxServer] = useState(null);
 
   useEffect(() => {
     window.addEventListener("click", (e) => {
       e.preventDefault();
       setEditDeleteMenu(false);
-    })
-  }, [])
+    });
+  }, []);
 
   const toggleServerModal = (e) => {
     e.preventDefault();
     setServerModal(!serverModal);
   };
 
-  const toggleEditDeleteServer = (e) => {
+  const toggleEditDeleteServer = (e, serverId) => {
     e.preventDefault();
     const xPos = e.pageY + "px";
     const yPos = e.pageX + "px";
 
     setServerPos({ x: xPos, y: yPos });
     setEditDeleteMenu(true);
+    setCtxServer(serverId);
   };
 
   return (
@@ -55,7 +57,7 @@ const ServersNav = (props) => {
                 <div
                   key={server.id}
                   className="server-nav__item-div"
-                  onContextMenu={(e) => toggleEditDeleteServer(e)}
+                  onContextMenu={(e) => toggleEditDeleteServer(e, server.id)}
                 >
                   <Link
                     to={
@@ -96,6 +98,7 @@ const ServersNav = (props) => {
       <EditDeleteServerContextMenu
         style={{ top: serverPos.x, left: serverPos.y }}
         status={editDeleteMenu}
+        ctxServer={ctxServer}
       />
     </ul>
   );
