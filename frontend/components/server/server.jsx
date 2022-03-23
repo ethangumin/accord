@@ -5,7 +5,6 @@ import ServerChannels from "./server_channels";
 
 class Server extends React.Component {
   componentDidMount() {
-    debugger;
     this.props.requestServer(this.props.match.params.id);
     this.props.fetchUser(this.props.currentUser.id);
   }
