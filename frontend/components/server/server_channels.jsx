@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
-import DeleteBtn from "../../../app/assets/images/xmark-solid.svg";
-import EditBtn from "../../../app/assets/images/pen-to-square-solid.svg";
+import Gear from '../../../app/assets/images/gear-solid.svg';
 import ChannelModal from "../modals/channel_modal";
 import EditChannelModal from "../modals/edit_channel_modal";
 
@@ -47,31 +46,7 @@ const ServerChannels = (props) => {
                 </Link>
                 <div>
                   <img
-                    src={DeleteBtn}
-                    alt="delete channel button"
-                    onClick={() =>
-                      props
-                        .deleteChannel(channel.id)
-                        .then(() =>
-                          props.history.push(
-                            `/server/${props.server.id}/channel/${
-                              props.currentChannels.find(
-                                (channel) =>
-                                  channel.server_id === props.serverId
-                              ).id
-                            }`
-                          )
-                        )
-                    }
-                    className={
-                      index === 0 ||
-                      props.currentUser.id !== props.server.creatorId
-                        ? "hide-channel"
-                        : "delete-channel-btn"
-                    }
-                  />
-                  <img
-                    src={EditBtn}
+                    src={Gear}
                     alt="edit channel"
                     className={
                       props.currentUser.id !== props.server.creatorId
@@ -85,7 +60,8 @@ const ServerChannels = (props) => {
                   currentChannel={channel}
                   updateChannel={props.updateChannel}
                   currentUserId={props.currentUser.id}
-                  serverCreatorId={props.server.creatorId}
+                  currentServer={props.server}
+                  currentChannels={props.currentChannels}
                   toggleEditChannelModal={toggleEditChannelModal}
                   active={editChannelModalActive}
                 />
