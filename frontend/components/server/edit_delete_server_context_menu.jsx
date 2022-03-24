@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteServer } from "../../actions/server_actions";
 
@@ -7,6 +8,9 @@ const EditDeleteServerContextMenu = (props) => {
 
   const deleteServerHandler = () => {
     dispatch(deleteServer(props.ctxServer.id));
+    if (props.match.params.id === props.ctxServer.id.toString()) {
+      props.history.push("/home");
+    }
   };
 
   return (
@@ -24,4 +28,4 @@ const EditDeleteServerContextMenu = (props) => {
   );
 };
 
-export default EditDeleteServerContextMenu;
+export default withRouter(EditDeleteServerContextMenu);

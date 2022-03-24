@@ -14,10 +14,14 @@ const ServersNav = (props) => {
   const [ctxServer, setCtxServer] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     window.addEventListener("click", (e) => {
       e.preventDefault();
       setEditDeleteMenu(false);
     });
+
+    return () => controller.abort;
   }, []);
 
   const toggleServerModal = (e, modalType) => {
