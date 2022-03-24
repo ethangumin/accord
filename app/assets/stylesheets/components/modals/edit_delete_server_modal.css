@@ -1,0 +1,30 @@
+.edit-delete-server-ctx-menu__container {
+  position: absolute;
+  /* border: 1px solid #131316;
+  border-radius: 4px;
+  background-color: #131316;
+  color: #aaadb1;
+  font-family: "Whitney-Medium"; */
+}
+
+.edit-delete-server-ctx-menu {
+  border: 1px solid #131316;
+  border-radius: 3px;
+  background-color: #131316;
+  color: #aaadb1;
+  font-family: "Whitney-Medium";
+}
+
+.edit-delete-server-ctx-menu p:first-of-type {
+  border-bottom: 1px solid #1c1d1f;
+}
+
+.edit-delete-server-ctx-menu p {
+  cursor: pointer;
+  padding: 0.7em;
+}
+
+.edit-delete-server-ctx-menu p:hover {
+  background-color: #4549ef;
+  color: white;
+}

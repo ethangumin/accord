@@ -29,7 +29,6 @@ const serversReducer = (oldState = {}, action) => {
       newState[action.data.server.id] = action.data.server;
       return newState;
     case REMOVE_SERVER:
-      debugger;
       delete newState[action.serverId];
       return newState;
     default:
