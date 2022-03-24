@@ -7,6 +7,7 @@ import EditDeleteServerContextMenu from "./edit_delete_server_context_menu";
 
 const ServersNav = (props) => {
   const [serverModal, setServerModal] = useState(false);
+  const [serverModalType, setServerModalType] = useState(null);
   const [serverBubble, setServerBubble] = useState(false);
   const [editDeleteMenu, setEditDeleteMenu] = useState(false);
   const [serverPos, setServerPos] = useState({ x: "0px", y: "0px" });
@@ -19,19 +20,20 @@ const ServersNav = (props) => {
     });
   }, []);
 
-  const toggleServerModal = (e) => {
+  const toggleServerModal = (e, modalType) => {
     e.preventDefault();
+    setServerModalType(modalType);
     setServerModal(!serverModal);
   };
 
-  const toggleEditDeleteServer = (e, serverId) => {
+  const toggleEditDeleteServer = (e, server) => {
     e.preventDefault();
     const xPos = e.pageY + "px";
     const yPos = e.pageX + "px";
 
     setServerPos({ x: xPos, y: yPos });
     setEditDeleteMenu(true);
-    setCtxServer(serverId);
+    setCtxServer(server);
   };
 
   return (
@@ -57,7 +59,7 @@ const ServersNav = (props) => {
                 <div
                   key={server.id}
                   className="server-nav__item-div"
-                  onContextMenu={(e) => toggleEditDeleteServer(e, server.id)}
+                  onContextMenu={(e) => toggleEditDeleteServer(e, server)}
                 >
                   <Link
                     to={
@@ -84,9 +86,11 @@ const ServersNav = (props) => {
         src={Plus}
         alt="create server button"
         className="server-nav__item create-server"
-        onClick={(e) => toggleServerModal(e)}
+        onClick={(e) => toggleServerModal(e, "create")}
       />
       <ServerModal
+        serverModalType={serverModalType}
+        ctxServer={ctxServer}
         active={serverModal}
         toggleServerModal={toggleServerModal}
         createServer={props.createServer}
@@ -99,6 +103,7 @@ const ServersNav = (props) => {
         style={{ top: serverPos.x, left: serverPos.y }}
         status={editDeleteMenu}
         ctxServer={ctxServer}
+        toggleServerModal={toggleServerModal}
       />
     </ul>
   );
