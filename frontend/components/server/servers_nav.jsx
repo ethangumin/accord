@@ -31,6 +31,8 @@ const ServersNav = (props) => {
   };
 
   const toggleEditDeleteServer = (e, server) => {
+    if (server.creatorId !== props.currentUser.id) return;
+
     e.preventDefault();
     const xPos = e.pageY + "px";
     const yPos = e.pageX + "px";
