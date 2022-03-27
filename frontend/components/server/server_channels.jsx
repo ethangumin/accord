@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
-import Gear from '../../../app/assets/images/gear-solid.svg';
+import Gear from "../../../app/assets/images/gear-solid.svg";
 import ChannelModal from "../modals/channel_modal";
 import EditChannelModal from "../modals/edit_channel_modal";
 
 const ServerChannels = (props) => {
   const [channelModalActive, setChannelModalActive] = useState(false);
   const [editChannelModalActive, setEditChannelModalActive] = useState(false);
+  const [selectedChannel, setSelectedChannel] = useState();
+  const [generalChannel, setGeneralChannel] = useState();
 
   const toggleChannelModal = () => {
     setChannelModalActive(!channelModalActive);
   };
 
-  const toggleEditChannelModal = () => {
+  const toggleEditChannelModal = (channel) => {
     setEditChannelModalActive(!editChannelModalActive);
+    setSelectedChannel(channel);
   };
 
   const mapChannelsToServer =
@@ -22,6 +25,8 @@ const ServerChannels = (props) => {
       ? props.currentChannels
           .filter((channel) => channel.serverId === props.server.id)
           .map((channel, index) => {
+            if (index === 0 && !generalChannel) setGeneralChannel(channel);
+
             return (
               <div
                 key={channel.id}
@@ -53,18 +58,9 @@ const ServerChannels = (props) => {
                         ? "hide-channel"
                         : "edit-channel-btn"
                     }
-                    onClick={() => toggleEditChannelModal()}
+                    onClick={() => toggleEditChannelModal(channel)}
                   />
                 </div>
-                <EditChannelModal
-                  currentChannel={channel}
-                  updateChannel={props.updateChannel}
-                  currentUserId={props.currentUser.id}
-                  currentServer={props.server}
-                  currentChannels={props.currentChannels}
-                  toggleEditChannelModal={toggleEditChannelModal}
-                  active={editChannelModalActive}
-                />
               </div>
             );
           })
@@ -101,6 +97,16 @@ const ServerChannels = (props) => {
         channelModalActive={channelModalActive}
         toggleChannelModal={toggleChannelModal}
         createChannel={props.createChannel}
+      />
+      <EditChannelModal
+        generalChannel={generalChannel}
+        currentChannel={selectedChannel}
+        updateChannel={props.updateChannel}
+        currentUserId={props.currentUser.id}
+        currentServer={props.server}
+        currentChannels={props.currentChannels}
+        toggleEditChannelModal={toggleEditChannelModal}
+        active={editChannelModalActive}
       />
     </div>
   );

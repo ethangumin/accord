@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteChannel } from "../../actions/channel_actions";
 
@@ -6,14 +7,24 @@ const EditChannelModal = (props) => {
   const dispatch = useDispatch();
 
   const [channelName, setChannelName] = useState(
-    props.currentChannel.channelName
+    props.currentChannel ? props.currentChannel.channelName : ""
   );
+
+  useEffect(() => {
+    if (props.currentChannel) {
+      setChannelName(props.currentChannel.channelName);
+    }
+  }, [props.currentChannel]);
 
   const deleteChannelHandler = (e) => {
     e.preventDefault();
     dispatch(deleteChannel(props.currentChannel.id));
     props.toggleEditChannelModal();
-    // REDIRECT USER TO PREV OR NEXT CHANNEL ON DELETE
+    if (parseInt(props.match.params.channelId) === props.currentChannel.id) {
+      props.history.push(
+        `/server/${props.match.params.id}/channel/${props.generalChannel.id}`
+      );
+    }
   };
 
   const editFieldHandler = (e) => {
@@ -70,4 +81,4 @@ const EditChannelModal = (props) => {
   );
 };
 
-export default EditChannelModal;
+export default withRouter(EditChannelModal);
