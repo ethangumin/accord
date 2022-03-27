@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateServer } from "../../actions/server_actions";
 import { withRouter } from "react-router-dom";
 
 const ServerModal = (props) => {
   const dispatch = useDispatch();
 
+  const currentUser = useSelector(
+    (state) => state.entities.users[state.session.id]
+  );
+
   const [serverName, setServerName] = useState(
-    props.currentUser ? `${props.currentUser.username}'s Server` : ""
+    currentUser ? `${currentUser.username}'s Server` : ""
   );
 
   useEffect(() => {
@@ -28,13 +32,13 @@ const ServerModal = (props) => {
       );
     });
     props.toggleServerModal(e);
-    setServerName(`${props.currentUser.username}'s Server`);
+    setServerName(`${currentUser.username}'s Server`);
   };
 
   const exitModalHandler = (e) => {
     e.preventDefault();
     props.toggleServerModal(e);
-    setServerName(`${props.currentUser.username}'s Server`);
+    setServerName(`${currentUser.username}'s Server`);
   };
 
   const updateServerNameHandler = (e) => {

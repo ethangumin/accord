@@ -9,8 +9,10 @@ class Api::ChannelsController < ApplicationController
     end
 
     def show
+        # debugger
         @channel = Channel.find_by(id: params[:id])
         if @channel
+            # @messages = @channel.messages
             render :show
         else
             render json: ["Server does not exists"], status: 404
