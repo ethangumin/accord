@@ -3,6 +3,7 @@ import {
   RECEIVE_MESSAGES,
   REMOVE_MESSAGE,
 } from "../actions/message_actions";
+import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
 
 const messagesReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -17,6 +18,8 @@ const messagesReducer = (oldState = {}, action) => {
     case REMOVE_MESSAGE:
       delete newState[action.messageId];
       return newState;
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return oldState;
   }

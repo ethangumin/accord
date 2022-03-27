@@ -2,6 +2,7 @@ import { RECEIVE_CHANNEL, REMOVE_CHANNEL } from "../actions/channel_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 import { RECEIVE_SERVER } from "../actions/server_actions";
+import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
 
 const channelsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -32,6 +33,8 @@ const channelsReducer = (oldState = {}, action) => {
     case REMOVE_CHANNEL:
       delete newState[action.channelId];
       return newState;
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return oldState;
   }
