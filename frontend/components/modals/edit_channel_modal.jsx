@@ -10,6 +10,10 @@ const EditChannelModal = (props) => {
     props.currentChannel ? props.currentChannel.channelName : ""
   );
 
+  const currentChannels = props.currentChannels.filter(
+    (channel) => channel.serverId === props.currentServer.id
+  );
+
   useEffect(() => {
     if (props.currentChannel) {
       setChannelName(props.currentChannel.channelName);
@@ -65,9 +69,8 @@ const EditChannelModal = (props) => {
             className="edit-channel-modal__submit"
           />
         </form>
-        {props.currentChannels.filter(
-          (channel) => channel.serverId === props.currentServer.id
-        ).length !== 1 ? (
+        {currentChannels.length !== 1 &&
+        currentChannels[0] !== props.currentChannel ? (
           <input
             className="delete-channel-btn"
             type="button"
