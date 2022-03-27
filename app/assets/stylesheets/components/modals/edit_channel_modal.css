@@ -34,7 +34,8 @@
   border-bottom-left-radius: 3px;
 }
 
-.edit-channel-modal__submit {
+.edit-channel-modal__submit,
+.delete-channel-btn {
   padding: 0.49em;
   margin-top: 0.5em;
   margin-left: auto;
@@ -48,7 +49,8 @@
   transition: 0.2s all;
 }
 
-.edit-channel-modal__submit:hover {
+.edit-channel-modal__submit:hover,
+.delete-channel-btn:hover {
   border: 1px solid #4548efc4;
   background-color: #4548efc4;
 }

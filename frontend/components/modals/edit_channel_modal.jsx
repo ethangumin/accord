@@ -69,6 +69,7 @@ const EditChannelModal = (props) => {
           (channel) => channel.serverId === props.currentServer.id
         ).length !== 1 ? (
           <input
+            className="delete-channel-btn"
             type="button"
             value="Delete Channel"
             onClick={(e) => deleteChannelHandler(e)}
