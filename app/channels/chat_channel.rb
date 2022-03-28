@@ -1,12 +1,14 @@
 class ChatChannel < ApplicationCable::Channel
-  # def subscribed
-  #   stream_for "chat_channel_#{params['channelId']}"
-  # end
-
   def subscribed
-    @chat = "chat_channel_#{params['channelId']}"
-    stream_for @chat
+    # debugger
+    stream_for "chat_channel_#{params['channelId']}"
+    self.load
   end
+
+  # def subscribed
+  #   @chat = "chat_channel_#{params['channelId']}"
+  #   stream_for @chat
+  # end
 
   def speak(data)
     message = Message.create(data["message"])
@@ -15,8 +17,11 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def load
+    # debugger
     currentChannel = Channel.find(params['channelId'])
+    # debugger
     messages = currentChannel.messages.all
+    # debugger
     socket = { messages: messages, type: "messages" }
     ChatChannel.broadcast_to("chat_channel_#{params['channelId']}", socket)
   end
