@@ -1,14 +1,5 @@
-import React, { useState, useEffect, useRef, Component } from "react";
+import React, { Component } from "react";
 import ChannelMessageForm from "./channel_message_form";
-
-// const ChannelMessages = () => {
-
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
 
 export default class ChannelMessages extends Component {
   constructor(props) {
