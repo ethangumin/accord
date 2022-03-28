@@ -17,11 +17,8 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def load
-    # debugger
     currentChannel = Channel.find(params['channelId'])
-    # debugger
     messages = currentChannel.messages.all
-    # debugger
     socket = { messages: messages, type: "messages" }
     ChatChannel.broadcast_to("chat_channel_#{params['channelId']}", socket)
   end
