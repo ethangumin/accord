@@ -16,7 +16,9 @@ const messagesReducer = (oldState = {}, action) => {
     case RECEIVE_MESSAGES:
       return action.messages;
     case REMOVE_MESSAGE:
+      // debugger;
       delete newState[action.messageId];
+      // debugger;
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};

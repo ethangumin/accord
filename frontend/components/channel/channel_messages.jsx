@@ -1,6 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { receiveMessage, receiveMessages } from "../../actions/message_actions";
+import {
+  receiveMessage,
+  receiveMessages,
+  removeMessage,
+} from "../../actions/message_actions";
 import ChannelMessageForm from "./channel_message_form";
 
 const ChannelMessages = (props) => {
@@ -23,6 +27,10 @@ const ChannelMessages = (props) => {
             case "messages":
               dispatch(receiveMessages(data.messages));
               break;
+            case "destroy":
+              debugger;
+              dispatch(removeMessage(data.message.id));
+              break;
           }
         },
         speak: function (data) {
@@ -30,6 +38,10 @@ const ChannelMessages = (props) => {
         },
         load: function () {
           return this.perform("load");
+        },
+        destroy: function (data) {
+          // debugger;
+          return this.perform("destroy", data);
         },
       }
     );
@@ -46,6 +58,13 @@ const ChannelMessages = (props) => {
     }
   });
 
+  const deleteMessageHandler = (messageId) => {
+    // debugger;
+    App.cable.subscriptions.subscriptions[0].destroy({
+      messageId: messageId,
+    });
+  };
+
   const messageList = messages ? (
     Object.values(messages).map((message, index) => {
       return (
@@ -57,6 +76,7 @@ const ChannelMessages = (props) => {
               <p>{message.created_at}</p>
             </div>
             <p>{message.body}</p>
+            <p onClick={() => deleteMessageHandler(message.id)}>X</p>
           </div>
           <div ref={bottom} />
         </li>
