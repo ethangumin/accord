@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   receiveMessage,
@@ -6,8 +6,11 @@ import {
   removeMessage,
 } from "../../actions/message_actions";
 import ChannelMessageForm from "./channel_message_form";
+import EditDeleteMessage from "./edit_delete_message";
 
 const ChannelMessages = (props) => {
+  const [messageMenu, setMessageMenu] = useState(false);
+  const [ctxMessage, setCtxMessage] = useState(null);
   const messages = useSelector((state) => state.entities.messages);
   const dispatch = useDispatch();
   const bottom = useRef();
@@ -28,7 +31,6 @@ const ChannelMessages = (props) => {
               dispatch(receiveMessages(data.messages));
               break;
             case "destroy":
-              debugger;
               dispatch(removeMessage(data.message.id));
               break;
           }
@@ -58,17 +60,30 @@ const ChannelMessages = (props) => {
     }
   });
 
-  const deleteMessageHandler = (messageId) => {
-    // debugger;
-    App.cable.subscriptions.subscriptions[0].destroy({
-      messageId: messageId,
-    });
+  // const deleteMessageHandler = (messageId) => {
+  //   // debugger;
+  //   App.cable.subscriptions.subscriptions[0].destroy({
+  //     messageId: messageId,
+  //   });
+  // };
+
+  const toggleEditDeleteMessage = (user, message) => {
+    if (user.id !== message.sender_id) return;
+    setMessageMenu(true);
+    setCtxMessage(message);
   };
 
   const messageList = messages ? (
     Object.values(messages).map((message, index) => {
       return (
-        <li key={index} className="channel-message">
+        <li
+          key={index}
+          className="channel-message"
+          onMouseEnter={() =>
+            toggleEditDeleteMessage(props.currentUser, message)
+          }
+          onMouseLeave={() => setMessageMenu(false)}
+        >
           <p>{message.sender_username ? message.sender_username[0] : ""}</p>
           <div className="channel-message_info">
             <div className="channel-message__username-date">
@@ -76,8 +91,18 @@ const ChannelMessages = (props) => {
               <p>{message.created_at}</p>
             </div>
             <p>{message.body}</p>
-            <p onClick={() => deleteMessageHandler(message.id)}>X</p>
+            {/* <p onClick={() => deleteMessageHandler(message.id)}>X</p> */}
           </div>
+          <EditDeleteMessage
+            status={messageMenu}
+            ctxMessage={ctxMessage}
+            style={{
+              display:
+                messageMenu && ctxMessage.id === message.id
+                  ? "initial"
+                  : "none",
+            }}
+          />
           <div ref={bottom} />
         </li>
       );

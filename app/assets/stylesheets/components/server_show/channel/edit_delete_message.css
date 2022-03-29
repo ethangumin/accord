@@ -1,0 +1,17 @@
+.edit-delete-message__container {
+  /* position: absolute; */
+  /* border: 1px solid black; */
+  border-radius: 3px;
+  /* background-color: #fff; */
+  margin-left: auto;
+  margin-bottom: auto;
+}
+
+.edit-delete-message__container img {
+  height: 20px;
+  cursor: pointer;
+}
+
+.edit-delete-message__container img + img {
+  margin-left: 0.5em;
+}
