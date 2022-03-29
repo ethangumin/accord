@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ServerModal from "../modals/server_modal";
 import ServerNavItemBubble from "./server_nav_item_bubble";
@@ -12,6 +13,10 @@ const ServersNav = (props) => {
   const [editDeleteMenu, setEditDeleteMenu] = useState(false);
   const [serverPos, setServerPos] = useState({ x: "0px", y: "0px" });
   const [ctxServer, setCtxServer] = useState(null);
+
+  const currentUser = useSelector(
+    (state) => state.entities.users[state.session.id]
+  );
 
   useEffect(() => {
     const controller = new AbortController();
@@ -31,7 +36,7 @@ const ServersNav = (props) => {
   };
 
   const toggleEditDeleteServer = (e, server) => {
-    if (server.creatorId !== props.currentUser.id) return;
+    if (server.creatorId !== currentUser.id) return;
 
     e.preventDefault();
     const xPos = e.pageY + "px";
@@ -102,7 +107,7 @@ const ServersNav = (props) => {
         createServer={props.createServer}
         createServerMember={props.createServerMember}
         createChannel={props.createChannel}
-        currentUser={props.currentUser}
+        // currentUser={props.currentUser}
         fetchChannel={props.fetchChannel}
       />
       <EditDeleteServerContextMenu

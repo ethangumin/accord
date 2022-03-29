@@ -20,13 +20,13 @@ const EditChannelModal = (props) => {
     }
   }, [props.currentChannel]);
 
-  const deleteChannelHandler = (e) => {
+  const deleteChannelHandler = (e, currentChannels) => {
     e.preventDefault();
     dispatch(deleteChannel(props.currentChannel.id));
     props.toggleEditChannelModal();
     if (parseInt(props.match.params.channelId) === props.currentChannel.id) {
       props.history.push(
-        `/server/${props.match.params.id}/channel/${props.generalChannel.id}`
+        `/server/${props.match.params.id}/channel/${currentChannels[0].id}`
       );
     }
   };
@@ -75,7 +75,7 @@ const EditChannelModal = (props) => {
             className="delete-channel-btn"
             type="button"
             value="Delete Channel"
-            onClick={(e) => deleteChannelHandler(e)}
+            onClick={(e) => deleteChannelHandler(e, currentChannels)}
           />
         ) : (
           ""

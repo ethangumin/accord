@@ -14,7 +14,10 @@ const messagesReducer = (oldState = {}, action) => {
       newState[action.message.id] = action.message;
       return newState;
     case RECEIVE_MESSAGES:
-      return action.messages;
+      for(let message of action.messages){
+        newState[message.id] = message;
+      }
+      return newState;
     case REMOVE_MESSAGE:
       delete newState[action.messageId];
       return newState;

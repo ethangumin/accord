@@ -9,11 +9,10 @@ export const receiveMessage = (message) => ({
 
 export const receiveMessages = (messages) => ({
   type: RECEIVE_MESSAGES,
-  messages: messages
-})
+  messages: messages,
+});
 
 export const removeMessage = (messageId) => ({
   type: REMOVE_MESSAGE,
   messageId: messageId,
 });
-

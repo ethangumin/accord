@@ -1,5 +1,6 @@
 .channel_content_messages_form__container {
-    width: 100%;
+  width: 100%;
+  margin-top: 0.8em;
 }
 
 .channel_content_messages_form__container input {

@@ -18,8 +18,16 @@
   color: #d0d0d3;
   list-style-type: none;
   display: flex;
-  margin-bottom: 1em;
+  /* margin-bottom: 1em; */
   align-items: center;
+  padding: 0.5em;
+  border-radius: 3px;
+  border: 1px solid #292b30;
+}
+
+.channel-message:hover {
+  border: 1px solid #26282c;
+  background-color: #26282c;
 }
 
 .channel-message > p {
@@ -48,4 +56,19 @@
   margin-left: 0.3em;
   font-size: 0.8em;
   color: #5e6269;
+}
+
+.channel-message__body,
+.channel-message__body-edit {
+  color: #d4d5d6;
+  background-color: inherit;
+  border: none;
+  font-size: 0.95rem;
+  /* width: 500px; */
+}
+
+.channel-message__body-edit {
+  background-color: #31343a;
+  padding: 0.4em;
+  width: fit-content;
 }

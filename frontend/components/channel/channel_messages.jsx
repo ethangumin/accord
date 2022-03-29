@@ -1,67 +1,44 @@
-import React, { Component } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  receiveMessage,
+  receiveMessages,
+  removeMessage,
+} from "../../actions/message_actions";
 import ChannelMessageForm from "./channel_message_form";
+import EditDeleteMessage from "./edit_delete_message";
 
-export default class ChannelMessages extends Component {
-  constructor(props) {
-    super(props);
-    this.bottom = React.createRef();
-    this.loadChat = this.loadChat.bind(this);
-    this.createSubscription = this.createSubscription.bind(this);
-  }
+const ChannelMessages = (props) => {
+  const [messageMenu, setMessageMenu] = useState(false);
+  const [ctxMessage, setCtxMessage] = useState(null);
+  const [editMessage, setEditMessage] = useState(false);
+  const [editMessageContent, setEditMessageContent] = useState();
+  const messages = useSelector((state) => state.entities.messages);
+  const dispatch = useDispatch();
+  const bottom = useRef();
+  const inputRef = useRef(null);
 
-  componentDidMount() {
-    this.createSubscription();
-    this.loadChat();
-  }
-
-  componentDidUpdate(prevProps) {
-    const currentSubscriptions = App.cable.subscriptions.subscriptions;
-    let channelInSubscriptions = false;
-    for (let subscription of currentSubscriptions) {
-      const subscriptionId = JSON.parse(subscription.identifier).channelId;
-      if (subscriptionId === this.props.currentChannelId) {
-        channelInSubscriptions = true;
-      }
-    }
-
-    if (this.bottom.current) {
-      this.bottom.current.scrollIntoView();
-    }
-
-    if (channelInSubscriptions === false) {
-      this.createSubscription();
-      this.loadChat();
-    } else if (prevProps.currentChannelId !== this.props.currentChannelId) {
-      this.loadChat();
-    } else if (
-      prevProps.currentMessages.length !== this.props.currentMessages.length
-    ) {
-      this.loadChat();
-    } else if (
-      prevProps.currentChannel &&
-      Object.values(prevProps.currentChannel).length === 0
-    ) {
-      this.loadChat();
-    } else if (prevProps.currentChannel !== this.props.currentChannel) {
-      this.loadChat();
-    }
-  }
-
-  createSubscription() {
-    App.cable.subscriptions.create(
+  useEffect(() => {
+    const stream = App.cable.subscriptions.create(
       {
         channel: "ChatChannel",
-        channelId: this.props.currentChannelId,
+        channelId: props.currentChannelId,
       },
       {
         received: (data) => {
           switch (data.type) {
             case "message":
-              this.props.receiveMessage(data.message);
+              dispatch(receiveMessage(data.message));
               break;
             case "messages":
-              this.props.receiveMessages(data.messages);
+              dispatch(receiveMessages(data.messages));
               break;
+            case "destroy":
+              dispatch(removeMessage(data.message.id));
+              break;
+            // case "update":
+            //   dispatch(receiveMessage(data.message));
+            //   break;
           }
         },
         speak: function (data) {
@@ -70,54 +47,128 @@ export default class ChannelMessages extends Component {
         load: function () {
           return this.perform("load");
         },
+        destroy: function (data) {
+          return this.perform("destroy", data);
+        },
+        update: function (data) {
+          return this.perform("update", data);
+        },
       }
     );
-  }
 
-  loadChat() {
-    const currentSubscriptions = App.cable.subscriptions.subscriptions;
-    for (let i = 0; i < currentSubscriptions.length; i++) {
-      const subscriptionId = JSON.parse(
-        App.cable.subscriptions.subscriptions[i].identifier
-      ).channelId;
-      if (subscriptionId === this.props.currentChannelId) {
-        App.cable.subscriptions.subscriptions[i].load();
-      }
+    return () => {
+      // debugger;
+      stream.unsubscribe();
+    };
+  }, [props.currentChannelId]);
+
+  useEffect(() => {
+    if (bottom.current) {
+      bottom.current.scrollIntoView();
     }
-  }
 
-  render() {
-    const messageList = this.props.currentMessages
-      ? Object.values(this.props.currentMessages).map((message, index) => {
-          return (
-            <li key={index} className="channel-message">
-              <p>{message.sender_username ? message.sender_username[0] : ""}</p>
-              <div className="channel-message_info">
-                <div className="channel-message__username-date">
-                  <p>{message.sender_username}</p>
-                  <p>{message.created_at}</p>
-                </div>
-                <p>{message.body}</p>
-              </div>
-              <div ref={this.bottom} />
-            </li>
-          );
-        })
-      : "";
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
 
-    return (
-      <div className="channel-messages__container">
-        <div className="channel-messages__list" ref={this.bottom}>
-          {messageList}
-        </div>
-        <ChannelMessageForm
-          currentChannel={this.props.currentChannel}
-          sendMessage={this.props.sendMessage}
-          currentUser={this.props.currentUser}
-          currentChannels={this.props.currentChannels}
-          currentChannelId={this.props.currentChannelId}
-        />
-      </div>
-    );
-  }
-}
+  const toggleEditDeleteMessage = (user, message) => {
+    if (user.id !== message.sender_id) return;
+    setMessageMenu(true);
+    setCtxMessage(message);
+  };
+
+  const submitEditMessageHandler = (e, message) => {
+    e.preventDefault();
+    setEditMessage(false);
+
+    const updatedMessage = Object.assign({}, message);
+
+    if (editMessageContent.length !== 0) {
+      updatedMessage.body = editMessageContent;
+    } else {
+      inputRef.current.value = message.body;
+    }
+
+    App.cable.subscriptions.subscriptions[0].update({
+      message: updatedMessage,
+    });
+  };
+
+  const editMessageHandler = (e) => {
+    setEditMessageContent(e.target.value);
+  };
+
+  const onLeaveInputHandler = (message) => {
+    setMessageMenu(false);
+    setEditMessage(false);
+  };
+
+  const messageList = messages ? (
+    Object.values(messages).map((message, index) => {
+      return (
+        <li
+          key={index}
+          className="channel-message"
+          onMouseEnter={() =>
+            toggleEditDeleteMessage(props.currentUser, message)
+          }
+          onMouseLeave={() => onLeaveInputHandler(message)}
+        >
+          <p>{message.sender_username ? message.sender_username[0] : ""}</p>
+          <div className="channel-message_info">
+            <div className="channel-message__username-date">
+              <p>{message.sender_username}</p>
+              <p>{message.created_at}</p>
+            </div>
+            <form onSubmit={(e) => submitEditMessageHandler(e, message)}>
+              <input
+                type="text"
+                defaultValue={message.body}
+                onChange={(e) => editMessageHandler(e)}
+                className={
+                  !(editMessage && ctxMessage?.id === message.id)
+                    ? "channel-message__body"
+                    : "channel-message__body-edit"
+                }
+                disabled={
+                  editMessage && ctxMessage?.id === message.id ? false : true
+                }
+                ref={inputRef}
+                autoFocus
+                onFocus={(e) => e.currentTarget.select()}
+              />
+            </form>
+          </div>
+          <EditDeleteMessage
+            ctxMessage={ctxMessage}
+            setEditMessage={setEditMessage}
+            style={{
+              display:
+                messageMenu && ctxMessage?.id === message.id
+                  ? "initial"
+                  : "none",
+            }}
+          />
+          <div ref={bottom} />
+        </li>
+      );
+    })
+  ) : (
+    <div ref={bottom} />
+  );
+
+  return (
+    <div className="channel-messages__container">
+      <div className="channel-messages__list">{messageList}</div>
+      <ChannelMessageForm
+        currentChannel={props.currentChannel}
+        currentUser={props.currentUser}
+        currentChannels={props.currentChannels}
+        currentChannelId={props.currentChannelId}
+      />
+    </div>
+  );
+};
+
+export default ChannelMessages;
