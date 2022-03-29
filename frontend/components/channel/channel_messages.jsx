@@ -11,9 +11,12 @@ import EditDeleteMessage from "./edit_delete_message";
 const ChannelMessages = (props) => {
   const [messageMenu, setMessageMenu] = useState(false);
   const [ctxMessage, setCtxMessage] = useState(null);
+  const [editMessage, setEditMessage] = useState(false);
+  const [editMessageContent, setEditMessageContent] = useState();
   const messages = useSelector((state) => state.entities.messages);
   const dispatch = useDispatch();
   const bottom = useRef();
+  const inputRef = useRef();
 
   useEffect(() => {
     const stream = App.cable.subscriptions.create(
@@ -25,6 +28,7 @@ const ChannelMessages = (props) => {
         received: (data) => {
           switch (data.type) {
             case "message":
+              // debugger
               dispatch(receiveMessage(data.message));
               break;
             case "messages":
@@ -32,6 +36,10 @@ const ChannelMessages = (props) => {
               break;
             case "destroy":
               dispatch(removeMessage(data.message.id));
+              break;
+            case "update":
+              // debugger;
+              dispatch(receiveMessage(data.message));
               break;
           }
         },
@@ -42,8 +50,11 @@ const ChannelMessages = (props) => {
           return this.perform("load");
         },
         destroy: function (data) {
-          // debugger;
           return this.perform("destroy", data);
+        },
+        update: function (data) {
+          // debugger;
+          return this.perform("update", data);
         },
       }
     );
@@ -60,18 +71,31 @@ const ChannelMessages = (props) => {
     }
   });
 
-  // const deleteMessageHandler = (messageId) => {
-  //   // debugger;
-  //   App.cable.subscriptions.subscriptions[0].destroy({
-  //     messageId: messageId,
-  //   });
-  // };
-
   const toggleEditDeleteMessage = (user, message) => {
     if (user.id !== message.sender_id) return;
     setMessageMenu(true);
     setCtxMessage(message);
   };
+
+  const submitEditMessageHandler = (e, message) => {
+    e.preventDefault();
+    setEditMessage(false);
+    
+    const updatedMessage = Object.assign({}, message);
+    updatedMessage.body = editMessageContent;
+    
+    App.cable.subscriptions.subscriptions[0].update({
+      message: updatedMessage,
+    });
+  };
+
+  const editMessageHandler = (e) => {
+    setEditMessageContent(e.target.value);
+  };
+
+  // const focusMessageHandler = () => {
+  //   inputRef.current.select();
+  // }
 
   const messageList = messages ? (
     Object.values(messages).map((message, index) => {
@@ -82,7 +106,10 @@ const ChannelMessages = (props) => {
           onMouseEnter={() =>
             toggleEditDeleteMessage(props.currentUser, message)
           }
-          onMouseLeave={() => setMessageMenu(false)}
+          onMouseLeave={() => {
+            setMessageMenu(false);
+            setEditMessage(false);
+          }}
         >
           <p>{message.sender_username ? message.sender_username[0] : ""}</p>
           <div className="channel-message_info">
@@ -90,15 +117,33 @@ const ChannelMessages = (props) => {
               <p>{message.sender_username}</p>
               <p>{message.created_at}</p>
             </div>
-            <p>{message.body}</p>
-            {/* <p onClick={() => deleteMessageHandler(message.id)}>X</p> */}
+            <form onSubmit={(e) => submitEditMessageHandler(e, message)}>
+              <input
+                type="text"
+                defaultValue={message.body}
+                onChange={(e) => editMessageHandler(e)}
+                // onFocus={focusMessageHandler}
+                className={
+                  !(editMessage && ctxMessage?.id === message.id)
+                    ? "channel-message__body"
+                    : "channel-message__body-edit"
+                }
+                disabled={
+                  editMessage && ctxMessage?.id === message.id ? false : true
+                }
+                ref={inputRef}
+              />
+            </form>
           </div>
           <EditDeleteMessage
+            inputRef={inputRef}
+            // focusMessageHandler={focusMessageHandler}
             status={messageMenu}
             ctxMessage={ctxMessage}
+            setEditMessage={setEditMessage}
             style={{
               display:
-                messageMenu && ctxMessage.id === message.id
+                messageMenu && ctxMessage?.id === message.id
                   ? "initial"
                   : "none",
             }}

@@ -53,3 +53,17 @@
   font-size: 0.8em;
   color: #5e6269;
 }
+
+.channel-message__body,
+.channel-message__body-edit {
+  color: #d4d5d6;
+  background-color: inherit;
+  border: none;
+  font-size: .95rem;
+}
+
+.channel-message__body-edit {
+  background-color: #31343a;
+  padding: 0.4em;
+  width: fit-content;
+}

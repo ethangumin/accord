@@ -10,9 +10,20 @@ const EditDeleteMessage = (props) => {
     });
   };
 
+  const editMessageHandler = () => {
+    // debugger;
+    props.setEditMessage(true);
+    // props.focusMessageHandler();
+    props.inputRef.current.select();
+  };
+
   return (
     <div className="edit-delete-message__container" style={props.style}>
-      <img src={Pencil} alt="edit message" />
+      <img
+        src={Pencil}
+        alt="edit message"
+        onClick={() => editMessageHandler()}
+      />
       <img
         src={TrashCan}
         alt="delete message"
