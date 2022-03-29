@@ -16,7 +16,7 @@ const ChannelMessages = (props) => {
   const messages = useSelector((state) => state.entities.messages);
   const dispatch = useDispatch();
   const bottom = useRef();
-  const inputRef = useRef();
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const stream = App.cable.subscriptions.create(
@@ -28,7 +28,6 @@ const ChannelMessages = (props) => {
         received: (data) => {
           switch (data.type) {
             case "message":
-              // debugger
               dispatch(receiveMessage(data.message));
               break;
             case "messages":
@@ -37,10 +36,9 @@ const ChannelMessages = (props) => {
             case "destroy":
               dispatch(removeMessage(data.message.id));
               break;
-            case "update":
-              // debugger;
-              dispatch(receiveMessage(data.message));
-              break;
+            // case "update":
+            //   dispatch(receiveMessage(data.message));
+            //   break;
           }
         },
         speak: function (data) {
@@ -53,7 +51,6 @@ const ChannelMessages = (props) => {
           return this.perform("destroy", data);
         },
         update: function (data) {
-          // debugger;
           return this.perform("update", data);
         },
       }
@@ -69,6 +66,10 @@ const ChannelMessages = (props) => {
     if (bottom.current) {
       bottom.current.scrollIntoView();
     }
+
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   });
 
   const toggleEditDeleteMessage = (user, message) => {
@@ -80,10 +81,15 @@ const ChannelMessages = (props) => {
   const submitEditMessageHandler = (e, message) => {
     e.preventDefault();
     setEditMessage(false);
-    
+
     const updatedMessage = Object.assign({}, message);
-    updatedMessage.body = editMessageContent;
-    
+
+    if (editMessageContent.length !== 0) {
+      updatedMessage.body = editMessageContent;
+    } else {
+      inputRef.current.value = message.body;
+    }
+
     App.cable.subscriptions.subscriptions[0].update({
       message: updatedMessage,
     });
@@ -93,9 +99,10 @@ const ChannelMessages = (props) => {
     setEditMessageContent(e.target.value);
   };
 
-  // const focusMessageHandler = () => {
-  //   inputRef.current.select();
-  // }
+  const onLeaveInputHandler = (message) => {
+    setMessageMenu(false);
+    setEditMessage(false);
+  };
 
   const messageList = messages ? (
     Object.values(messages).map((message, index) => {
@@ -106,10 +113,7 @@ const ChannelMessages = (props) => {
           onMouseEnter={() =>
             toggleEditDeleteMessage(props.currentUser, message)
           }
-          onMouseLeave={() => {
-            setMessageMenu(false);
-            setEditMessage(false);
-          }}
+          onMouseLeave={() => onLeaveInputHandler(message)}
         >
           <p>{message.sender_username ? message.sender_username[0] : ""}</p>
           <div className="channel-message_info">
@@ -122,7 +126,6 @@ const ChannelMessages = (props) => {
                 type="text"
                 defaultValue={message.body}
                 onChange={(e) => editMessageHandler(e)}
-                // onFocus={focusMessageHandler}
                 className={
                   !(editMessage && ctxMessage?.id === message.id)
                     ? "channel-message__body"
@@ -132,13 +135,12 @@ const ChannelMessages = (props) => {
                   editMessage && ctxMessage?.id === message.id ? false : true
                 }
                 ref={inputRef}
+                autoFocus
+                onFocus={(e) => e.currentTarget.select()}
               />
             </form>
           </div>
           <EditDeleteMessage
-            inputRef={inputRef}
-            // focusMessageHandler={focusMessageHandler}
-            status={messageMenu}
             ctxMessage={ctxMessage}
             setEditMessage={setEditMessage}
             style={{

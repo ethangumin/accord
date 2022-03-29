@@ -18,13 +18,17 @@
   color: #d0d0d3;
   list-style-type: none;
   display: flex;
-  margin-bottom: 1em;
+  /* margin-bottom: 1em; */
   align-items: center;
+  padding: 0.5em;
+  border-radius: 3px;
+  border: 1px solid #292b30;
 }
 
-/* .channel-message:hover {
-  background-color: white;
-} */
+.channel-message:hover {
+  border: 1px solid #26282c;
+  background-color: #26282c;
+}
 
 .channel-message > p {
   border: 1px solid white;
@@ -59,7 +63,8 @@
   color: #d4d5d6;
   background-color: inherit;
   border: none;
-  font-size: .95rem;
+  font-size: 0.95rem;
+  /* width: 500px; */
 }
 
 .channel-message__body-edit {

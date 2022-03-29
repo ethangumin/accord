@@ -11,9 +11,7 @@ const messagesReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_MESSAGE:
-      // debugger
       newState[action.message.id] = action.message;
-      // debugger;
       return newState;
     case RECEIVE_MESSAGES:
       for(let message of action.messages){
@@ -21,9 +19,7 @@ const messagesReducer = (oldState = {}, action) => {
       }
       return newState;
     case REMOVE_MESSAGE:
-      // debugger;
       delete newState[action.messageId];
-      // debugger;
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};

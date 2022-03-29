@@ -4,17 +4,13 @@ import Pencil from "../../../app/assets/images/pencil-solid.svg";
 
 const EditDeleteMessage = (props) => {
   const deleteMessageHandler = (messageId) => {
-    // debugger;
     App.cable.subscriptions.subscriptions[0].destroy({
       messageId: messageId,
     });
   };
 
   const editMessageHandler = () => {
-    // debugger;
     props.setEditMessage(true);
-    // props.focusMessageHandler();
-    props.inputRef.current.select();
   };
 
   return (
