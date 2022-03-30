@@ -5,6 +5,7 @@
   /* background-color: #fff; */
   margin-left: auto;
   margin-bottom: auto;
+  float: right;
 }
 
 .edit-delete-message__container img {

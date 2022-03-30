@@ -12,7 +12,7 @@ const ChannelMessages = (props) => {
   const [messageMenu, setMessageMenu] = useState(false);
   const [ctxMessage, setCtxMessage] = useState(null);
   const [editMessage, setEditMessage] = useState(false);
-  const [editMessageContent, setEditMessageContent] = useState();
+  const [editMessageContent, setEditMessageContent] = useState("");
   const messages = useSelector((state) => state.entities.messages);
   const dispatch = useDispatch();
   const bottom = useRef();
@@ -36,9 +36,6 @@ const ChannelMessages = (props) => {
             case "destroy":
               dispatch(removeMessage(data.message.id));
               break;
-            // case "update":
-            //   dispatch(receiveMessage(data.message));
-            //   break;
           }
         },
         speak: function (data) {
@@ -57,7 +54,6 @@ const ChannelMessages = (props) => {
     );
 
     return () => {
-      // debugger;
       stream.unsubscribe();
     };
   }, [props.currentChannelId]);
@@ -115,34 +111,10 @@ const ChannelMessages = (props) => {
           }
           onMouseLeave={() => onLeaveInputHandler(message)}
         >
-          <p>{message.sender_username ? message.sender_username[0] : ""}</p>
-          <div className="channel-message_info">
-            <div className="channel-message__username-date">
-              <p>{message.sender_username}</p>
-              <p>{message.created_at}</p>
-            </div>
-            <form onSubmit={(e) => submitEditMessageHandler(e, message)}>
-              <input
-                type="text"
-                defaultValue={message.body}
-                onChange={(e) => editMessageHandler(e)}
-                className={
-                  !(editMessage && ctxMessage?.id === message.id)
-                    ? "channel-message__body"
-                    : "channel-message__body-edit"
-                }
-                disabled={
-                  editMessage && ctxMessage?.id === message.id ? false : true
-                }
-                ref={inputRef}
-                autoFocus
-                onFocus={(e) => e.currentTarget.select()}
-              />
-            </form>
-          </div>
           <EditDeleteMessage
             ctxMessage={ctxMessage}
             setEditMessage={setEditMessage}
+            setEditMessageContent={setEditMessageContent}
             style={{
               display:
                 messageMenu && ctxMessage?.id === message.id
@@ -150,6 +122,45 @@ const ChannelMessages = (props) => {
                   : "none",
             }}
           />
+          <p className="channel-message__icon">
+            {message.sender_username ? message.sender_username[0] : ""}
+          </p>
+          <div className="channel-message_info">
+            <div className="channel-message__username-date">
+              <p>{message.sender_username}</p>
+              <p>{message.created_at}</p>
+            </div>
+            {!(editMessage && ctxMessage?.id === message.id) ? (
+              <p>{message.body}</p>
+            ) : (
+              <form onSubmit={(e) => submitEditMessageHandler(e, message)}>
+                <input
+                  type="text"
+                  value={editMessageContent}
+                  onChange={(e) => editMessageHandler(e)}
+                  className={
+                    !(editMessage && ctxMessage?.id === message.id)
+                      ? "channel-message__body"
+                      : "channel-message__body-edit"
+                  }
+                  ref={inputRef}
+                  autoFocus
+                  onFocus={(e) => e.currentTarget.select()}
+                />
+              </form>
+            )}
+          </div>
+          {/* <EditDeleteMessage
+            ctxMessage={ctxMessage}
+            setEditMessage={setEditMessage}
+            setEditMessageContent={setEditMessageContent}
+            style={{
+              display:
+                messageMenu && ctxMessage?.id === message.id
+                  ? "initial"
+                  : "none",
+            }}
+          /> */}
           <div ref={bottom} />
         </li>
       );

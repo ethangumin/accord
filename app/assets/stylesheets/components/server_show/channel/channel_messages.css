@@ -9,7 +9,7 @@
 }
 
 .channel-messages__list {
-  width: 90%;
+  width: 95%;
   overflow-y: scroll;
 }
 
@@ -17,12 +17,16 @@
   font-family: "Whitney-Book";
   color: #d0d0d3;
   list-style-type: none;
-  display: flex;
+  /* display: flex; */
   /* margin-bottom: 1em; */
   align-items: center;
   padding: 0.5em;
   border-radius: 3px;
   border: 1px solid #292b30;
+}
+
+.channel-message__icon {
+  float: left;
 }
 
 .channel-message:hover {

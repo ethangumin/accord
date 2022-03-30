@@ -11,6 +11,7 @@ const EditDeleteMessage = (props) => {
 
   const editMessageHandler = () => {
     props.setEditMessage(true);
+    props.setEditMessageContent(props.ctxMessage.body);
   };
 
   return (
