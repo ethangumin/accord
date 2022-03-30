@@ -19,13 +19,20 @@ const serversReducer = (oldState = {}, action) => {
       }
       return newState;
     case RECEIVE_USER:
+      // temporary
+      newState = {};
       let currServers = action.data.servers;
       for (let server of currServers) {
         newState[server.id] = server;
       }
       return newState;
     case RECEIVE_SERVERS:
-      return action.servers;
+      newState = {};
+      for (let server of action.servers) {
+        newState[server.id] = server;
+      }
+      return newState;
+    // return action.servers;
     case RECEIVE_SERVER:
       newState[action.data.server.id] = action.data.server;
       return newState;
