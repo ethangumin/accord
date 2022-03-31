@@ -1,20 +1,19 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { requestServers } from "../../actions/server_actions";
+import { requestServers, requestServer } from "../../actions/server_actions";
+import { createServerMember } from "../../actions/server_member_actions";
 import { fetchUser } from "../../actions/user_actions";
+import { withRouter } from "react-router-dom";
 
 const ExploreServersModal = (props) => {
   const servers = useSelector((state) => state.entities.servers);
   const currentUserId = useSelector(
     (state) => state.entities.users[state.session.id].id
   );
-  // const inputRef = useRef();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (props.active) {
-      // inputRef.current.focus();
-      // dispatch(requestServers()).then((servers) => setServers(servers));
       dispatch(requestServers());
     }
   }, [props.active]);
@@ -23,13 +22,37 @@ const ExploreServersModal = (props) => {
     dispatch(fetchUser(currentUserId)).then(() => {
       props.toggleExploreModal();
     });
+    // props.toggleExploreModal();
+  };
+
+  const enterServerHandler = (e, server) => {
+    // debugger;
+    e.stopPropagation();
+    dispatch(requestServer(server.id)).then((server) => {
+      // temporary
+      dispatch(
+        createServerMember({
+          server_id: server.data.server.id,
+        })
+      );
+      setTimeout(() => {
+        exitModalHandler();
+        props.history.push(
+          `/server/${server.data.server.id}/channel/${server.data.channels[0].id}`
+        );
+      });
+    });
   };
 
   const activeContent = (
     <div className="explore-servers-modal">
       <div className="explore-servers-modal__content">
         {Object.values(servers).map((server) => (
-          <div key={server.id} className="explore-servers-modal__item">
+          <div
+            key={server.id}
+            className="explore-servers-modal__item"
+            onClick={(e) => enterServerHandler(e, server)}
+          >
             <p>{server.serverName}</p>
           </div>
         ))}
@@ -47,4 +70,4 @@ const ExploreServersModal = (props) => {
   );
 };
 
-export default ExploreServersModal;
+export default withRouter(ExploreServersModal);

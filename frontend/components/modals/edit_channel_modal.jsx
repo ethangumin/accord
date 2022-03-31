@@ -11,7 +11,7 @@ const EditChannelModal = (props) => {
   );
 
   const currentChannels = props.currentChannels.filter(
-    (channel) => channel.serverId === props.currentServer.id
+    (channel) => channel.serverId === props.currentServer?.id
   );
 
   useEffect(() => {

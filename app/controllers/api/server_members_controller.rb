@@ -1,5 +1,6 @@
 class Api::ServerMembersController < ApplicationController
     def create
+        # debugger
         @server_member = ServerMember.new({server_id: params['serverMember']['server_id']})
         @user = current_user
         @server_member.user_id = @user.id
