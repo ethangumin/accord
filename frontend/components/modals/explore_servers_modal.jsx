@@ -6,7 +6,9 @@ import { fetchUser } from "../../actions/user_actions";
 import { withRouter } from "react-router-dom";
 
 const ExploreServersModal = (props) => {
-  const servers = useSelector((state) => state.entities.servers);
+  const servers = useSelector(
+    (state) => state.entities.servers.nonEnrolledServers
+  );
   const currentUserId = useSelector(
     (state) => state.entities.users[state.session.id].id
   );

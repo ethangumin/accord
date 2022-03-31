@@ -36,14 +36,13 @@ const serversReducer = (
       }
       return newState;
     case RECEIVE_SERVERS:
-      // newState = {};
-      // for (let server of action.servers) {
-      //   newState[server.id] = server;
-      // }
-      // return newState;
-      debugger;
+      // debugger;
       for (let server of action.servers) {
+        if (!newState.enrolledServers[server.id]) {
+          newState.nonEnrolledServers[server.id] = server;
+        }
       }
+      // debugger;
       return newState;
     case RECEIVE_SERVER:
       // debugger;
