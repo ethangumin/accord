@@ -5,7 +5,7 @@ class Api::ServerMembersController < ApplicationController
         @user = current_user
         @server_member.user_id = @user.id
         if @server_member.save
-            render json: ["placeholder"]
+            render json: params['serverMember']['server_id']
         else
             render json: ["invalid server_id"], status: 404
         end

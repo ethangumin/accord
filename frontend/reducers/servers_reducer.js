@@ -3,7 +3,7 @@ import {
   RECEIVE_SERVER,
   REMOVE_SERVER,
 } from "../actions/server_actions";
-import { REMOVE_SERVER_MEMBER } from "../actions/server_member_actions";
+import { REMOVE_SERVER_MEMBER, RECEIVE_SERVER_MEMBER } from "../actions/server_member_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
@@ -52,6 +52,12 @@ const serversReducer = (
       return newState;
     case REMOVE_SERVER_MEMBER:
       delete newState.enrolledServers[action.serverMember];
+      return newState;
+    case RECEIVE_SERVER_MEMBER:
+      debugger;
+      newState.enrolledServers[action.serverMember] =
+        newState.nonEnrolledServers[action.serverMember];
+      delete newState.nonEnrolledServers[action.serverMember];
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};

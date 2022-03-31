@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
 import Gear from "../../../app/assets/images/gear-solid.svg";
 import ChannelModal from "../modals/channel_modal";
 import EditChannelModal from "../modals/edit_channel_modal";
+import { createServerMember } from "../../actions/server_member_actions";
 
 const ServerChannels = (props) => {
   const [channelModalActive, setChannelModalActive] = useState(false);
@@ -15,6 +16,8 @@ const ServerChannels = (props) => {
     (state) => state.entities.users[state.session.id]
   );
 
+  const dispatch = useDispatch();
+
   const toggleChannelModal = () => {
     setChannelModalActive(!channelModalActive);
   };
@@ -22,6 +25,11 @@ const ServerChannels = (props) => {
   const toggleEditChannelModal = (channel) => {
     setEditChannelModalActive(!editChannelModalActive);
     setSelectedChannel(channel);
+  };
+
+  const joinServerHandler = (e) => {
+    e.preventDefault();
+    dispatch(createServerMember({server_id: props.server.id}));
   };
 
   const channels =
@@ -77,9 +85,14 @@ const ServerChannels = (props) => {
 
   return (
     <div className="server-channels__container">
-      <h3 className="server-channels__header">
-        {props.server ? props.server.serverName : ""}
-      </h3>
+      <div className="server-channels__header">
+        <h3>{props.server ? props.server.serverName : ""}</h3>
+        <input
+          type="button"
+          value="Join"
+          onClick={(e) => joinServerHandler(e)}
+        />
+      </div>
       <div className="server-channels__channels-idx">
         <div>
           <div className="server-channels__text-channels-header">
