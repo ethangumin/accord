@@ -10,4 +10,18 @@ class Api::ServerMembersController < ApplicationController
             render json: ["invalid server_id"], status: 404
         end
     end
+
+    # def destroy
+    #     debugger
+    #     # @user = current_user
+    #     @server_member = ServerMember.select(:id)
+    #         .where(user_id: params['serverMember']['user_id'])
+    #         .where(server_id: params['serverMember']['server_id'])
+    #     debugger
+    #     if @server_member.destroy
+    #         render json: ["success"]
+    #     else
+    #         render json: ["failure"]
+    #     end
+    # end
 end

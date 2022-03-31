@@ -3,11 +3,15 @@ import {
   RECEIVE_SERVER,
   REMOVE_SERVER,
 } from "../actions/server_actions";
+import { REMOVE_SERVER_MEMBER } from "../actions/server_member_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
 
-const serversReducer = (oldState = {}, action) => {
+const serversReducer = (
+  oldState = { enrolledServers: {}, nonEnrolledServers: {} },
+  action
+) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
 
@@ -15,29 +19,54 @@ const serversReducer = (oldState = {}, action) => {
     case RECEIVE_CURRENT_USER:
       let servers = action.data.servers;
       for (let server of servers) {
-        newState[server.id] = server;
+        newState.enrolledServers[server.id] = server;
       }
       return newState;
     case RECEIVE_USER:
       // temporary
-      newState = {};
-      let currServers = action.data.servers;
-      for (let server of currServers) {
-        newState[server.id] = server;
+      // newState = {};
+      // let currServers = action.data.servers;
+      // for (let server of currServers) {
+      //   newState[server.id] = server;
+      // }
+      // return newState;
+      // debugger;
+      for (let server of action.data.servers) {
+        newState.enrolledServers[server.id] = server;
       }
       return newState;
     case RECEIVE_SERVERS:
-      newState = {};
+      // newState = {};
+      // for (let server of action.servers) {
+      //   newState[server.id] = server;
+      // }
+      // return newState;
+      debugger;
       for (let server of action.servers) {
-        newState[server.id] = server;
       }
       return newState;
-    // return action.servers;
     case RECEIVE_SERVER:
-      newState[action.data.server.id] = action.data.server;
-      return newState;
+      // debugger;
+      if (!!newState.enrolledServers[action.data.server.id]) {
+        // debugger;
+        newState.enrolledServers[action.data.server.id] = action.data.server;
+        return newState;
+      } else if (
+        !newState.enrolledServers[action.data.server.id] &&
+        action.data.serverMember
+      ) {
+        // debugger;
+        newState.enrolledServers[action.data.server.id] = action.data.server;
+        return newState;
+      }
+    // newState[action.data.server.id] = action.data.server;
+    // return newState;
     case REMOVE_SERVER:
-      delete newState[action.serverId];
+      // delete newState[action.serverId];
+      // return newState;
+      // debugger;
+      delete newState.enrolledServers[action.serverId];
+      // debugger;
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};

@@ -43,7 +43,7 @@ const ServersNav = (props) => {
   };
 
   const toggleEditDeleteServer = (e, server) => {
-    if (server.creatorId !== currentUser.id) return;
+    // if (server.creatorId !== currentUser.id) return;
 
     e.preventDefault();
     const xPos = e.pageY + "px";
@@ -128,6 +128,7 @@ const ServersNav = (props) => {
         status={editDeleteMenu}
         ctxServer={ctxServer}
         toggleServerModal={toggleServerModal}
+        currentUser={currentUser}
       />
       <ExploreServersModal
         active={exploreModal}

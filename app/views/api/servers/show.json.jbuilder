@@ -16,4 +16,7 @@ json.server_member do
     if @server_member
         json.extract! @server_member, :id, :server_id, :user_id
     end
+    # json.array! @server_members do |member|
+    #     json.id channel.id
+    # end
 end

@@ -27,31 +27,31 @@ const ExploreServersModal = (props) => {
 
   const enterServerHandler = (e, server) => {
     // debugger;
-    e.stopPropagation();
-    dispatch(requestServer(server.id)).then((server) => {
-      // temporary
-      dispatch(
-        createServerMember({
-          server_id: server.data.server.id,
-        })
-      );
-      setTimeout(() => {
-        exitModalHandler();
-        props.history.push(
-          `/server/${server.data.server.id}/channel/${server.data.channels[0].id}`
-        );
-      });
-    });
+    // e.stopPropagation();
+    // dispatch(requestServer(server.id)).then((server) => {
+    //   // temporary
+    //   dispatch(
+    //     createServerMember({
+    //       server_id: server.data.server.id,
+    //     })
+    //   );
+    //   setTimeout(() => {
+    //     exitModalHandler();
+    //     props.history.push(
+    //       `/server/${server.data.server.id}/channel/${server.data.channels[0].id}`
+    //     );
+    //   });
+    // });
   };
 
   const activeContent = (
     <div className="explore-servers-modal">
       <div className="explore-servers-modal__content">
-        {Object.values(servers).map((server) => (
+        {Object.values(servers).map((server, index) => (
           <div
-            key={server.id}
+            key={server.id || index}
             className="explore-servers-modal__item"
-            onClick={(e) => enterServerHandler(e, server)}
+            // onClick={(e) => enterServerHandler(e, server)}
           >
             <p>{server.serverName}</p>
           </div>
