@@ -12,13 +12,10 @@ class Api::ServerMembersController < ApplicationController
     end
 
     def destroy
-        # debugger
-        # @user = current_user
         @server_member = ServerMember.where(user_id: params['serverMember']['user_id'])
             .where(server_id: params['serverMember']['server_id'])
-        debugger
         if ServerMember.destroy(@server_member[0].id)
-            render json: ["success"]
+            render json: params['serverMember']['server_id']
         else
             render json: ["failure"]
         end

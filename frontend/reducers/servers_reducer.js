@@ -23,49 +23,35 @@ const serversReducer = (
       }
       return newState;
     case RECEIVE_USER:
-      // temporary
-      // newState = {};
-      // let currServers = action.data.servers;
-      // for (let server of currServers) {
-      //   newState[server.id] = server;
-      // }
-      // return newState;
-      // debugger;
       for (let server of action.data.servers) {
         newState.enrolledServers[server.id] = server;
       }
       return newState;
     case RECEIVE_SERVERS:
-      // debugger;
       for (let server of action.servers) {
         if (!newState.enrolledServers[server.id]) {
           newState.nonEnrolledServers[server.id] = server;
         }
       }
-      // debugger;
       return newState;
     case RECEIVE_SERVER:
-      // debugger;
       if (!!newState.enrolledServers[action.data.server.id]) {
-        // debugger;
         newState.enrolledServers[action.data.server.id] = action.data.server;
         return newState;
       } else if (
         !newState.enrolledServers[action.data.server.id] &&
         action.data.serverMember
       ) {
-        // debugger;
         newState.enrolledServers[action.data.server.id] = action.data.server;
         return newState;
       }
     // newState[action.data.server.id] = action.data.server;
     // return newState;
     case REMOVE_SERVER:
-      // delete newState[action.serverId];
-      // return newState;
-      // debugger;
       delete newState.enrolledServers[action.serverId];
-      // debugger;
+      return newState;
+    case REMOVE_SERVER_MEMBER:
+      delete newState.enrolledServers[action.serverMember];
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};

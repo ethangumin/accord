@@ -20,7 +20,11 @@ const EditDeleteServerContextMenu = (props) => {
         user_id: props.currentUser.id,
         server_id: props.ctxServer.id,
       })
-    );
+    ).then(() => {
+      if (props.match.params.id === props.ctxServer.id.toString()) {
+        props.history.push("/home");
+      }
+    });
   };
 
   const currentUserOptions =
