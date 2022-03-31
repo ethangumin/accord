@@ -6,11 +6,10 @@ export const createServerMember = (serverMember) => {
   });
 };
 
-// export const deleteServerMember = (serverMember) => {
-//   debugger;
-//   return $.ajax({
-//     url: "/api/server_members",
-//     method: "DELETE",
-//     data: { serverMember },
-//   });
-// };
+export const deleteServerMember = (serverMember) => {
+  return $.ajax({
+    url: `/api/server_members/${serverMember.user_id}`,
+    method: "DELETE",
+    data: { serverMember },
+  });
+};

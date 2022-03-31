@@ -11,17 +11,16 @@ class Api::ServerMembersController < ApplicationController
         end
     end
 
-    # def destroy
-    #     debugger
-    #     # @user = current_user
-    #     @server_member = ServerMember.select(:id)
-    #         .where(user_id: params['serverMember']['user_id'])
-    #         .where(server_id: params['serverMember']['server_id'])
-    #     debugger
-    #     if @server_member.destroy
-    #         render json: ["success"]
-    #     else
-    #         render json: ["failure"]
-    #     end
-    # end
+    def destroy
+        # debugger
+        # @user = current_user
+        @server_member = ServerMember.where(user_id: params['serverMember']['user_id'])
+            .where(server_id: params['serverMember']['server_id'])
+        debugger
+        if ServerMember.destroy(@server_member[0].id)
+            render json: ["success"]
+        else
+            render json: ["failure"]
+        end
+    end
 end

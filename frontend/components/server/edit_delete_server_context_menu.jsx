@@ -14,14 +14,14 @@ const EditDeleteServerContextMenu = (props) => {
     }
   };
 
-  // const deleteServerMemberHandler = () => {
-  //   dispatch(
-  //     deleteServerMember({
-  //       user_id: props.currentUser.id,
-  //       server_id: props.ctxServer.id,
-  //     })
-  //   );
-  // };
+  const deleteServerMemberHandler = () => {
+    dispatch(
+      deleteServerMember({
+        user_id: props.currentUser.id,
+        server_id: props.ctxServer.id,
+      })
+    );
+  };
 
   const currentUserOptions =
     props.currentUser?.id === props.ctxServer?.creatorId ? (
@@ -31,8 +31,7 @@ const EditDeleteServerContextMenu = (props) => {
       </div>
     ) : (
       <div className="edit-delete-server-ctx-menu">
-        {/* <p onClick={() => deleteServerMemberHandler()}>Leave Server</p> */}
-        <p>Leave Server</p>
+        <p onClick={() => deleteServerMemberHandler()}>Leave Server</p>
       </div>
     );
 
@@ -43,10 +42,6 @@ const EditDeleteServerContextMenu = (props) => {
       }
       style={props.style}
     >
-      {/* <div className="edit-delete-server-ctx-menu">
-        <p onClick={(e) => props.toggleServerModal(e, "update")}>Edit Server</p>
-        <p onClick={() => deleteServerHandler()}>Delete Server</p>
-      </div> */}
       {currentUserOptions}
     </div>
   );

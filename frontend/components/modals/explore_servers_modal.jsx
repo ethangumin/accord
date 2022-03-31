@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { requestServers, requestServer } from "../../actions/server_actions";
-import { createServerMember } from "../../actions/server_member_actions";
-import { fetchUser } from "../../actions/user_actions";
 import { withRouter } from "react-router-dom";
 
 const ExploreServersModal = (props) => {
   const servers = useSelector(
     (state) => state.entities.servers.nonEnrolledServers
   );
-  const currentUserId = useSelector(
-    (state) => state.entities.users[state.session.id].id
-  );
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,35 +17,17 @@ const ExploreServersModal = (props) => {
   }, [props.active]);
 
   const exitModalHandler = () => {
-    // dispatch(fetchUser(currentUserId)).then(() => {
-    //   props.toggleExploreModal();
-    // });
     props.toggleExploreModal();
   };
 
   const enterServerHandler = (e, server) => {
     e.stopPropagation();
-    // dispatch(requestServer(server.id)).then((server) => {
-    //   // temporary
-    //   dispatch(
-    //     createServerMember({
-    //       server_id: server.data.server.id,
-    //     })
-    //   );
-    //   setTimeout(() => {
-    //     exitModalHandler();
-    //     props.history.push(
-    //       `/server/${server.data.server.id}/channel/${server.data.channels[0].id}`
-    //     );
-    //   });
-    // });
-    dispatch(requestServer(server.id)).then(server => {
-      // debugger;
+    dispatch(requestServer(server.id)).then((server) => {
       exitModalHandler();
       props.history.push(
         `/server/${server.data.server.id}/channel/${server.data.channels[0].id}`
       );
-    })
+    });
   };
 
   const activeContent = (
