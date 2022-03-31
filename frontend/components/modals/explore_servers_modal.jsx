@@ -21,15 +21,14 @@ const ExploreServersModal = (props) => {
   }, [props.active]);
 
   const exitModalHandler = () => {
-    dispatch(fetchUser(currentUserId)).then(() => {
-      props.toggleExploreModal();
-    });
-    // props.toggleExploreModal();
+    // dispatch(fetchUser(currentUserId)).then(() => {
+    //   props.toggleExploreModal();
+    // });
+    props.toggleExploreModal();
   };
 
   const enterServerHandler = (e, server) => {
-    // debugger;
-    // e.stopPropagation();
+    e.stopPropagation();
     // dispatch(requestServer(server.id)).then((server) => {
     //   // temporary
     //   dispatch(
@@ -44,6 +43,13 @@ const ExploreServersModal = (props) => {
     //     );
     //   });
     // });
+    dispatch(requestServer(server.id)).then(server => {
+      // debugger;
+      exitModalHandler();
+      props.history.push(
+        `/server/${server.data.server.id}/channel/${server.data.channels[0].id}`
+      );
+    })
   };
 
   const activeContent = (
@@ -53,7 +59,7 @@ const ExploreServersModal = (props) => {
           <div
             key={server.id || index}
             className="explore-servers-modal__item"
-            // onClick={(e) => enterServerHandler(e, server)}
+            onClick={(e) => enterServerHandler(e, server)}
           >
             <p>{server.serverName}</p>
           </div>
