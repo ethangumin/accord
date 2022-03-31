@@ -51,10 +51,14 @@ const serversReducer = (
       delete newState.enrolledServers[action.serverId];
       return newState;
     case REMOVE_SERVER_MEMBER:
+      // debugger;
+      newState.nonEnrolledServers[action.serverMember] =
+        newState.enrolledServers[action.serverMember];
       delete newState.enrolledServers[action.serverMember];
+      // debugger;
       return newState;
     case RECEIVE_SERVER_MEMBER:
-      debugger;
+      // debugger;
       newState.enrolledServers[action.serverMember] =
         newState.nonEnrolledServers[action.serverMember];
       delete newState.nonEnrolledServers[action.serverMember];

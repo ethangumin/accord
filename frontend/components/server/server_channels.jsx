@@ -5,7 +5,10 @@ import Hashtag from "../../../app/assets/images/hashtag-solid.svg";
 import Gear from "../../../app/assets/images/gear-solid.svg";
 import ChannelModal from "../modals/channel_modal";
 import EditChannelModal from "../modals/edit_channel_modal";
-import { createServerMember } from "../../actions/server_member_actions";
+import {
+  createServerMember,
+  deleteServerMember,
+} from "../../actions/server_member_actions";
 
 const ServerChannels = (props) => {
   const [channelModalActive, setChannelModalActive] = useState(false);
@@ -14,6 +17,10 @@ const ServerChannels = (props) => {
 
   const currentUser = useSelector(
     (state) => state.entities.users[state.session.id]
+  );
+
+  const enrolledServers = useSelector(
+    (state) => state.entities.servers.enrolledServers
   );
 
   const dispatch = useDispatch();
@@ -29,7 +36,19 @@ const ServerChannels = (props) => {
 
   const joinServerHandler = (e) => {
     e.preventDefault();
-    dispatch(createServerMember({server_id: props.server.id}));
+    dispatch(createServerMember({ server_id: props.server.id }));
+  };
+
+  const leaveServerHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      deleteServerMember({
+        user_id: currentUser.id,
+        server_id: props.server.id,
+      })
+    ).then(() => {
+      props.history.push("/home");
+    });
   };
 
   const channels =
@@ -88,9 +107,19 @@ const ServerChannels = (props) => {
       <div className="server-channels__header">
         <h3>{props.server ? props.server.serverName : ""}</h3>
         <input
+          className={
+            props.currentServer?.creatorId === currentUser.id
+              ? "hidden"
+              : "join-btn"
+          }
           type="button"
-          value="Join"
-          onClick={(e) => joinServerHandler(e)}
+          value={enrolledServers[props.currentServer?.id] ? "Leave" : "Join"}
+          // onClick={(e) => joinServerHandler(e)}
+          onClick={
+            enrolledServers[props.currentServer?.id]
+              ? (e) => leaveServerHandler(e)
+              : (e) => joinServerHandler(e)
+          }
         />
       </div>
       <div className="server-channels__channels-idx">

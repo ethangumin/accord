@@ -131,3 +131,20 @@
   margin-right: 0.3em;
   cursor: pointer;
 }
+
+.join-btn {
+  font-family: "Whitney-Book";
+  font-size: 0.95rem;
+  border: 1px solid #30964a;
+  border-radius: 4px;
+  background-color: #30964a;
+  color: white;
+  padding: 0.25em 0.4em;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.join-btn:hover {
+  border: 1px solid #309649da;
+  background-color: #309649da;
+}
