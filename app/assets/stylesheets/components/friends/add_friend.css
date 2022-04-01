@@ -1,0 +1,41 @@
+.add-friend h2 {
+  font-family: "Whitney-Semibold";
+  color: white;
+  margin-bottom: 0.6em;
+}
+
+.add-friend p {
+  color: #a7a8ad;
+  font-family: "Whitney-book";
+  font-size: 0.9rem;
+  margin-bottom: 1.35em;
+}
+
+.add-friend form {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-friend input[type="text"] {
+  width: -webkit-fill-available;
+  padding: 0.8em;
+  background-color: #181a1c;
+  border: 1px solid #111314;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  /* border-radius: 5px; */
+  color: #d4d5d6;
+  font-family: "Whitney-Medium";
+}
+
+.add-friend__btn {
+  background-color: #4549ef;
+  border: 1px solid #4549ef;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: white;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
