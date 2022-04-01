@@ -5,7 +5,7 @@ import ServersNav from "../server/servers_nav";
 import DmIndex from "./dm/dm_index";
 
 const HomeIndex = (props) => {
-  const [friendsList, setFriendsList] = useState(false);
+  const [friendsList, setFriendsList] = useState(true);
   const [addFriend, setAddFriend] = useState(false);
 
   useEffect(() => {
