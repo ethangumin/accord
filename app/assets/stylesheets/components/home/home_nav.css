@@ -23,7 +23,7 @@
 
 .home-nav__section-1 *,
 .home-nav__section-2 * {
-  margin: 0.3em;
+  padding: 0.3em;
   cursor: pointer;
 }
 
