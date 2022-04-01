@@ -10,6 +10,9 @@ class Api::UsersController < ApplicationController
             end
             
             @channels = @channels.flatten
+
+            @friends = @user.friends
+
             render :show
         else
             render json: ["No user found"], status: 404

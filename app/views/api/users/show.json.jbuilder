@@ -20,5 +20,8 @@ json.channels do
     end
 end
 json.friends do 
-    json.array! @user.friends, :id, :username
+    json.array! @friends do |friend|
+        json.id friend.id
+        json.username friend.username
+    end
 end

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-const HomeNav = ({ logout, history }) => {
-  const [friendsList, setFriendsList] = useState(false);
-  const [addFriend, setAddFriend] = useState(false);
+const HomeNav = ({ logout, history, setAddFriend, setFriendsList }) => {
+  // const [friendsList, setFriendsList] = useState(false);
+  // const [addFriend, setAddFriend] = useState(false);
 
   const logoutHandler = (e) => {
     e.preventDefault();
@@ -25,14 +25,9 @@ const HomeNav = ({ logout, history }) => {
     <div className="server-index__home__nav">
       <div className="home-nav__container">
         <div className="home-nav__section-1">
-          <p
-            style={{ borderRight: "1px solid gray" }}
-            onClick={() => friendsListHandler()}
-          >
-            Friends
-          </p>
+          <p style={{ borderRight: "1px solid gray" }}>Friends</p>
           {/* <p>Online</p> */}
-          <p>All</p>
+          <p onClick={() => friendsListHandler()}>All</p>
           <input
             type="button"
             value="Add Friend"
