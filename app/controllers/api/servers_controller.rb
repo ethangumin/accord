@@ -21,6 +21,7 @@ class Api::ServersController < ApplicationController
             @channel = Channel.new(channel_name: "General", server_id: @server.id)
             @server_member = ServerMember.new(server_id: @server.id, user_id: current_user.id)
             if @channel.save && @server_member.save
+                @channels = @server.channels
                 render :show
             else
                 render json: ["Invalid Server Params"], status: 404

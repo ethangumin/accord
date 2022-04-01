@@ -9,7 +9,7 @@ import { createChannel, fetchChannel } from "../../actions/channel_actions";
 const mSTP = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
-    enrolledServers: Object.values(state.entities.servers),
+    enrolledServers: Object.values(state.entities.servers.enrolledServers),
     currentChannels: Object.values(state.entities.channels),
     friends: state.entities.users[state.session.id].friends,
   };

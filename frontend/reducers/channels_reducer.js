@@ -10,6 +10,7 @@ const channelsReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_USER:
+      newState = {};
       let channels = action.data.channels;
       for (let channel of channels) {
         newState[channel.id] = channel;
@@ -22,11 +23,12 @@ const channelsReducer = (oldState = {}, action) => {
       }
       return newState;
     case RECEIVE_SERVER:
-      if (action.data.channel) {
-        newState[action.data.channel.id] = action.data.channel;
-        return newState;
+      // debugger;
+      for (let channel of action.data.channels) {
+        newState[channel.id] = channel;
       }
-      return oldState;
+      // debugger;
+      return newState;
     case RECEIVE_CHANNEL:
       newState[action.channel.id] = action.channel;
       return newState;

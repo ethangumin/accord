@@ -28,7 +28,7 @@ const ServerModal = (props) => {
     e.preventDefault();
     props.createServer({ server_name: serverName }).then((data) => {
       props.history.push(
-        `/server/${data.data.server.id}/channel/${data.data.channel.id}`
+        `/server/${data.data.server.id}/channel/${data.data.channels[0].id}`
       );
     });
     props.toggleServerModal(e);

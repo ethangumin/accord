@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import ServerModal from "../modals/server_modal";
 import ServerNavItemBubble from "./server_nav_item_bubble";
 import Plus from "../../../app/assets/images/plus-solid.svg";
+import Compass from "../../../app/assets/images/compass-solid.svg";
 import EditDeleteServerContextMenu from "./edit_delete_server_context_menu";
+import ExploreServersModal from "../modals/explore_servers_modal";
 
 const ServersNav = (props) => {
   const [serverModal, setServerModal] = useState(false);
@@ -13,6 +15,7 @@ const ServersNav = (props) => {
   const [editDeleteMenu, setEditDeleteMenu] = useState(false);
   const [serverPos, setServerPos] = useState({ x: "0px", y: "0px" });
   const [ctxServer, setCtxServer] = useState(null);
+  const [exploreModal, setExploreModal] = useState(false);
 
   const currentUser = useSelector(
     (state) => state.entities.users[state.session.id]
@@ -35,8 +38,12 @@ const ServersNav = (props) => {
     setServerModal(!serverModal);
   };
 
+  const toggleExploreModal = () => {
+    setExploreModal(!exploreModal);
+  };
+
   const toggleEditDeleteServer = (e, server) => {
-    if (server.creatorId !== currentUser.id) return;
+    // if (server.creatorId !== currentUser.id) return;
 
     e.preventDefault();
     const xPos = e.pageY + "px";
@@ -99,6 +106,12 @@ const ServersNav = (props) => {
         className="server-nav__item create-server"
         onClick={(e) => toggleServerModal(e, "create")}
       />
+      <img
+        src={Compass}
+        className="server-nav__item explore-servers"
+        alt="explore servers button"
+        onClick={() => toggleExploreModal()}
+      />
       <ServerModal
         serverModalType={serverModalType}
         ctxServer={ctxServer}
@@ -115,6 +128,11 @@ const ServersNav = (props) => {
         status={editDeleteMenu}
         ctxServer={ctxServer}
         toggleServerModal={toggleServerModal}
+        currentUser={currentUser}
+      />
+      <ExploreServersModal
+        active={exploreModal}
+        toggleExploreModal={toggleExploreModal}
       />
     </ul>
   );

@@ -150,17 +150,6 @@ const ChannelMessages = (props) => {
               </form>
             )}
           </div>
-          {/* <EditDeleteMessage
-            ctxMessage={ctxMessage}
-            setEditMessage={setEditMessage}
-            setEditMessageContent={setEditMessageContent}
-            style={{
-              display:
-                messageMenu && ctxMessage?.id === message.id
-                  ? "initial"
-                  : "none",
-            }}
-          /> */}
           <div ref={bottom} />
         </li>
       );
