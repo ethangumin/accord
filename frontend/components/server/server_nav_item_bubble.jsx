@@ -1,15 +1,15 @@
 import React from "react";
 
-function ServerNavItemBubble({ serverName, serverBubbleActive }) {
+function ServerNavItemBubble(props) {
   return (
     <div
       className={
-        serverBubbleActive
+        props.serverBubbleActive && props.bubbleServer === props.server
           ? "server-nav-item-bubble"
           : "server-nav-item-bubble-hidden"
       }
     >
-      {serverName}
+      {props.server.serverName}
     </div>
   );
 }
