@@ -11,5 +11,11 @@ class Api::FriendshipsController < ApplicationController
     end
 
     def destroy
+        @friendship = Friendship.where(user1_id: current_user.id).where(user2_id: params[:id])
+        if @friendship[0].destroy
+            render json: [params[:id]]
+        else
+            render json: ["failure"]
+        end
     end
 end
