@@ -10,10 +10,11 @@ const AddFriend = () => {
     setFriendUsername(e.target.value);
   };
 
-  const submitFormHandler = (e) => {
-    // e.preventDefault();
-    console.log("hello");
-    dispatch(fetchUser(friendUsername));
+  const submitFormHandler = () => {
+    dispatch(fetchUser(friendUsername)).then((user) => {
+        
+    });
+    setFriendUsername("");
   };
 
   return (
@@ -27,12 +28,13 @@ const AddFriend = () => {
           type="text"
           placeholder="Enter a Username"
           onChange={(e) => updateUsernameHandler(e)}
+          value={friendUsername}
         />
         <input
           type="submit"
           value="Add Friend"
           className="add-friend__btn"
-          onClick={(e) => submitFormHandler(e)}
+          onClick={() => submitFormHandler()}
         />
       </form>
     </div>
