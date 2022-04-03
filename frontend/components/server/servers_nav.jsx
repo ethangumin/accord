@@ -12,6 +12,7 @@ const ServersNav = (props) => {
   const [serverModal, setServerModal] = useState(false);
   const [serverModalType, setServerModalType] = useState(null);
   const [serverBubble, setServerBubble] = useState(false);
+  const [bubbleServer, setBubbleServer] = useState(null);
   const [editDeleteMenu, setEditDeleteMenu] = useState(false);
   const [serverPos, setServerPos] = useState({ x: "0px", y: "0px" });
   const [ctxServer, setCtxServer] = useState(null);
@@ -54,6 +55,10 @@ const ServersNav = (props) => {
     setCtxServer(server);
   };
 
+  // const toggleBubbleHandler = (server) => {
+
+  // }
+
   return (
     <ul className="server-index__servers-nav">
       <Link to="/home" style={{ textDecoration: "none", color: "#D4D5D6" }}>
@@ -86,15 +91,22 @@ const ServersNav = (props) => {
                         : "/home"
                     }
                     style={{ textDecoration: "none", color: "#D4D5D6" }}
-                    onMouseEnter={() => setServerBubble(true)}
-                    onMouseLeave={() => setServerBubble(false)}
+                    onMouseEnter={() => {
+                      setServerBubble(true);
+                      setBubbleServer(server);
+                    }}
+                    onMouseLeave={() => {
+                      setServerBubble(false);
+                      setBubbleServer(null);
+                    }}
                   >
                     <div className="server-nav__item">{serverAcronym}</div>
                   </Link>
-                  {/* <ServerNavItemBubble
-                      serverBubbleActive={this.state.serverBubble}
-                      serverName={server.serverName}
-                    /> */}
+                  <ServerNavItemBubble
+                    serverBubbleActive={serverBubble}
+                    server={server}
+                    bubbleServer={bubbleServer}
+                  />
                 </div>
               );
             })

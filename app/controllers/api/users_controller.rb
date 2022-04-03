@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
     def show
         @user = User.find_by(id: params[:id])
+        @other_user = User.find_by(username: params[:id])
         if @user
             @servers = @user.servers_enrolled
             @channels = []
@@ -10,6 +11,14 @@ class Api::UsersController < ApplicationController
             end
             
             @channels = @channels.flatten
+
+            @friends = @user.friends
+
+            render :show
+        elsif @other_user 
+            @servers = [];
+            @channels = [];
+            @friends = [];
             render :show
         else
             render json: ["No user found"], status: 404
@@ -28,6 +37,6 @@ class Api::UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:email, :username, :password)
+        params.require(:user).permit(:email, :username, :password, :userId)
     end
 end

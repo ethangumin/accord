@@ -1,0 +1,50 @@
+.friend-item {
+  font-family: "Whitney-Book";
+  display: flex;
+  align-items: center;
+  width: 95%;
+  justify-content: space-between;
+  margin-right: auto;
+  padding: 0.5em;
+  border: 1px solid #292b30;
+  border-top: 1px solid #33363c;
+  /* cursor: pointer; */
+}
+
+.friend-item:hover {
+  background-color: #313439;
+  border: 1px solid #313439;
+  border-radius: 5px;
+}
+
+.friend-item div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.friend-item__icon {
+  border: 1px solid #797d83;
+  color: #797d83;
+  border-radius: 50%;
+  padding: 0.5em;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 1.5;
+  margin-right: 0.5em;
+}
+
+.friend-item__username {
+  color: white;
+  font-family: "Whitney-Semibold";
+}
+
+.friend-item__options-icon {
+  margin-left: 0.5em;
+}
+
+.friend-item__options-icon,
+.friend-item__message-icon {
+  height: 18px;
+  cursor: pointer;
+}
