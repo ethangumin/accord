@@ -23,11 +23,9 @@ const channelsReducer = (oldState = {}, action) => {
       }
       return newState;
     case RECEIVE_SERVER:
-      // debugger;
       for (let channel of action.data.channels) {
         newState[channel.id] = channel;
       }
-      // debugger;
       return newState;
     case RECEIVE_CHANNEL:
       newState[action.channel.id] = action.channel;

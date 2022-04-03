@@ -23,6 +23,7 @@ const ExploreServersModal = (props) => {
   const enterServerHandler = (e, server) => {
     e.stopPropagation();
     dispatch(requestServer(server.id)).then((server) => {
+      // debugger;
       exitModalHandler();
       props.history.push(
         `/server/${server.data.server.id}/channel/${server.data.channels[0].id}`
