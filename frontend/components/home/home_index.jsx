@@ -34,6 +34,7 @@ const HomeIndex = (props) => {
         <HomeContent
           friendsListActive={friendsList}
           addFriendActive={addFriend}
+          setFriendsList={setFriendsList}
         />
       </div>
     </div>

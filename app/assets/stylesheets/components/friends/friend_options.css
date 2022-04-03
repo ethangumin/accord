@@ -1,0 +1,17 @@
+.friend_options {
+  position: absolute;
+  border: 1px solid #131316;
+  border-radius: 3px;
+  background-color: #131316;
+  color: #aaadb1;
+  font-family: "Whitney-Medium";
+  width: min-content;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.friend_options:hover {
+  border-color: #4549ef;
+  background-color: #4549ef;
+  color: white;
+}

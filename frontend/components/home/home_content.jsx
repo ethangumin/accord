@@ -7,7 +7,11 @@ function HomeContent(props) {
     <div className="server-index__home__content">
       <div className="home-content__container">
         {/* <input type="text" placeholder="Search" /> */}
-        {props.friendsListActive ? <AllFriends /> : <AddFriend />}
+        {props.friendsListActive ? (
+          <AllFriends />
+        ) : (
+          <AddFriend setFriendsList={props.setFriendsList} />
+        )}
       </div>
     </div>
   );

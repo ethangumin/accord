@@ -3,6 +3,16 @@ import MessageIcon from "../../../app/assets/images/message-solid.svg";
 import OptionsIcon from "../../../app/assets/images/ellipsis-vertical-solid.svg";
 
 const FriendItem = (props) => {
+  const toggleFriendOptions = (e) => {
+    e.stopPropagation();
+    const xPos = e.pageY - 50 + "px";
+    const yPos = e.pageX - 70 + "px";
+
+    props.setFriendPos({ x: xPos, y: yPos });
+    props.setCurrentFriend(props.friend);
+    props.setOptionsActive(true);
+  };
+
   return (
     <div className="friend-item">
       <div>
@@ -19,6 +29,7 @@ const FriendItem = (props) => {
           src={OptionsIcon}
           alt="user options icon"
           className="friend-item__options-icon"
+          onClick={(e) => toggleFriendOptions(e)}
         />
       </div>
     </div>

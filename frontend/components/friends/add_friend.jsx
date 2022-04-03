@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchUser } from "../../actions/user_actions";
+import { createFriendship } from "../../actions/friendship_actions";
 
-const AddFriend = () => {
+const AddFriend = (props) => {
   const dispatch = useDispatch();
   const [friendUsername, setFriendUsername] = useState("");
 
@@ -12,9 +13,10 @@ const AddFriend = () => {
 
   const submitFormHandler = () => {
     dispatch(fetchUser(friendUsername)).then((user) => {
-        
+      dispatch(createFriendship(user.data.user.id));
     });
     setFriendUsername("");
+    props.setFriendsList(true);
   };
 
   return (

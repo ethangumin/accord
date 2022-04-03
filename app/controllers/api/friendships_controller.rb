@@ -1,6 +1,7 @@
 class Api::FriendshipsController < ApplicationController
     def create
-        @friendship = Friendship.new({user2_id: params['otherUser']['otherUserId']})
+        @friendship = Friendship.new({user2_id: params['user2Id']})
+        @friend = User.find_by(id: params['user2Id'])
         @user = current_user
         @friendship.user1_id = @user.id
         if @friendship.save
