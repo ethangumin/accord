@@ -1,8 +1,8 @@
 class Api::ConversationsController < ApplicationController
-    def index
-        @conversations = Conversation.all
-        render :index
-    end
+    # def index
+    #     @conversations = Conversation.all
+    #     render :index
+    # end
 
     def show
         @conversation = Conversation.find_by(id: params[:id])

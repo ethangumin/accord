@@ -10,6 +10,10 @@ class User < ApplicationRecord
         foreign_key: :user1_id,
         class_name: :Conversation
 
+    has_many :conversation_users,
+        through: :conversations,
+        source: :user2
+
     has_many :friendships,
         primary_key: :id,
         foreign_key: :user1_id,

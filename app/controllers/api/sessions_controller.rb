@@ -16,6 +16,8 @@ class Api::SessionsController < ApplicationController
             end
             
             @channels = @channels.flatten
+
+            # @conversations = @user.conversations
             login!(@user)
             render "api/users/show.json.jbuilder"
         else

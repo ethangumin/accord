@@ -1,7 +1,7 @@
-export const fetchConversations = () =>
-  $.ajax({
-    url: "/api/conversations",
-  });
+// export const fetchConversations = () =>
+//   $.ajax({
+//     url: "/api/conversations",
+//   });
 
 export const fetchConversation = (user2Id) =>
   $.ajax({

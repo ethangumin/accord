@@ -26,6 +26,13 @@ if @user
             json.username friend.username
         end
     end
+    json.conversations do
+        json.array! @conversations do |conversation|
+            json.id conversation.id
+            json.user1_id conversation.user1_id
+            json.user2_id conversation.user2_id
+        end
+    end
 else
     json.user do
         json.extract! @other_user, :id, :username
@@ -48,6 +55,13 @@ else
         json.array! @friends do |friend|
             json.id friend.id
             json.username friend.username
+        end
+    end
+    json.conversations do
+        json.array! @conversations do |conversation|
+            json.id conversation.id
+            json.user1_id conversation.user1_id
+            json.user2_id conversation.user2_id
         end
     end
 end
