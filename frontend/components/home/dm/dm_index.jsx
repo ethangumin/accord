@@ -22,13 +22,14 @@ const DmIndex = ({ friends, currentUser }) => {
           </div>
           <div className="dm__header">
             <p>DIRECT MESSAGES</p>
-            <p>+</p>
+            {/* <p>+</p> */}
           </div>
           <ul className="dm__messages">
             {allDms.map((dm) => (
               <Dm
                 key={dm.id}
                 dmUserId={user.id === dm.user1Id ? dm.user2Id : dm.user1Id}
+                dm={dm}
               />
             ))}
           </ul>

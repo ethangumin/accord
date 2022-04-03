@@ -6,7 +6,6 @@ import DmIndex from "./dm/dm_index";
 
 const HomeIndex = (props) => {
   const [friendsList, setFriendsList] = useState(true);
-  const [dmActive, setDmActive] = useState(false);
   const [addFriend, setAddFriend] = useState(false);
 
   useEffect(() => {
@@ -36,7 +35,6 @@ const HomeIndex = (props) => {
           friendsListActive={friendsList}
           addFriendActive={addFriend}
           setFriendsList={setFriendsList}
-          dmActive={dmActive}
         />
       </div>
     </div>

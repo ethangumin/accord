@@ -6,6 +6,7 @@ import SignUpFormContainer from "./auth/signup_form_container";
 import LoginFormContainer from "./auth/login_form_container";
 import HomeIndexContainer from "./home/home_index_container";
 import ServerContainer from "./server/server_container";
+import Conversation from "./conversation/conversation";
 
 const App = () => {
   return (
@@ -19,6 +20,11 @@ const App = () => {
           exact
           path="/server/:id/channel/:channelId"
           component={ServerContainer}
+        />
+        <ProtectedRoute
+          exact
+          path="/conversation/:id"
+          component={Conversation}
         />
       </Switch>
     </div>
