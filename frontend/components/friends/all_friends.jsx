@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import FriendItem from "./friend_item";
 import FriendOptions from "./friend_options";
 
-const AllFriends = (props) => {
+const AllFriends = () => {
   const [optionsActive, setOptionsActive] = useState(false);
   const [friendPos, setFriendPos] = useState({ x: "0px", y: "0px" });
   const [currentFriend, setCurrentFriend] = useState(null);
@@ -42,7 +42,6 @@ const AllFriends = (props) => {
         style={{ top: friendPos.x, left: friendPos.y }}
         status={optionsActive}
         friend={currentFriend}
-        // toggleServerModal={toggleServerModal}
         currentUser={currentUser}
       />
     </div>
