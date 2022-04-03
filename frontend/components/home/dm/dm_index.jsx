@@ -15,9 +15,7 @@ const DmIndex = ({ friends, currentUser }) => {
             <p>+</p>
           </div>
           <ul className="dm__messages">
-            {/* {friends.map((friend) => (
-              <Dm key={friend.id} friend={friend} />
-            ))} */}
+            {/* conversations go here */}
           </ul>
         </div>
         <div className="current-user">
