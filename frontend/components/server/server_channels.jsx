@@ -60,6 +60,7 @@ const ServerChannels = (props) => {
 
   const mapChannelsToServer = channels
     ? channels.map((channel) => {
+      debugger;
         return (
           <div
             key={channel.id}
