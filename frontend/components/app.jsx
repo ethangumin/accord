@@ -6,7 +6,7 @@ import SignUpFormContainer from "./auth/signup_form_container";
 import LoginFormContainer from "./auth/login_form_container";
 import HomeIndexContainer from "./home/home_index_container";
 import ServerContainer from "./server/server_container";
-import Conversation from "./conversation/conversation";
+import ConversationContainer from "./conversation/conversation";
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
         <ProtectedRoute
           exact
           path="/conversation/:id"
-          component={Conversation}
+          component={ConversationContainer}
         />
       </Switch>
     </div>

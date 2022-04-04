@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Dm from "./dm";
 
-const DmIndex = ({ friends, currentUser }) => {
+const DmIndex = ({ currentUser }) => {
   const user = currentUser.id ? currentUser : currentUser.user;
 
   const allDms = useSelector((state) =>
