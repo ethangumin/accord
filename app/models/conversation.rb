@@ -10,4 +10,9 @@ class Conversation < ApplicationRecord
         primary_key: :id,
         foreign_key: :user2_id,
         class_name: :User
+
+    has_many :messages,
+        primary_key: :id,
+        foreign_key: :conversation_id,
+        class_name: :ConversationMessage
 end
