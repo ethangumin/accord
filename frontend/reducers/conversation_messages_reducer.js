@@ -11,15 +11,18 @@ const conversationMessagesReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CONVERSATION_MESSAGE:
+      // debugger;
       newState[action.message.id] = action.message;
       return newState;
     case RECEIVE_CONVERSATION_MESSAGES:
+      // debugger;
       newState = {};
       for (let message of action.messages) {
         newState[message.id] = message;
       }
       return newState;
     case REMOVE_CONVERSATION_MESSAGE:
+      // debugger;
       delete newState[action.messageId];
       return newState;
     case LOGOUT_CURRENT_USER:

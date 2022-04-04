@@ -60,7 +60,12 @@ const Conversation = (props) => {
       <DmIndex currentUser={currentUser} />
       <div className="server-index__home">
         <ConversationHeader friend={friend} />
-        <ConversationBody />
+        <ConversationBody
+          conversationId={props.match.params.id}
+          currentUser={currentUser}
+          currentConversation={currentConversation}
+          friend={friend}
+        />
       </div>
     </div>
   );
