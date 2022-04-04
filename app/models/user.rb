@@ -5,6 +5,11 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
+    has_many :conversations,
+        primary_key: :id,
+        foreign_key: :user1_id,
+        class_name: :Conversation
+
     has_many :friendships,
         primary_key: :id,
         foreign_key: :user1_id,
@@ -32,6 +37,11 @@ class User < ApplicationRecord
         primary_key: :id,
         foreign_key: :sender_id,
         class_name: :Message
+
+    has_many :conversation_messages,
+        primary_key: :id,
+        foreign_key: :sender_id,
+        class_name: :ConversationMessage
 
     attr_reader :password
 

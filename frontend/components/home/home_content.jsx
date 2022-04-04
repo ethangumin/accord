@@ -6,7 +6,7 @@ function HomeContent(props) {
   return (
     <div className="server-index__home__content">
       <div className="home-content__container">
-        {props.friendsListActive ? (
+        {props.friendsListActive && !props.dmActive ? (
           <AllFriends />
         ) : (
           <AddFriend setFriendsList={props.setFriendsList} />

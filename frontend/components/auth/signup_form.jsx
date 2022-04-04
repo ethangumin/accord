@@ -27,6 +27,14 @@ export default class SignupForm extends Component {
     this.props.signup(this.state);
   }
 
+  enterSubmitHandler(e) {
+    // e.preventDefault();
+    if (e.key === "Enter") {
+      // debugger;
+      this.props?.signup(this.state);
+    }
+  }
+
   setFieldHandler(field) {
     return (e) => this.setState({ [field]: e.target.value });
   }
@@ -90,7 +98,11 @@ export default class SignupForm extends Component {
                     : "signup__input"
                 }
               />
-              <input type="submit" value="Continue" />
+              <input
+                type="submit"
+                value="Continue"
+                onKeyPress={this.enterSubmitHandler}
+              />
             </form>
             <Link to={"/login"}>Already have an account?</Link>
           </div>

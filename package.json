@@ -44,5 +44,8 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
+  },
+  "devDependencies": {
+    "file-loader": "^6.2.0"
   }
 }

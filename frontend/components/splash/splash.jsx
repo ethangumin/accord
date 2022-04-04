@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import discordIcon from "../../../app/assets/images/discord-brands.svg";
+// import BannerRight from "../../../app/assets/images/banner-r.svg";
+// import BannerLeft from "../../../app/assets/images/banner-l.svg";
+// import BannerMid from "../../../app/assets/images/banner-mid.svg";
 
 const Splash = ({ currentUser, logout }) => {
   const enterButton = currentUser ? "Open Discord" : "Login";
 
   return (
     <div className="splash__bg">
+      {/* <img src={BannerLeft} alt="banner-left" className="banner-left" />
+      <img src={BannerMid} alt="banner-right" className="banner-mid" />
+      <img src={BannerLeft} alt="banner-left" className="banner-left" /> */}
       <div className="splash container">
         <div className="splash__header">
           <div className="splash__logo">

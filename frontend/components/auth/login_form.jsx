@@ -12,7 +12,7 @@ export default class LoginForm extends Component {
     this.loginGuestHandler = this.loginGuestHandler.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.clearSessionErrors();
   }
 
@@ -30,6 +30,12 @@ export default class LoginForm extends Component {
   submitHandler(e) {
     e.preventDefault();
     this.props.login(this.state);
+  }
+
+  enterSubmitHandler(e) {
+    if (e.key === "Enter") {
+      this.props.login(this.state);
+    }
   }
 
   setFieldHandler(field) {
@@ -73,7 +79,11 @@ export default class LoginForm extends Component {
                 type="password"
                 value={this.state.password}
                 onChange={this.setFieldHandler("password")}
-                className={this.errors() ? "login-signup-invalid__input login__input" : "login__input"}
+                className={
+                  this.errors()
+                    ? "login-signup-invalid__input login__input"
+                    : "login__input"
+                }
               />
               <input type="submit" value="Login" />
             </form>
@@ -84,6 +94,7 @@ export default class LoginForm extends Component {
               type="button"
               value="Sign in as guest"
               onClick={(e) => this.loginGuestHandler(e)}
+              onKeyPress={this.enterSubmitHandler}
             />
           </div>
         </div>

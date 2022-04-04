@@ -23,7 +23,7 @@ const HomeIndex = (props) => {
         currentUser={props.currentUser}
         fetchChannel={props.fetchChannel}
       />
-      <DmIndex friends={props.friends} currentUser={props.currentUser} />
+      <DmIndex currentUser={props.currentUser} />
       <div className="server-index__home">
         <HomeNav
           logout={props.logout}

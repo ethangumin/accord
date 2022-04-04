@@ -89,3 +89,7 @@ Friendship.create(user1_id: 3, user2_id: 4)
 Friendship.create(user1_id: 4, user2_id: 1)
 Friendship.create(user1_id: 4, user2_id: 2)
 Friendship.create(user1_id: 4, user2_id: 3)
+
+# conversation seeds
+Conversation.create(user1_id: 1, user2_id: 2)
+Conversation.create(user1_id: 3, user2_id: 1)

@@ -14,11 +14,24 @@ class Api::UsersController < ApplicationController
 
             @friends = @user.friends
 
+            @conversations = []
+            @conversations1 = Conversation.where(user1_id: params[:id])
+            @conversations2 = Conversation.where(user2_id: params[:id])
+
+            @conversations1.each do |conversation|
+                @conversations << conversation
+            end
+
+            @conversations2.each do |conversation|
+                @conversations << conversation
+            end
+
             render :show
         elsif @other_user 
             @servers = [];
             @channels = [];
             @friends = [];
+            @conversations = [];
             render :show
         else
             render json: ["No user found"], status: 404
