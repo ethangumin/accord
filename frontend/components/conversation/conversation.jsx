@@ -12,6 +12,11 @@ const Conversation = (props) => {
   const currentUser = useSelector(
     (state) => state.entities.users[state.session.id]
   );
+
+  const currentConversation = useSelector(
+    (state) => state.entities.conversations[props.match.params.id]
+  );
+
   const enrolledServers = useSelector((state) =>
     Object.values(state.entities.servers.enrolledServers)
   );
@@ -19,17 +24,25 @@ const Conversation = (props) => {
     Object.values(state.entities.channels)
   );
   const friend = useSelector((state) => {
-    const conversation = state.entities.conversations[props.match.params.id];
-    if (conversation && conversation.user1Id === currentUser.id) {
-      return state.entities.friends[conversation.user2Id];
-    } else if (conversation && conversation.user1Id !== currentUser.id) {
-      return state.entities.friends[conversation.user1Id];
+    if (currentConversation && currentConversation.user1Id === currentUser.id) {
+      return state.entities.friends[currentConversation.user2Id];
+    } else if (
+      currentConversation &&
+      currentConversation.user1Id !== currentUser.id
+    ) {
+      return state.entities.friends[currentConversation.user1Id];
     } else {
       return undefined;
     }
   });
 
   useEffect(() => {
+    if (
+      currentConversation?.user1Id !== currentUser.id &&
+      currentConversation?.user2Id !== currentUser.id
+    ) {
+      props.history.push("/home");
+    }
     dispatch(fetchUser(currentUser.id));
   }, []);
 
