@@ -3,10 +3,7 @@ import {
   RECEIVE_CURRENT_USER,
 } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
-import {
-  RECEIVE_CONVERSATIONS,
-  RECEIVE_CONVERSATION,
-} from "../actions/conversation_actions";
+import { RECEIVE_CONVERSATION } from "../actions/conversation_actions";
 
 const conversationsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -26,7 +23,7 @@ const conversationsReducer = (oldState = {}, action) => {
     case LOGOUT_CURRENT_USER:
       return {};
     case RECEIVE_CONVERSATION:
-      debugger;
+      newState[action.conversation.id] = action.conversation;
       return newState;
     default:
       return oldState;

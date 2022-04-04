@@ -1,15 +1,10 @@
 class Api::ConversationsController < ApplicationController
-    # def index
-    #     @conversations = Conversation.all
-    #     render :index
-    # end
-
     def show
         @conversation = Conversation.find_by(id: params[:id])
         if @conversation
             render :show
         else
-            render json: ["Convesation does not exists"], status: 404
+            render json: ["Conversation does not exists"], status: 404
         end
     end
 
@@ -21,7 +16,7 @@ class Api::ConversationsController < ApplicationController
         if @conversation.save
             render :show
         else
-            render json: ["failure"]
+            render json: ["User 2 does not exists"], status: 404
         end
     end
 end
