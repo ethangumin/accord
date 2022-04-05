@@ -47,6 +47,10 @@ const serversReducer = (
       ) {
         newState.enrolledServers[action.data.server.id] = action.data.server;
         return newState;
+      } else if (!newState.enrolledServers[action.data.server.id]) {
+        // debugger;
+        newState.nonEnrolledServers[action.data.server.id] = action.data.server;
+        return newState;
       }
     // newState[action.data.server.id] = action.data.server;
     // return newState;

@@ -10,6 +10,7 @@ const Server = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // debugger
     dispatch(requestServer(props.match.params.id));
     dispatch(fetchUser(props.currentUser.id));
   }, []);
@@ -32,7 +33,7 @@ const Server = (props) => {
         server={props.currentServer}
         // currentUser={props.currentUser}
         fetchChannel={props.fetchChannel}
-        currentChannel={props.currentChannel}
+        // currentChannel={props.currentChannel}
         currentChannelId={props.currentChannelId}
         currentServer={props.currentServer}
         createChannel={props.createChannel}

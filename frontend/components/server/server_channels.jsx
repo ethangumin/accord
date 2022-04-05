@@ -56,45 +56,43 @@ const ServerChannels = (props) => {
       ? props.currentChannels.filter(
           (channel) => channel.serverId === props.server.id
         )
-      : undefined;
+      : [];
 
-  const mapChannelsToServer = channels
-    ? channels.map((channel) => {
-      // debugger;
-        return (
-          <div
-            key={channel.id}
-            className={
-              props.currentChannelId === channel.id
-                ? "server-channels__active server-channels__channel"
-                : "server-channels__inactive server-channels__channel"
-            }
-          >
-            <Link
-              to={`/server/${props.server.id}/channel/${channel.id}`}
-              className="server-channels__route"
-            >
-              <div className="server-channels__name-hash">
-                <img src={Hashtag} alt="hashtag" className="channel-pound" />
-                <p>{channel.channelName}</p>
-              </div>
-            </Link>
-            <div>
-              <img
-                src={Gear}
-                alt="edit channel"
-                className={
-                  currentUser.id !== props.server.creatorId
-                    ? "hide-channel"
-                    : "edit-channel-btn"
-                }
-                onClick={() => toggleEditChannelModal(channel)}
-              />
-            </div>
+  const mapChannelsToServer = channels.map((channel) => {
+    // debugger;
+    return (
+      <div
+        key={channel.id}
+        className={
+          props.currentChannelId === channel.id
+            ? "server-channels__active server-channels__channel"
+            : "server-channels__inactive server-channels__channel"
+        }
+      >
+        <Link
+          to={`/server/${props.server.id}/channel/${channel.id}`}
+          className="server-channels__route"
+        >
+          <div className="server-channels__name-hash">
+            <img src={Hashtag} alt="hashtag" className="channel-pound" />
+            <p>{channel.channelName}</p>
           </div>
-        );
-      })
-    : "";
+        </Link>
+        <div>
+          <img
+            src={Gear}
+            alt="edit channel"
+            className={
+              currentUser.id !== props.server.creatorId
+                ? "hide-channel"
+                : "edit-channel-btn"
+            }
+            onClick={() => toggleEditChannelModal(channel)}
+          />
+        </div>
+      </div>
+    );
+  });
 
   const createChannelButton =
     props.server && currentUser && props.server.creatorId === currentUser.id ? (
