@@ -28,14 +28,9 @@ export default class LoginForm extends Component {
   }
 
   submitHandler(e) {
+    debugger;
     e.preventDefault();
     this.props.login(this.state);
-  }
-
-  enterSubmitHandler(e) {
-    if (e.key === "Enter") {
-      this.props.login(this.state);
-    }
   }
 
   setFieldHandler(field) {
@@ -85,7 +80,11 @@ export default class LoginForm extends Component {
                     : "login__input"
                 }
               />
-              <input type="submit" value="Login" />
+              <input
+                type="submit"
+                value="Login"
+                onClick={e => this.submitHandler(e)}
+              />
             </form>
             <p>
               Need an account? <Link to={"/signup"}>Register</Link>
@@ -94,7 +93,6 @@ export default class LoginForm extends Component {
               type="button"
               value="Sign in as guest"
               onClick={(e) => this.loginGuestHandler(e)}
-              onKeyPress={this.enterSubmitHandler}
             />
           </div>
         </div>
