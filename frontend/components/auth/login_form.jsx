@@ -28,7 +28,6 @@ export default class LoginForm extends Component {
   }
 
   submitHandler(e) {
-    debugger;
     e.preventDefault();
     this.props.login(this.state);
   }
