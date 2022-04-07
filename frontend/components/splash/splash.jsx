@@ -6,7 +6,7 @@ import discordIcon from "../../../app/assets/images/discord-brands.svg";
 // import BannerMid from "../../../app/assets/images/banner-mid.svg";
 
 const Splash = ({ currentUser, logout }) => {
-  const enterButton = currentUser ? "Open Discord" : "Login";
+  const enterButton = currentUser ? "Open Accord" : "Login";
 
   return (
     <div className="splash__bg">
