@@ -38,8 +38,4 @@ Users can create and view servers.
 
 ## Future Plans
 
-+ Search for server
-+ Friends list
-  + Add Friend
-  + DM between friends
 + Profile Images
