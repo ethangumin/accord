@@ -55,6 +55,11 @@ export default class ChannelMessageForm extends React.Component {
             }`}
             onChange={this.update("body")}
             value={this.state.body}
+            disabled={
+              this.props.currentChannelId in this.props.enrolledServers
+                ? false
+                : true
+            }
           />
           <button
             type="submit"
@@ -63,7 +68,6 @@ export default class ChannelMessageForm extends React.Component {
           >
             Submit
           </button>
-          {/* <input type="submit" style={{ display: "none" }} /> */}
         </form>
       </div>
     );
