@@ -21,6 +21,8 @@
   border-radius: 50%;
   width: 30px;
   height: 30px;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .channel-content__member p + p {

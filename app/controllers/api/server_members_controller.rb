@@ -11,6 +11,16 @@ class Api::ServerMembersController < ApplicationController
         end
     end
 
+    def show
+        @server_members = ServerMember.where(server_id: params[:id])
+        @users = []
+        @server_members.each do |server_member|
+            user = User.find(server_member.user_id)
+            @users << user
+        end
+        render :show
+    end
+
     def destroy
         @server_member = ServerMember.where(user_id: params['serverMember']['user_id'])
             .where(server_id: params['serverMember']['server_id'])

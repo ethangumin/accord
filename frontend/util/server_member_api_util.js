@@ -13,3 +13,9 @@ export const deleteServerMember = (serverMember) => {
     data: { serverMember },
   });
 };
+
+export const fetchServerMembers = (serverId) => {
+  return $.ajax({
+    url: `/api/server_members/${serverId}`,
+  });
+};
