@@ -56,7 +56,7 @@ export default class ChannelMessageForm extends React.Component {
             onChange={this.update("body")}
             value={this.state.body}
             disabled={
-              this.props.currentChannelId in this.props.enrolledServers
+              this.props.currentChannel?.serverId in this.props.enrolledServers
                 ? false
                 : true
             }
