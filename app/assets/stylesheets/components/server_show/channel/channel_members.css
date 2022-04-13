@@ -3,17 +3,25 @@
   font-family: "Whitney-Medium";
   color: #7b7585;
   background-color: #232429;
-  padding: 1.2em 0 1.2em 1.1em;
+  /* padding: 1.2em 0 1.2em 1.1em; */
+  padding: 1.2em 0.7em;
 }
 
 .channel-content__members h3 {
   font-size: 0.9rem;
+  margin-bottom: 0.5em;
 }
 
 .channel-content__member {
   display: flex;
   align-items: center;
-  margin-top: 0.5em;
+  padding: 0.25em 0.25em;
+  border: 1px solid #232429;
+  cursor: pointer;
+}
+
+.channel-content__member:hover {
+  background-color: #2d3035;
 }
 
 .channel-content__member-icon {
@@ -21,6 +29,8 @@
   border-radius: 50%;
   width: 30px;
   height: 30px;
+  line-height: 1.65;
+  text-align: center;
 }
 
 .channel-content__member p + p {

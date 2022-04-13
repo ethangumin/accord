@@ -1,0 +1,55 @@
+.channel-member-card__container {
+  position: absolute;
+  background-color: #121315;
+  padding: 1em;
+  border-radius: 6px;
+  width: 210px;
+}
+
+.channel-member-card__container input {
+  background-color: #1e2024;
+  border: 1px solid #1e2024;
+  border-radius: 4px;
+  padding: 0.7em;
+  margin: 0.8em 0 0;
+  font-family: "Whitney-Book";
+  color: #fff;
+}
+
+.channel-member-card__container input::placeholder {
+  color: #6d7073;
+}
+
+.channel-member-card__container button {
+  background-color: #4549ef;
+  border: 1px solid #4549ef;
+  border-radius: 4px;
+  padding: 0.4em;
+  margin: 0.8em 0 0;
+  font-family: "Whitney-Book";
+  color: #fff;
+  cursor: pointer;
+  transition: .2s all ease-in-out ;
+}
+
+.channel-member-card__container button:hover {
+  background-color: #373ab7;
+  border-color: #373ab7;
+}
+
+.channel-member-card__icon {
+  border: 1px solid #7b7585;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  line-height: 1.95;
+  text-align: center;
+}
+
+.channel-member-card__username {
+  font-size: 1.2rem;
+  margin: 0.85em 0 0.35em;
+  color: white;
+  font-family: "Whitney-Semibold";
+}

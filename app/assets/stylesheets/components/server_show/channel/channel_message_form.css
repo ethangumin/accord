@@ -18,3 +18,13 @@
 .channel_content_messages_form__container input::placeholder {
   color: #8d8f94;
 }
+
+.channel_content_messages_form__container input:disabled {
+  background-color: #2d2f35;
+  border-color: #2d2f35;
+  cursor: not-allowed;
+}
+
+.channel_content_messages_form__container input:disabled::placeholder {
+  color: #43454b;
+}

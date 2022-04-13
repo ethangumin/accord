@@ -14,6 +14,9 @@ const ChannelMessages = (props) => {
   const [editMessage, setEditMessage] = useState(false);
   const [editMessageContent, setEditMessageContent] = useState("");
   const messages = useSelector((state) => state.entities.messages);
+  const enrolledServers = useSelector(
+    (state) => state.entities.servers.enrolledServers
+  );
   const dispatch = useDispatch();
   const bottom = useRef();
   const inputRef = useRef(null);
@@ -166,6 +169,7 @@ const ChannelMessages = (props) => {
         currentUser={props.currentUser}
         currentChannels={props.currentChannels}
         currentChannelId={props.currentChannelId}
+        enrolledServers={enrolledServers}
       />
     </div>
   );
