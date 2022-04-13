@@ -33,12 +33,9 @@ const ChannelMemberCard = (props) => {
   const startConversationHandler = (e, user) => {
     e.preventDefault();
     if (conversation) {
-      debugger;
       props.history.push(`/conversation/${conversation.id}`);
     } else {
-      debugger;
       dispatch(createConversation(user.id)).then((conversation) => {
-        debugger;
         props.history.push(`/conversation/${conversation.conversation.id}`);
       });
     }
@@ -59,12 +56,16 @@ const ChannelMemberCard = (props) => {
   //   );
 
   const cardAction =
-    props.currentUser?.id in friends ? (
+    props.currentUser?.id in friends && !conversation ? (
       <button onClick={(e) => startConversationHandler(e, props.currentUser)}>
         Start Conversation
       </button>
     ) : currentUser.id === props.currentUser?.id ? (
       ""
+    ) : conversation ? (
+      <button onClick={(e) => startConversationHandler(e, props.currentUser)}>
+        Enter Conversation
+      </button>
     ) : (
       <button onClick={(e) => addFriendHandler(e, props.currentUser?.id)}>
         Add Friend
